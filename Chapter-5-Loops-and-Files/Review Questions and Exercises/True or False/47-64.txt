@@ -1,0 +1,119 @@
+47. The operand of the increment and decrement operators can be any valid
+    mathematical expression.
+
+    FALSE
+
+
+
+48. The cout statement in the following program segment will display 5:
+    int x = 5;
+    cout << x++;
+
+    TRUE
+
+
+
+49. The cout statement in the following program segment will display 5:
+    int x = 5;
+    cout << ++x;
+
+    FALSE
+
+
+
+50. The while loop is a pretest loop.
+
+    TRUE
+
+
+
+51. The do-while loop is a pretest loop.
+
+    FALSE
+
+
+
+52. The for loop is a posttest loop.
+
+    FALSE
+
+
+
+53. It is not necessary to initialize counter variables.
+
+    FALSE
+
+
+
+54. All three of the for loop’s expressions may be omitted.
+
+    TRUE
+
+
+
+55. One limitation of the for loop is that only one variable may be initialized in
+    the initialization expression.
+
+    FALSE
+
+
+
+56. Variables may be defined inside the body of a loop.
+
+    TRUE
+
+
+
+57. A variable may be defined in the initialization expression of the for loop.
+
+    TRUE
+
+
+
+
+58. In a nested loop, the outer loop executes faster than the inner loop.
+
+    FALSE
+
+
+
+
+59. In a nested loop, the inner loop goes through all of its iterations for every
+    single iteration of the outer loop.
+
+    TRUE
+
+
+
+60. To calculate the total number of iterations of a nested loop, add the number
+    of iterations of all the loops.
+
+    FALSE: multiply instead
+
+
+
+61. The break statement causes a loop to stop the current iteration and begin
+    the next one.
+
+    FALSE: (break) statement causes the loop to terminate, while the program
+           continue.
+
+
+
+62. The continue statement causes a terminated loop to resume.
+
+    FALSE: (continue) cause it's current iteration to cease, while continuing
+           through the loops next iteration.
+
+
+
+63. In a nested loop, the break statement only interrupts the loop it is placed in.
+
+    TRUE
+
+
+
+64. When you call an ofstream object’s open member function, the specified file
+    will be erased if it already exists.
+
+    TRUE: Yes, because you will be writing to it.

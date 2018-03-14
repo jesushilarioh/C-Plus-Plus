@@ -1,0 +1,81 @@
+Pseudocode for music function
+
+Do
+    Open input and output files
+    Display list of available music books
+
+    for loop
+        get book info from separate external files
+        display book info to screen
+
+    Close input files
+
+    Ask user to select a book
+    Error Check user input
+    While not an int or numbers between 1 and 4
+        Explain Error
+        Clear input stream
+        Discard previous input
+
+    Display Menu
+    Switch
+        Case 1
+            Display book information and description
+            Ask if the user would like to keep the book
+            Receive answer into keepBook
+            Error Check user input
+                While not a Y or N
+                    Explain Error
+                    Clear input stream
+                    Discard previous input
+
+        Case 2
+            Display book information and description
+            Ask if the user would like to keep the book
+            Receive answer into keepBook
+            Error Check user input
+                While not a Y or N
+                    Explain Error
+                    Clear input stream
+                    Discard previous input
+
+        Case 3
+            Display book information and description
+            Ask if the user would like to keep the book
+            Receive answer into keepBook
+            Error Check user input
+                While not a Y or N
+                    Explain Error
+                    Clear input stream
+                    Discard previous input
+
+        Case 4
+            Display book information and description
+            Ask if the user would like to keep the book
+            Receive answer into keepBook
+            Error Check user input
+                While not a Y or N
+                    Explain Error
+                    Clear input stream
+                    Discard previous input
+    End Switch Statement
+
+    If the user decides Not to keep the book
+        display ok.
+    else if the user decides to keep the book
+        display awesome!
+        write book information to an output file
+
+    Ask if user would like to make another music selection
+    Receive answer into anotherSelection
+    Error check user input
+        While not a Y or an N
+            Explain User Error
+            Clear input stream
+            Discard previous input
+
+End of Do While statement
+While anotherSelection is Y repeat the music menu selection
+
+Close output file keptBooks
+End Music Function

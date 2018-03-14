@@ -1,0 +1,37 @@
+CONCEPT: Although most repetitive algorithms can be written with any of the
+		 three types of loops, each works best in different situations.
+		 
+		The ideal to use in different situations:
+		
+		1. - The (while) loop. The (while) loop is a conditional loop, which means
+		  it repeats as long as a particular condit exists. It is also a pretest
+		  loop, so it is 
+		  
+		  IDEAL in situations where you do not want to loop to
+		  iterate if the condition is false from the beginning.	
+		  
+		  For example, validating input that has been read and reading lists of
+		  data terminated by a sentinel value are good applications of the
+		  (while) loop.
+		  
+		  
+		  
+		2. - The (do-while) loop. The (do-while) loop is also a conditional loop.
+		  (while) loop, however, (do-while) is a posttest loop. It is 
+		  
+		  IDEAL in situations where you always want the loop to iterate at least 
+		  once. The (do-while) loop is a good choice for repeating a menu.
+		  
+		  
+		  
+		3. - The (for) loop. The (for) loop is a pretest loop that has built-in
+		  expressions for initializing, testing, and updating. These expressions
+		  make it very convenient to use counter variable to control the number
+		  of iterations that the loop performs. The initialization expression
+		  can initialize the counter variable to a starting value, the test
+		  expression can test the counter variable to determine whether it holds
+		  the maximum value, and the update expression can increment the counter
+		  variable. The (for) loop is 
+		  
+		  IDEAL in situations where the exact number
+		  of iterations is known.

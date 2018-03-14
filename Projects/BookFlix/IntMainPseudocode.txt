@@ -1,0 +1,365 @@
+Do
+    Display Book Genre menu
+        1. Music
+        2. Romance
+        3. Adventure
+        4. Mystery
+
+        Ask user to choose book
+        User input saved into menu_choice variable
+        Error check for valid user input
+        while menu_choice is not an int or between the range of 1 to 4
+            Explain user Error
+            Clear input stream
+            Discard previous input
+
+            user will then be sent to the function assigned to the genre that they pick
+            Switch
+                Case 1 Music
+                Pseudocode for music function
+
+                Do
+                    Open input and output files
+                    Display list of available music books
+
+                    for loop
+                        get book info from separate external files
+                        display book info to screen
+
+                    Close input files
+
+                    Ask user to select a book
+                    Error Check user input
+                    While not an int or numbers between 1 and 4
+                        Explain Error
+                        Clear input stream
+                        Discard previous input
+
+                    Display Menu
+                    Switch
+                        Case 1
+                            Display book information and description
+                            Ask if the user would like to keep the book
+                            Receive answer into keepBook
+                            Error Check user input
+                                While not a Y or N
+                                    Explain Error
+                                    Clear input stream
+                                    Discard previous input
+
+                        Case 2
+                            Display book information and description
+                            Ask if the user would like to keep the book
+                            Receive answer into keepBook
+                            Error Check user input
+                                While not a Y or N
+                                    Explain Error
+                                    Clear input stream
+                                    Discard previous input
+
+                        Case 3
+                            Display book information and description
+                            Ask if the user would like to keep the book
+                            Receive answer into keepBook
+                            Error Check user input
+                                While not a Y or N
+                                    Explain Error
+                                    Clear input stream
+                                    Discard previous input
+
+                        Case 4
+                            Display book information and description
+                            Ask if the user would like to keep the book
+                            Receive answer into keepBook
+                            Error Check user input
+                                While not a Y or N
+                                    Explain Error
+                                    Clear input stream
+                                    Discard previous input
+                    End Switch Statement
+
+                    If the user decides Not to keep the book
+                        display ok.
+                    else if the user decides to keep the book
+                        display awesome!
+                        write book information to an output file
+
+                    Ask if user would like to make another music selection
+                    Receive answer into anotherSelection
+                    Error check user input
+                        While not a Y or an N
+                            Explain User Error
+                            Clear input stream
+                            Discard previous input
+
+                End of Do While statement
+                While anotherSelection is Y repeat the music menu selection
+
+                Close output file keptBooks
+                End Music Function
+
+                Case 2 Romance
+                Pseudocode for Romance function
+
+                Do
+                    Open input and output files
+                    Display list of available Romance books
+
+                    for loop
+                        get book info from separate external files
+                        display book info to screen
+
+                    Close input files
+
+                    Ask user to select a book
+                    Error Check user input
+                    While not an int or numbers between 1 and 4
+                        Explain Error
+                        Clear input stream
+                        Discard previous input
+
+                    Display Menu
+                    Switch
+                        Case 1
+                            Display book information and description
+                            Ask if the user would like to keep the book
+                            Receive answer into keepBook
+                            Error Check user input
+                                While not a Y or N
+                                    Explain Error
+                                    Clear input stream
+                                    Discard previous input
+
+                        Case 2
+                            Display book information and description
+                            Ask if the user would like to keep the book
+                            Receive answer into keepBook
+                            Error Check user input
+                                While not a Y or N
+                                    Explain Error
+                                    Clear input stream
+                                    Discard previous input
+
+                        Case 3
+                            Display book information and description
+                            Ask if the user would like to keep the book
+                            Receive answer into keepBook
+                            Error Check user input
+                                While not a Y or N
+                                    Explain Error
+                                    Clear input stream
+                                    Discard previous input
+
+                        Case 4
+                            Display book information and description
+                            Ask if the user would like to keep the book
+                            Receive answer into keepBook
+                            Error Check user input
+                                While not a Y or N
+                                    Explain Error
+                                    Clear input stream
+                                    Discard previous input
+                    End Switch Statement
+
+                    If the user decides Not to keep the book
+                        display ok.
+                    else if the user decides to keep the book
+                        display awesome!
+                        write book information to an output file
+
+                    Ask if user would like to make another Romance selection
+                    Receive answer into anotherSelection
+                    Error check user input
+                        While not a Y or an N
+                            Explain User Error
+                            Clear input stream
+                            Discard previous input
+
+                End of Do While statement
+                While anotherSelection is Y repeat the Romance menu selection
+
+                Close output file keptBooks
+                End Romance Function
+
+                Case 3 Adventure
+                Pseudocode for Adventure function
+
+                Do
+                    Open input and output files
+                    Display list of available Adventure books
+
+                    for loop
+                        get book info from separate external files
+                        display book info to screen
+
+                    Close input files
+
+                    Ask user to select a book
+                    Error Check user input
+                    While not an int or numbers between 1 and 4
+                        Explain Error
+                        Clear input stream
+                        Discard previous input
+
+                    Display Menu
+                    Switch
+                        Case 1
+                            Display book information and description
+                            Ask if the user would like to keep the book
+                            Receive answer into keepBook
+                            Error Check user input
+                                While not a Y or N
+                                    Explain Error
+                                    Clear input stream
+                                    Discard previous input
+
+                        Case 2
+                            Display book information and description
+                            Ask if the user would like to keep the book
+                            Receive answer into keepBook
+                            Error Check user input
+                                While not a Y or N
+                                    Explain Error
+                                    Clear input stream
+                                    Discard previous input
+
+                        Case 3
+                            Display book information and description
+                            Ask if the user would like to keep the book
+                            Receive answer into keepBook
+                            Error Check user input
+                                While not a Y or N
+                                    Explain Error
+                                    Clear input stream
+                                    Discard previous input
+
+                        Case 4
+                            Display book information and description
+                            Ask if the user would like to keep the book
+                            Receive answer into keepBook
+                            Error Check user input
+                                While not a Y or N
+                                    Explain Error
+                                    Clear input stream
+                                    Discard previous input
+                    End Switch Statement
+
+                    If the user decides Not to keep the book
+                        display ok.
+                    else if the user decides to keep the book
+                        display awesome!
+                        write book information to an output file
+
+                    Ask if user would like to make another Adventure selection
+                    Receive answer into anotherSelection
+                    Error check user input
+                        While not a Y or an N
+                            Explain User Error
+                            Clear input stream
+                            Discard previous input
+
+                End of Do While statement
+                While anotherSelection is Y repeat the Adventure menu selection
+
+                Close output file keptBooks
+                End Adventure Function
+
+                Case 4 Mystery
+                Pseudocode for Mystery function
+
+                Do
+                    Open input and output files
+                    Display list of available Mystery books
+
+                    for loop
+                        get book info from separate external files
+                        display book info to screen
+
+                    Close input files
+
+                    Ask user to select a book
+                    Error Check user input
+                    While not an int or numbers between 1 and 4
+                        Explain Error
+                        Clear input stream
+                        Discard previous input
+
+                    Display Menu
+                    Switch
+                        Case 1
+                            Display book information and description
+                            Ask if the user would like to keep the book
+                            Receive answer into keepBook
+                            Error Check user input
+                                While not a Y or N
+                                    Explain Error
+                                    Clear input stream
+                                    Discard previous input
+
+                        Case 2
+                            Display book information and description
+                            Ask if the user would like to keep the book
+                            Receive answer into keepBook
+                            Error Check user input
+                                While not a Y or N
+                                    Explain Error
+                                    Clear input stream
+                                    Discard previous input
+
+                        Case 3
+                            Display book information and description
+                            Ask if the user would like to keep the book
+                            Receive answer into keepBook
+                            Error Check user input
+                                While not a Y or N
+                                    Explain Error
+                                    Clear input stream
+                                    Discard previous input
+
+                        Case 4
+                            Display book information and description
+                            Ask if the user would like to keep the book
+                            Receive answer into keepBook
+                            Error Check user input
+                                While not a Y or N
+                                    Explain Error
+                                    Clear input stream
+                                    Discard previous input
+                    End Switch Statement
+
+                    If the user decides Not to keep the book
+                        display ok.
+                    else if the user decides to keep the book
+                        display awesome!
+                        write book information to an output file
+
+                    Ask if user would like to make another Mystery selection
+                    Receive answer into anotherSelection
+                    Error check user input
+                        While not a Y or an N
+                            Explain User Error
+                            Clear input stream
+                            Discard previous input
+
+                End of Do While statement
+                While anotherSelection is Y repeat the Mystery menu selection
+
+                Close output file keptBooks
+                End Mystery Function
+
+                default
+                Display: not a valid choice
+
+    Ask if the user would like to return to main menu
+    Receive user input into repeat_menu
+    Error check for valid user input
+    while repeat_menu is not Y or N
+        Explain the error
+        Clear input stream
+        Discard previous input
+
+End Do While Statement
+(While anotherSelection is Y repeat the music menu selection)
+
+Display "Have a nice day!"
+End Program

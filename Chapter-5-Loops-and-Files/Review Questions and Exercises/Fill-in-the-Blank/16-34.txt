@@ -1,0 +1,46 @@
+<-- Fill-in-the-Blank -->
+
+16. To __(increment)__ a value means to increase it by one, and to __(decrement)__ a value means
+to decrease it by one.
+
+17. When the increment or decrement operator is placed before the operand (or to the
+operand’s left), the operator is being used in __(prefix mode)__ mode.
+
+18. When the increment or decrement operator is placed after the operand (or to the oper-
+and’s right), the operator is being used in __(postfix mode)__ mode.
+
+19. The statement or block that is repeated is known as the __(body)__ of the loop.
+
+20. Each repetition of a loop is known as a(n) __(iteration)__.
+
+21. A loop that evaluates its test expression before each repetition is a(n) __(pretest)__ loop.
+
+22. A loop that evaluates its test expression after each repetition is a(n) __(posttest)__ loop.
+
+23. A loop that does not have a way of stopping is a(n) __(infinite)__ loop.
+
+24. A(n) __(counter)__ is a variable that “counts” the number of times a loop repeats.
+
+25. A(n) __(running total)__ is a sum of numbers that accumulates with each iteration of a loop.
+
+26. A(n) __(counter)__ is a variable that is initialized to some starting value, usually zero,
+and then has numbers added to it in each iteration of a loop.
+
+27. A(n) __(sentinel)__ is a special value that marks the end of a series of values.
+
+28. The __(posttest)__ loop always iterates at least once.
+
+29. The __(for)__ and __(while)__ loops will not iterate at all if their test expressions
+are false to start with.
+
+30. The __(for)__ loop is ideal for situations that require a counter.
+
+31. Inside the for loop’s parentheses, the first expression is the __(initialization)__ , the second
+expression is the __(test)__ , and the third expression is the __(update)__.
+
+32. A loop that is inside another is called a(n) __(nested)__ loop.
+
+33. The __(break)__ statement causes a loop to terminate immediately.
+
+34. The __(continue)__ statement causes a loop to skip the remaining statements in the cur-
+rent iteration.

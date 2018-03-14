@@ -1,0 +1,23 @@
+1. Describe the difference between the if/else if statement and a series of if statements.
+ANSWER NO. 1: In a series of if statements, the program runs through each if statement and does something if the condition is true. In an if/else if statement, if the initial if statement is true then the following else if statements are bypassed. If the initial if statement is not true, the else if statement check if true. If true block within that else if statement is executed.
+
+2. In an if/else if statement, what is the purpose of a trailing else?
+ANSWER NO. 2: The block of code within the trailing else is executed when all other previous if and else if statements are false.
+
+3. What is a flag and how does it work?
+ANSWER NO. 3: A flag is a Boolean or integer variable that signals when a condition exists.
+
+ 4. Can an if statement test expressions other than relational expressions? Explain.
+ ANSWER NO. 4: An if statement can test any expression that ultimates to a boolean expression.
+
+5. Briefly describe how the && operator works.
+ANSWER NO. 5: The && operator returns true if both expression on either side of the && operator are true. If either side of the && operator is false, it returns false.
+
+6. Briefly describe how the || operator works.
+ANSWER NO. 6: The || operator returns false if both sides are false. And returns true if either side is true.
+
+7. Why are the relational operators called relational?
+ANSWER NO. 7: Relational operators are relational because they compare the values between two variables.
+
+8. Why do most programmers indent the conditionally executed statements in a decision structure?
+ANSWER NO. 8: The conditionally executed statement is normally indented so that you can tell at a glance what part of the program the if statement executes. It stands out visually.

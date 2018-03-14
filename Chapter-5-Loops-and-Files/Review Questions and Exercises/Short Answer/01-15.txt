@@ -1,0 +1,137 @@
+<-- Short Answer -->
+
+1. Why should you indent the statements in the body of a loop?
+
+ANSWER:	You indent the statements within the body of a loop so that your program
+		becomes more readable, they stand out visually. The body of the loop
+		is visually set apart from the surrounding code.
+
+
+
+
+2. Describe the difference between pretest loops and posttest loops.
+
+ANSWER: A pretest loop evaluates the test expression before it's initial
+		iteration. A posttest loop evaluates the test expression after
+		it's initial iteration. A posttest loop iterates at least once,
+		then the expression is tested.
+
+
+
+
+3. Why are the statements in the body of a loop called conditionally executed statements?
+
+ANSWER: The statements within the body of a loop are called conditionally
+		executed statements because they are performed only when the expression
+		within the paretheses is true.
+
+
+
+
+4. What is the difference between the while loop and the do-while loop?
+
+ANSWER: The (while) loop is iterated through as long as it's expression is true.
+		The do-while loop is iterated through at least once, then it's
+		expression is tested.
+
+
+
+
+5. Which loop should you use in situations where you wish the loop to repeat
+until the test expression is false, and the loop should not execute if the test
+expression is false to begin with?
+
+ANSWER: I'll use a (while) loop if I want the loop to repeat until the test
+		expression is false, and if I want the loop to not execute at all if
+		the test expression is fals to begin with.
+
+
+
+
+6. Which loop should you use in situations where you wish the loop to repeat until the
+test expression is false, but the loop should execute at least one time?
+
+ANSWER:	I'll use a (do-while) loop when I want the loop to exicute at least once
+		and to iterate until the test expression is false.
+
+
+
+7. Which loop should you use when you know the number of required iterations?
+
+ANSWER:	I'll use a (for) loop when I know the number of iterations are required.
+
+
+
+
+8. Why is it critical that counter variables be properly initialized?
+
+ANSWER:	Is is critial because variables defined within a function have no
+		guaranteed starting value.
+
+
+
+
+9. Why is it critical that accumulator variables be properly initialized?
+
+ANSWER:	It is critical that the accumulator variable be properly initialzed
+		to 0 so that it will contain the correct total when the loop ends.
+
+
+
+
+10. Why should you be careful not to place a statement in the body of a for loop that
+changes the value of the loop’s counter variable?
+
+ANSWER: If the counter variable is modified within the body of a loop, the loop
+		may not terminate when you expect it to.
+
+
+
+
+11. What header file do you need to include in a program that performs file operations?
+
+ANSWER:	The header file <fstream> needs to be included in order to perform file
+		operations.
+
+
+
+
+12. What data type do you use when you want to create a file stream object that
+	can write data to a file?
+
+ANSWER:	I'll use the (ofstream) data type when I want to create a file stream
+		object that can write data to a file.
+
+
+
+
+13. What data type do you use when you want to create a file stream object that
+ 	can read data from a file?
+
+ANSWER: I'll use the (ifstream) data type when I want to create a file stream
+		object that can read data to a file.
+
+
+
+
+14. Why should a program close a file when it’s finished using it?
+
+ANSWER:	Closing a file causes unsaved data that is still in the buffer to be
+				saved to it's file. Because of this data in the file will be in the file
+				if you need to read it later in the same program. Close file for saving
+				data still in the buffer, in case you need to read it later in then same
+				program.
+
+
+
+
+15. What is a file’s read position? Where is the read position when a file is
+		first opened for reading?
+
+ANSWER:	a). The read position marks the location of the next byte that will be
+						read from the file.
+
+				b). When an input file is opened, its read position is set to the first
+						byte in the file...
+
+				c). The first read operation extracts data starting at the first byte.

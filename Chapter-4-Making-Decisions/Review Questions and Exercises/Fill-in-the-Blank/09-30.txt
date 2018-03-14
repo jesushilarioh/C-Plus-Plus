@@ -1,0 +1,47 @@
+9. An expression using the greater-than, less-than, greater-than-or-equal to, less-than-or- equal-to, equal, or not-equal to operator is called a(n) __relational__ expression.
+
+10. A relational expression is either __true__ or __false__.
+
+11. The value of a relational expression is 0 if the expression is __false__ or 1 if the expression is __true__.
+
+12. The if statement regards an expression with the value 0 as __false__.
+
+13. The if statement regards an expression with a nonzero value as __true__.
+
+14. For an if statement to conditionally execute a group of statements, the statements must be enclosed in a set of __{curly braces}__.
+
+15. In an if/else statement, the if part executes its statement or block if the expression is __true__, and the else part executes its statement or block if the expression is __false__.
+
+16. The trailing else in an if/else if statement has a similar purpose as the __default__ section of a switch statement.
+
+17. The if/else if statement is actually a form of the __nested__ if statement.
+
+18. If the sub-expression on the left of the __&&__ logical operator is false, the right sub-expression is not checked.
+
+19. If the sub-expression on the left of the __||__ logical operator is true, the right sub-expression is not checked.
+
+20. The __!__ logical operator has higher precedence than the other logical operators.
+
+21. The logical operators have __left-to-right__ associativity.
+
+22. The __&&__ logical operator works best when testing a number to determine if it is within a range.
+
+23. The __||__ logical operator works best when testing a number to determine if it is outside a range.
+
+24. A variable with __local__ scope is only visible when the program is executing in the block containing the variable’s definition.
+
+25. You use the __greater than__ operator to determine whether one string object is greater then another string object.
+
+26. An expression using the conditional operator is called a(n) __conditional__ expression.
+
+27. The expression that is tested by a switch statement must have a(n) __integer__ value.
+
+28. The expression following a case statement must be a(n) __constant__ __expression__.
+
+29. A program will “fall through” a case section if it is missing the __break__ statement.
+
+30. What value will be stored in the variable t after each of the following statements executes?
+A) t = (12 > 1); __1__
+B) t = (2 < 0); __0__
+C) t = (5 == (3 * 2)); __0__
+D) t = (5 == 5); __1__

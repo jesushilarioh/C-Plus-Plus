@@ -1,0 +1,31 @@
+42. FALSE The = operator and the == operator perform the same
+        operation when used in a Boolean expression.
+43. FALSE A variable defined in an inner block may not have
+        the same name as a variable defined in the outer block.
+
+44. FALSE A conditionally executed statement should be indented one level
+        from the if statement.
+
+45. FALSE All lines in a block should be indented one level.
+
+46. TRUE  It’s safe to assume that all uninitialized
+        variables automatically start with 0 as their value.
+
+47. TRUE  When an if statement is nested in the if part of another
+        statement, the only time the inner if is executed is when the
+        expression of the outer if is true.
+
+48. FALSE When an if statement is nested in the else part of
+        another statement, as in an if/else if, the only time the
+        inner if is executed is when the expression of the outer
+        if is true.
+
+49. TRUE The scope of a variable is limited to the block in which it is defined.
+
+50. TRUE You can use the relational operators to compare string objects.
+
+51. TRUE x != y is the same as (x > y || x < y)
+
+52. FALSE y < x is the same as x >= y
+
+53. TRUE x >= y is the same as (x > y && x = y)

@@ -1,0 +1,66 @@
+5.16 
+
+	a). What is an output file?
+			An output file is a file that data is written to.
+	b). What is an input file?
+			An input is a file that data is read from.
+			
+			
+			
+			
+5.17
+
+	What three steps must be taken when a file is used by a program?
+	
+		1.	Open the file. - Creates a connection between the file and the program.
+		2.	Process the file. - Data is written or read
+		3.	Close the file. - Disconncts the file from the program.
+		
+		
+		
+		
+5.18
+
+	What is the difference between a text file and a binary file?
+	
+		A (text file) can be read, while the binary file has not been decoded 
+		and cannot be read by the program, unless decoded.
+		
+		-	A (text file) contains data that has been encoded as text
+		-	A (binary file) contains data that has not been converted to text.
+		
+		Thus, you cannot view the contents of a (binary file) with a text
+		editor.
+		
+		
+		
+		
+5.19
+
+	What is the difference between sequential access and random access?
+	
+		- 	(Sequential access) accessess data from the beginning to the end
+			of a file.
+		
+		-	(Random access) can jump directly to any piece of data in a file
+			without reading the data that comes before it.
+		
+		
+		
+		
+5.20
+
+	What type of file stream object do you create if you want to write data
+	to a file?
+		
+			ofstream 	// to create and write
+	
+
+
+
+5.21
+
+	What type of file stream object do you create if you want to read data
+	from a file?
+	
+			ifstream	// to open and read
