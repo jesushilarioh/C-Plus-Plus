@@ -12,4 +12,10 @@
 * 	March 12th 2018
 *
 ********************************************************************/
-dsf
+#include <iostream>
+using namespace std;
+int main()
+{
+	// Terminat program
+	return 0;
+}

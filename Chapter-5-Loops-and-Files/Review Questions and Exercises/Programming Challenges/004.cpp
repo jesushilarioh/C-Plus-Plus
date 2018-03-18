@@ -17,6 +17,7 @@ int main()
 {
     // Constants
     const float CALS_BURNED_PER_MIN = 3.6;
+
     // Variables
     float calories_burned = 0;
 
