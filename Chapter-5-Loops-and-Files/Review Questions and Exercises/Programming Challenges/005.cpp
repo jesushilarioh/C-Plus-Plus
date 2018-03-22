@@ -16,6 +16,20 @@
 using namespace std;
 int main()
 {
-	// Terminat program
+	// Constants
+	const float CHARGES_PER_YEAR = 2500,
+		        PER_OF_INCREASE_PER_YEAR = .04;
+	// Variables
+	float fee = CHARGES_PER_YEAR;
+
+	// Use a loop to display projected rates for next 6 years
+	for (int i = 0; i < 6; i++)
+	{
+		cout << "Fee for year " << (i + 1) << " = " << fee << endl;
+		fee += (fee * PER_OF_INCREASE_PER_YEAR);
+		// or
+		// fee += (CHARGES_PER_YEAR * PER_OF_INCREASE_PER_YEAR);
+	}
+	// Terminate program
 	return 0;
 }
