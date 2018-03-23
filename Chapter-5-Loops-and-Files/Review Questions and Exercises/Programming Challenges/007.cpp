@@ -15,7 +15,7 @@
 *                             1 for the number of days worked.
 *
 * 	Jesus Hilario Hernandez
-* 	March 21st 2018
+* 	March 23st 2018
 *
 ********************************************************************/
 #include <iostream>
@@ -28,18 +28,22 @@ int main()
     const int INCREMENTAL_AMOUNT = 2;
 
     // Variables
-    int num_of_days,        // User input
-        daily_salary = 1,   // Amount paid each day     - Incremental
-        total_salary = 0;   // Total salary over time   - Running Total
+    int num_of_days;            // User input
+
+    float daily_salary = 1,     // Amount paid each day     - Incremental
+          total_salary = 0;     // Total salary over time   - Running Total
 
     // Ask for (num_of_days)
-    cout << "Enter number of days: ";
+    cout << "\nEnter number of days: ";
     cin >> num_of_days;
+
+    // Line break
+    cout << endl;
 
     // Validate (num_of_days)
     if (num_of_days < 1)
     {
-        cout << "Error. Number of days must be more than 1." << endl;
+        cout << "ERROR. Number of days must be more than 1." << endl;
         cout << "Rerun the program and try again." << endl;
     }
     else
@@ -52,13 +56,19 @@ int main()
         // User controlled for loop. (num_of_days) as limit
         for (int i = 0; i < num_of_days; i++)
         {
+            total_salary += daily_salary;
             cout << setprecision(2) << fixed;
-            cout << "   " << (i + 1) << "             $";
-            cout << daily_salary * 1.0 << endl;
+            cout << "   " << (i + 1) << "           $";
+            cout << daily_salary << endl;
             daily_salary *= INCREMENTAL_AMOUNT;
         }
+
+        cout << "\nTotal salary for " << num_of_days;
+        cout << " days = $" << total_salary << endl;
     }
 
+    // Line break
+    cout << endl;
 
     // Terminate program
     return 0;
