@@ -26,115 +26,121 @@
 #include <ctime>    // For the time function
 using namespace std;
 
-// Function Prototypes
-// Programming Challenge 17, Chapter 3
-void programming_challenge_17_Ch_3();
-// Programming Challenge 11, Chapter 4
-void programming_challenge_11_Ch_4();
-
-
 int main()
 {
-    // Uncomment to see Programming Challenge 17, Chapter 3
-    // programming_challenge_17_Ch_3();
+    // Constant Variables
+    const int MIN_NUM = 99,
+              MAX_NUM = 999,
+              ADDITION = 1,
+              SUBTRACTION = 2,
+              MULTIPLICATION = 3,
+              DIVISION = 4,
+              QUIT_CHOICE = 5;
 
-    // Uncomment to see Programming Challenge 11, Chapter 4
-    // programming_challenge_11_Ch_4();
+    // Variables
+    int user_answer,
+        rand_num_1,
+        rand_num_2,
+        rand_num_answer,
+        menu_selection;
+
+    // Show 2 random numbers to be added
+    // Assign system time to a variable.
+    unsigned seed = time(0);
+
+    // Seed random number generator with system time
+    srand(seed);
+
+    // Generate two random numbers
+    rand_num_1 = (rand() % (MAX_NUM - MIN_NUM + 1)) + MIN_NUM;
+    rand_num_2 = (rand() % (MAX_NUM - MIN_NUM + 1)) + MIN_NUM;
+
 
     // Display menu with 5 choices
+    do
+    {
+
+        cout << "What type of math problem would you like to solve? \n";
+        cout << "1. Addition"       << endl;
+        cout << "2. Subtraction"    << endl;
+        cout << "3. Multiplication" << endl;
+        cout << "4. Division"       << endl;
+        cout << "5. Quit Program"   << endl;
+        cin >> menu_selection;
+
+        while (menu_selection < ADDITION || menu_selection > QUIT_CHOICE)
+        {
+            cout << "Invalid selection. Please enter a valid selection: ";
+            cin >> menu_selection;
+        }
+
+        switch (menu_selection)
+        {
+            case 1:
+                // Display addition problem
+                cout << rand_num_1 << " + " << rand_num_2 << " = " << endl;
+
+                // calculate sum of two random numbers.
+                rand_num_answer = rand_num_1 + rand_num_2;
+
+                cin >> user_answer;
+
+                // Decision statement (check user answer) Display: correct or incorrect
+                if (user_answer == rand_num_answer)
+                    cout << "\nCongratulations!";
+                else
+                    cout << "\nOops. Correct answer here: " << rand_num_answer;
+                break;
+            case 2:
+                // Display addition problem
+                cout << rand_num_1 << " + " << rand_num_2 << " = " << endl;
+
+                // calculate sum of two random numbers.
+                rand_num_answer = rand_num_1 + rand_num_2;
+
+                // Decision statement (check user answer) Display: correct or incorrect
+                if (user_answer == rand_num_answer)
+                    cout << "\nCongratulations!";
+                else
+                    cout << "\nOops. Correct answer here: " << rand_num_answer;
+                break;
+            case 3:
+                // Display addition problem
+                cout << rand_num_1 << " + " << rand_num_2 << " = " << endl;
+
+                // calculate sum of two random numbers.
+                rand_num_answer = rand_num_1 + rand_num_2;
+
+                // Decision statement (check user answer) Display: correct or incorrect
+                if (user_answer == rand_num_answer)
+                    cout << "\nCongratulations!";
+                else
+                    cout << "\nOops. Correct answer here: " << rand_num_answer;
+                break;
+            case 4:
+                // Display addition problem
+                cout << rand_num_1 << " + " << rand_num_2 << " = " << endl;
+
+                // calculate sum of two random numbers.
+                rand_num_answer = rand_num_1 + rand_num_2;
+
+                // Decision statement (check user answer) Display: correct or incorrect
+                if (user_answer == rand_num_answer)
+                    cout << "\nCongratulations!";
+                else
+                    cout << "\nOops. Correct answer here: " << rand_num_answer;
+                break;
+            default:
+                break;
+
+        }
+
+    } while (menu_selection != 5);
+
+    // Salutation
+    cout << "Thank you! Goodbye. :)" << endl;
+
 
     // Terminate program
     return 0;
-}
-
-
-
-/********************************************
- *  Programming Challenge 17 of Chapter 3   *
- *  Programming Challenge 17 of Chapter 3   *
- *  Programming Challenge 17 of Chapter 3   *
- ********************************************/
-void programming_challenge_17_Ch_3()
-{
-     int MIN_VALUE = 100,
-         MAX_VALUE = 1000,
-         num1,
-         num2;
-
-     // Get the system time.
-     unsigned seeds = time(0);
-
-     // Seed the random number generator.
-     srand(seeds);
-
-     cout << endl;
-     cout << "------------------------------------------------------\n" << endl;
-     cout << "This program displays two random numbers to be added.\n" << endl;
-
-     // Generate two random numbers to be added
-     num1 = (rand() % (MAX_VALUE - MIN_VALUE + 1)) + MIN_VALUE;
-     num2 = (rand() % (MAX_VALUE - MIN_VALUE + 1)) + MIN_VALUE;
-
-     // Display problem to solve
-     cout << num1 << " + " << num2 << " = ? \n" << endl;
-
-     // Ask user to press enter to continue
-     cout << "Press \"ENTER\" to see solution";
-     cin.get();
-     cout << endl;
-
-     // Display the answer to the problem
-     cout << num1 << " + " << num2 << " = " << num1 + num2 << endl;
-     cout << "\n-------------------------------------------------------" << endl;
-}
-
-
-
-/********************************************
- *  Programming Challenge 11 of Chapter 4   *
- *  Programming Challenge 11 of Chapter 4   *
- *  Programming Challenge 11 of Chapter 4   *
- ********************************************/
-void programming_challenge_11_Ch_4()
-{
-     // Constant Variables
-     const int MIN_NUM = 99,
-               MAX_NUM = 999;
-
-     // Variables
-     int user_answer,
-         rand_num_1,
-         rand_num_2,
-         rand_num_answer;
-
-     // Show 2 random numbers to be added
-     // Assign system time to a variable.
-     unsigned seed = time(0);
-
-     // Seed random number generator with system time
-     srand(seed);
-
-     // Generate two random numbers
-     rand_num_1 = (rand() % (MAX_NUM - MIN_NUM + 1)) + MIN_NUM;
-     rand_num_2 = (rand() % (MAX_NUM - MIN_NUM + 1)) + MIN_NUM;
-
-     // sum of the two random numbers.
-     rand_num_answer = rand_num_1 + rand_num_2;
-
-     // Display math problem & receive answer
-     cout << "\n  " << rand_num_1 << endl;
-     cout << " +" << rand_num_2 << endl;
-     cout << "------" << endl << " ";
-     cin >> user_answer;
-
-     // Decision statement (check user answer) Display: correct or incorrect
-     if (user_answer == rand_num_answer)
-         cout << "\nCongratulations!";
-     else
-         cout << "\nOops. Correct answer here: " << rand_num_answer;
-
-     // Format line break.
-     cout << endl;
-     cout << endl;
-
 }
