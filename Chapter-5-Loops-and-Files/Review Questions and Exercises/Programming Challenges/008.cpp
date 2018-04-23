@@ -29,8 +29,9 @@ using namespace std;
 int main()
 {
     // Constant Variables
-    const int MIN_NUM = 99,
+    const int MIN_NUM = 0,
               MAX_NUM = 999,
+
               ADDITION = 1,
               SUBTRACTION = 2,
               MULTIPLICATION = 3,
@@ -55,17 +56,16 @@ int main()
     rand_num_1 = (rand() % (MAX_NUM - MIN_NUM + 1)) + MIN_NUM;
     rand_num_2 = (rand() % (MAX_NUM - MIN_NUM + 1)) + MIN_NUM;
 
-
     // Display menu with 5 choices
     do
     {
 
-        cout << "What type of math problem would you like to solve? \n";
+        cout << "\nWhat type of math problem would you like to solve? \n";
         cout << "1. Addition"       << endl;
         cout << "2. Subtraction"    << endl;
         cout << "3. Multiplication" << endl;
         cout << "4. Division"       << endl;
-        cout << "5. Quit Program"   << endl;
+        cout << "5. Quit Program\n"   << endl;
         cin >> menu_selection;
 
         while (menu_selection < ADDITION || menu_selection > QUIT_CHOICE)
@@ -76,7 +76,7 @@ int main()
 
         switch (menu_selection)
         {
-            case 1:
+            case 1: // ADDITION
                 // Display addition problem
                 cout << rand_num_1 << " + " << rand_num_2 << " = " << endl;
 
@@ -85,44 +85,41 @@ int main()
 
                 cin >> user_answer;
 
-                // Decision statement (check user answer) Display: correct or incorrect
-                if (user_answer == rand_num_answer)
-                    cout << "\nCongratulations!";
-                else
-                    cout << "\nOops. Correct answer here: " << rand_num_answer;
                 break;
-            case 2:
+
+            case 2: // SUBTRACTION
                 // Display addition problem
-                cout << rand_num_1 << " + " << rand_num_2 << " = " << endl;
+                cout << rand_num_1 << " - " << rand_num_2 << " = " << endl;
 
                 // calculate sum of two random numbers.
-                rand_num_answer = rand_num_1 + rand_num_2;
+                rand_num_answer = rand_num_1 - rand_num_2;
 
-                // Decision statement (check user answer) Display: correct or incorrect
-                if (user_answer == rand_num_answer)
-                    cout << "\nCongratulations!";
-                else
-                    cout << "\nOops. Correct answer here: " << rand_num_answer;
                 break;
-            case 3:
+
+            case 3: // MULTIPLICATION
                 // Display addition problem
-                cout << rand_num_1 << " + " << rand_num_2 << " = " << endl;
+                cout << rand_num_1 << " x " << rand_num_2 << " = " << endl;
 
                 // calculate sum of two random numbers.
-                rand_num_answer = rand_num_1 + rand_num_2;
+                rand_num_answer = rand_num_1 * rand_num_2;
 
-                // Decision statement (check user answer) Display: correct or incorrect
-                if (user_answer == rand_num_answer)
-                    cout << "\nCongratulations!";
-                else
-                    cout << "\nOops. Correct answer here: " << rand_num_answer;
+                
                 break;
-            case 4:
+
+            case 4: // DIVISION
+
+                if (rand_num_2 == 0)
+                {
+                    int swap_number = rand_num_2;
+                    rand_num_1 = rand_num_2;
+                    rand_num_1 = swap_number;
+                    cout << "SWAPPED" << endl;
+                }
                 // Display addition problem
-                cout << rand_num_1 << " + " << rand_num_2 << " = " << endl;
+                cout << rand_num_1 << " / " << rand_num_2 << " = " << endl;
 
                 // calculate sum of two random numbers.
-                rand_num_answer = rand_num_1 + rand_num_2;
+                rand_num_answer = rand_num_1 / rand_num_2;
 
                 // Decision statement (check user answer) Display: correct or incorrect
                 if (user_answer == rand_num_answer)
@@ -130,10 +127,14 @@ int main()
                 else
                     cout << "\nOops. Correct answer here: " << rand_num_answer;
                 break;
+
             default:
                 break;
 
+
+
         }
+
 
     } while (menu_selection != 5);
 
