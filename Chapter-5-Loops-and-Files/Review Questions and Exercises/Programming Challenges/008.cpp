@@ -2,10 +2,7 @@
 *
 *	  008. Math Tutor
 *
-*       This program started in Programming Challenge 17 of Chapter 3,
-*       and was modified in Programming Challenge 11 of Chapter 4.
-*
-*       Modify the program again so it displays a menu allowing
+*       Create a program so that it displays a menu allowing
 *       the user to select an addition, subtraction, multiplication,
 *       or division problem. The final selection on the menu should
 *       let the user quit the program. After the user has finished
@@ -15,7 +12,7 @@
 *
 *       Input Validation: If the user selects an item not on the
 *                         menu, display an error message and display
-8                         the menu again.
+*                         the menu again.
 *
 * 	Jesus Hilario Hernandez
 * 	March 23th 2018
@@ -45,103 +42,89 @@ int main()
         rand_num_answer,
         menu_selection;
 
-    // Show 2 random numbers to be added
     // Assign system time to a variable.
     unsigned seed = time(0);
 
     // Seed random number generator with system time
     srand(seed);
 
-    // Generate two random numbers
-    rand_num_1 = (rand() % (MAX_NUM - MIN_NUM + 1)) + MIN_NUM;
-    rand_num_2 = (rand() % (MAX_NUM - MIN_NUM + 1)) + MIN_NUM;
-
-    // Display menu with 5 choices
     do
     {
+        // Generate two random numbers
+        rand_num_1 = (rand() % (MAX_NUM - MIN_NUM + 1)) + MIN_NUM;
+        rand_num_2 = (rand() % (MAX_NUM - MIN_NUM + 1)) + MIN_NUM;
 
+        // Display Menu
         cout << "\nWhat type of math problem would you like to solve? \n";
         cout << "1. Addition"       << endl;
         cout << "2. Subtraction"    << endl;
         cout << "3. Multiplication" << endl;
         cout << "4. Division"       << endl;
-        cout << "5. Quit Program\n"   << endl;
+        cout << "5. Quit Program ";
+        // user input (menu_selection)
         cin >> menu_selection;
 
         while (menu_selection < ADDITION || menu_selection > QUIT_CHOICE)
         {
-            cout << "Invalid selection. Please enter a valid selection: ";
+            cout << "\nInvalid selection. \nPlease enter a valid selection: \n";
             cin >> menu_selection;
         }
 
-        switch (menu_selection)
+        if (menu_selection != QUIT_CHOICE)
         {
-            case 1: // ADDITION
-                // Display addition problem
-                cout << rand_num_1 << " + " << rand_num_2 << " = " << endl;
+            switch (menu_selection)
+            {
+                case 1: // ADDITION
+                    // Display addition problem
+                    cout << rand_num_1 << " + " << rand_num_2 << " = ";
+                    // calculate sum of two random numbers.
+                    rand_num_answer = rand_num_1 + rand_num_2;
+                    cin >> user_answer;
 
-                // calculate sum of two random numbers.
-                rand_num_answer = rand_num_1 + rand_num_2;
+                    break;
 
-                cin >> user_answer;
+                case 2: // SUBTRACTION
+                    // Display addition problem
+                    cout << rand_num_1 << " - " << rand_num_2 << " = ";
+                    // calculate sum of two random numbers.
+                    rand_num_answer = rand_num_1 - rand_num_2;
+                    cin >> user_answer;
+                    break;
 
-                break;
+                case 3: // MULTIPLICATION
+                    // Display addition problem
+                    cout << rand_num_1 << " x " << rand_num_2 << " = ";
+                    // calculate sum of two random numbers.
+                    rand_num_answer = rand_num_1 * rand_num_2;
+                    cin >> user_answer;
+                    break;
 
-            case 2: // SUBTRACTION
-                // Display addition problem
-                cout << rand_num_1 << " - " << rand_num_2 << " = " << endl;
+                case 4: // DIVISION
+                    if (rand_num_2 == 0)
+                    {
+                        int swamp_num = rand_num_2;
+                        rand_num_1 = rand_num_2;
+                        rand_num_1 = swamp_num;
+                        cout << "SWAPPED" << endl;
+                    }
+                    // Display addition problem
+                    cout << rand_num_1 << " / " << rand_num_2 << " = ";
+                    // calculate sum of two random numbers.
+                    rand_num_answer = rand_num_1 / rand_num_2;
+                    cin >> user_answer;
+                    break;
+            }
 
-                // calculate sum of two random numbers.
-                rand_num_answer = rand_num_1 - rand_num_2;
-
-                break;
-
-            case 3: // MULTIPLICATION
-                // Display addition problem
-                cout << rand_num_1 << " x " << rand_num_2 << " = " << endl;
-
-                // calculate sum of two random numbers.
-                rand_num_answer = rand_num_1 * rand_num_2;
-
-                
-                break;
-
-            case 4: // DIVISION
-
-                if (rand_num_2 == 0)
-                {
-                    int swap_number = rand_num_2;
-                    rand_num_1 = rand_num_2;
-                    rand_num_1 = swap_number;
-                    cout << "SWAPPED" << endl;
-                }
-                // Display addition problem
-                cout << rand_num_1 << " / " << rand_num_2 << " = " << endl;
-
-                // calculate sum of two random numbers.
-                rand_num_answer = rand_num_1 / rand_num_2;
-
-                // Decision statement (check user answer) Display: correct or incorrect
-                if (user_answer == rand_num_answer)
-                    cout << "\nCongratulations!";
-                else
-                    cout << "\nOops. Correct answer here: " << rand_num_answer;
-                break;
-
-            default:
-                break;
-
-
-
+            // Decision statement (check user answer) Display: correct or incorrect
+            if (user_answer == rand_num_answer)
+                cout << "\nCongratulations!" << endl << endl;
+            else if (user_answer != rand_num_answer)
+                cout << "\nOops. Correct answer here: " << rand_num_answer << endl << endl;
         }
+        else
+            cout << "Program ending." << endl;
 
+    } while (menu_selection != QUIT_CHOICE);
 
-    } while (menu_selection != 5);
-
-    // Salutation
-    cout << "Thank you! Goodbye. :)" << endl;
-
-
-    // Terminate program
     return 0;
 }
