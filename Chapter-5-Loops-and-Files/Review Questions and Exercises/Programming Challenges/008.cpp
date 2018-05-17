@@ -120,6 +120,7 @@ int main()
                 cout << "\nCongratulations!" << endl << endl;
             else if (user_answer != rand_num_answer)
                 cout << "\nOops. Correct answer here: " << rand_num_answer << endl << endl;
+                
         }
         else
             cout << "Program ending." << endl;

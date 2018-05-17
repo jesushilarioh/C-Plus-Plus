@@ -74,7 +74,7 @@ int main()
             cout << (i + 1) << " have? ";
 
             // Input Val. (num_of_rooms) not less than 10
-            while (!(cin >> num_of_rooms) || (num_of_rooms) < 10)
+            while (!(cin >> num_of_rooms) || (num_of_rooms < 10))
             {
                 // Explain error
                 cout << "ERROR: enter a number greater that 10: ";
@@ -95,7 +95,7 @@ int main()
                 // Input Val. (num_of_rooms) not less than 10
             cout << "How many rooms are occupied on that floor? ";
 
-            while (!(cin >> rooms_occupied) || (rooms_occupied) < 1)
+            while (!(cin >> rooms_occupied) || (rooms_occupied < 1))
             {
                 // Explain error
                 cout << "ERROR: enter a number greater that 10: ";
