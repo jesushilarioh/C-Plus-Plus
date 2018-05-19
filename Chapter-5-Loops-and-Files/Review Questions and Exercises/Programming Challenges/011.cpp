@@ -24,6 +24,13 @@
 using namespace std;
 int main()
 {
+    // Variables
+    float starting_num_of_organisms,
+          average_daily_population_increase,
+          size_of_daily_population;
+
+    int num_of_days_to_multiply;
+
     // ASK
     // ask the user for:
     // the starting number of organisms,
@@ -32,13 +39,20 @@ int main()
 
     // their average daily population increase (as a percentage),
     cout << "Enter average daily population increase (%): ";
-    cin >> average_daily_population;
+    cin >> average_daily_population_increase;
+    average_daily_population_increase *= .01;
 
     // the number of days they will multiply.
     cout << "Enter number of day to multiply: ";
     cin >> num_of_days_to_multiply;
 
     // A loop should display the size of the population for each day
+    for (int i = 0; i < num_of_days_to_multiply; i++)
+    {
+        cout << "Poplation size for day " << (i + 1);
+        cout << ": " << starting_num_of_organisms << endl;
+        starting_num_of_organisms += (starting_num_of_organisms * average_daily_population_increase);
+    }
 
     return 0;
 }
