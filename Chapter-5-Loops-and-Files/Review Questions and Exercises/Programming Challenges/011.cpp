@@ -10,7 +10,7 @@
 *       population for each day.
 *
 *       Input Validation: Do not accept a number less than 2 for the
-*                         starting size of the popu- lation. Do not
+*                         starting size of the population. Do not
 *                         accept a negative number for average
 *                         daily population increase. Do not accept a
 *                         number less than 1 for the number of days
@@ -35,16 +35,50 @@ int main()
     // ask the user for:
     // the starting number of organisms,
     cout << "Enter the starting number of organisms: ";
-    cin >> starting_num_of_organisms;
+
+    // Input Validation: Do not accept a number less than 2 for the
+    //                   starting size of the population
+    while (!(cin >> starting_num_of_organisms) || starting_num_of_organisms < 2)
+    {
+        // Explain Error
+        cout << "Oops. Starting number must be 2 or greater." << endl;
+        cout << "Enter the starting number of organisms: ";
+        // Clear input stream
+        cin.clear();
+        // Discard previous input
+        cin.ignore(123, '\n');
+    }
 
     // their average daily population increase (as a percentage),
     cout << "Enter average daily population increase (%): ";
-    cin >> average_daily_population_increase;
+
+    // Input Validation: Do not accept a negative number for average
+    //                   daily population increase.
+    while (!(cin >> average_daily_population_increase) || average_daily_population_increase < 0)
+    {
+        // Explain Error:
+        cout << "Oops. Average daily population increase must be";
+        cout << "greater than 0.\n Enter average daily population increase";
+        cout << " (%): ";
+        // Clear previous input:
+        cin.clear();
+        // Discard previous input:
+        cin.ignore(123, '\n');
+    }
     average_daily_population_increase *= .01;
 
     // the number of days they will multiply.
-    cout << "Enter number of day to multiply: ";
-    cin >> num_of_days_to_multiply;
+    cout << "Enter number of days they will multiply: ";
+    
+    // Input Validation: Do not accept a number less than
+    //                   1 for the number of days they will multiply.
+    while(!(cin >> num_of_days_to_multiply) || num_of_days_to_multiply < 1)
+    {
+        cout << "Oops. Number of days must NOT be less than 1.\n";
+        cout << "Enter number of day they will multiply: ";
+        cin.clear();
+        cin.ignore(123, '\n');
+    }
 
     // A loop should display the size of the population for each day
     for (int i = 0; i < num_of_days_to_multiply; i++)
