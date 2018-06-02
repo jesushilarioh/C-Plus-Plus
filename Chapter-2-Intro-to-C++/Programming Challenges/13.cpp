@@ -12,23 +12,19 @@
 *
 ********************************************************************/
 #include <iostream>
-#include <iomanip>
-
 using namespace std;
 
 int main()
 {
-    float profit = .35;
-    float sellingPrice = 14.95;
-
-    cout << setprecision(2) << fixed;
+    float profit = .35,
+          cost = 14.95,
+          selling_price = (cost * profit) + cost;
 
     cout << endl;
-    cout << "An electronic company sells circuit boards at a 35 percent profit." << endl;
-    cout << "Therefore, the selling price of a circuit board that costs $";
-    cout << sellingPrice;
-    cout << " is $" << (sellingPrice * profit) + sellingPrice;
-    cout << endl << endl;
+    cout << "An electronic company sells circuit boards at a\n";
+    cout << "35 percent profit. Therefore, the selling price\n";
+    cout << "of a circuit board that costs $" << cost << " is $";
+    cout << selling_price << endl << endl;
 
     return 0;
 }

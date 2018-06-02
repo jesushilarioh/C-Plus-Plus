@@ -61,12 +61,11 @@ int main()
             last = student;
     }
 
-    cout << "First student in line = " << first << endl;
-    cout << "Last student in line  = " << last << endl;
-
     // Once all the names have been read it reports which student
     // would be at the front of the line and which one would be at the
     // end of the line.
+    cout << "First student in line = " << first << endl;
+    cout << "Last student in line  = " << last << endl;
 
     return 0;
 }

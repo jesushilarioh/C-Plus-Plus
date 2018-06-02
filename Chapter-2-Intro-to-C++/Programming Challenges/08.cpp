@@ -27,13 +27,14 @@ using namespace std;
 
 int main()
 {
+    const float SALES_TAX = .07
     float item1 = 15.95,
           item2 = 24.95,
           item3 = 6.95,
           item4 = 12.95,
           item5 = 3.95,
           subtotal = item1 + item2 + item3 + item4 + item5,
-          totalSalesTax = subtotal * .07;
+          totalSalesTax = subtotal * SALES_TAX;
 
     cout << endl;
     cout << setprecision(2) << fixed;
