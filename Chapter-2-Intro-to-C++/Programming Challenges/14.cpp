@@ -22,6 +22,17 @@ using namespace std;
 
 int main()
 {
-    cout << "\nJesus Hilario Hernandez\n1515 29th Street, San Antonio, Texas, 78404.\n361-779-3759\nComputer Science.\n" << endl;
+    string name = "Jesus Hilario Hernandez",
+           address = "1234 29th Lane, Grand, Texas 73226",
+           phone = "421-834-9879",
+           major = "Computer Science";
+
+    cout << endl;
+    cout << "Name: "          << name << endl;
+    cout << "Address: "       << address << endl;
+    cout << "Telephone #: "   << phone << endl;
+    cout << "College Major: " << major << endl;
+    cout << endl;
+
     return 0;
 }

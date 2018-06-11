@@ -20,22 +20,23 @@ using namespace std;
 
 int main()
 {
-    int sharesOfStockBought = 750,
-        pricePerShare = 35,
-        totalAmountPaidForStock = sharesOfStockBought * pricePerShare;
+    const float COMMISSION_PERCENT = .02;
 
-    float commissionPercentage = .02,
-          totalAmountForCommission = totalAmountPaidForStock * commissionPercentage ;
+    int shares_bought = 750,
+        share_price = 35,
+        total_paid = shares_bought * share_price;
+
+    float total_commission = total_paid * COMMISSION_PERCENT ;
 
     cout << endl << endl;
     cout << "Total amount paid without commission: $";
-    cout << totalAmountPaidForStock << endl;
+    cout << total_paid << endl;
 
     cout << "Total amount of commission: $";
-    cout << totalAmountForCommission << endl;
+    cout << total_commission << endl;
 
     cout << "Total amount paid including commission: $";
-    cout << totalAmountForCommission + totalAmountPaidForStock << endl;
+    cout << total_commission + total_paid << endl;
     cout << endl << endl;
 
     return 0;

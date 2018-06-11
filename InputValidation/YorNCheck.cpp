@@ -37,7 +37,7 @@ int main()
     }
     else if (letter == 'n' || letter == 'N')
     {
-        cout << "Since you've entered " << letter
+        cout << "Since you've entered. " << letter
              << "Let's not continute. :(" << endl;
     }
 
