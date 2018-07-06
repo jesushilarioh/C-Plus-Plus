@@ -65,6 +65,7 @@ int main()
         cin.clear();
         cin.ignore(123, '\n');
     }
+    
     cout << "Enter starting balance: ";
     while (!(cin >> starting_balance))
     {
@@ -73,6 +74,7 @@ int main()
         cin.ignore(123, '\n');
     }
     balance = starting_balance;
+
     cout << "Enter # of months passed since account was established: ";
     while (!(cin >> months_since_established))
     {
