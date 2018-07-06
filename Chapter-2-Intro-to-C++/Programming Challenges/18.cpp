@@ -20,26 +20,23 @@
 *
 ********************************************************************/
 #include <iostream>
-#include <iomanip>
-
 using namespace std;
 
 int main()
 {
-    int survayedCustomers = 16500;
-    float percentThatPurchasedOneOrMore = .15,
-          percentThatPreferCitrusFlavored = .58,
-          totalThatPurchasedOneOrMore = survayedCustomers * percentThatPurchasedOneOrMore;
+    int num_survayed = 16500;
+    float percent_pur_one_or_more = .15,
+          percent_prefer_citrus = .58,
+          total_pur_one_or_more = num_survayed * percent_pur_one_or_more;
 
-    cout << setprecision(0) << fixed;
     cout << endl << endl;
     cout << "The approximate # of customers in the survey who" << endl;
     cout << "purchase one or more energy drinks per week is ";
-    cout << totalThatPurchasedOneOrMore << endl;
+    cout << total_pur_one_or_more << endl;
 
     cout << "The approximate # of customers in the survey who" << endl;
     cout << "prefer citrus-flavored energy drinks ";
-    cout << (totalThatPurchasedOneOrMore) * percentThatPreferCitrusFlavored << endl;
+    cout << total_pur_one_or_more * percent_prefer_citrus << endl;
     cout << endl << endl;
 
     return 0;
