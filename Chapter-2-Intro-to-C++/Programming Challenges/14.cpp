@@ -23,16 +23,15 @@ using namespace std;
 int main()
 {
     string name = "Jesus Hilario Hernandez",
-           address = "1234 29th Lane, Grand, Texas 73226",
-           phone = "421-834-9879",
-           major = "Computer Science";
+           address = "1234 10 St. Texas",
+           phone = "123-123-1234",
+           major = "Comp. Sci.";
 
     cout << endl;
-    cout << "Name: "          << name << endl;
-    cout << "Address: "       << address << endl;
-    cout << "Telephone #: "   << phone << endl;
-    cout << "College Major: " << major << endl;
+    cout << "Name: "    << name    << endl;
+    cout << "Address: " << address << endl;
+    cout << "Phone: "   << phone   << endl;
+    cout << "Major: "   << major   << endl;
     cout << endl;
-
     return 0;
 }

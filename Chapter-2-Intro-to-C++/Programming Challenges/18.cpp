@@ -24,20 +24,21 @@ using namespace std;
 
 int main()
 {
-    int num_survayed = 16500;
-    float percent_pur_one_or_more = .15,
-          percent_prefer_citrus = .58,
-          total_pur_one_or_more = num_survayed * percent_pur_one_or_more;
+    const int NUM_SURVEYED = 16500;
+
+    float percent_1_or_more = .15,
+          percent_pref_citrus = .58,
+          total_1_or_more = NUM_SURVEYED * percent_1_or_more,
+          grand_total = total_1_or_more * percent_pref_citrus;
 
     cout << endl << endl;
-    cout << "The approximate # of customers in the survey who" << endl;
-    cout << "purchase one or more energy drinks per week is ";
-    cout << total_pur_one_or_more << endl;
-
-    cout << "The approximate # of customers in the survey who" << endl;
+    cout << "The approximate # of customers in the survey who\n";
+    cout << "purchase on or more energy drinks per week is ";
+    cout << total_1_or_more << endl;
+    
+    cout << "The approximate # of customers in the survey who\n";
     cout << "prefer citrus-flavored energy drinks ";
-    cout << total_pur_one_or_more * percent_prefer_citrus << endl;
+    cout << grand_total << endl;
     cout << endl << endl;
-
     return 0;
 }

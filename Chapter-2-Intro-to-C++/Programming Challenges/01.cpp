@@ -15,10 +15,9 @@ using namespace std;
 int main()
 {
     int fifty = 50,
-		oneHundred = 100,
-		total = fifty + oneHundred;
+        onehundred = 100,
+        total = fifty + onehundred;
 
-	cout << "Total = " << total << endl;
-
+        cout << "Total = " << total << endl;
     return 0;
 }

@@ -21,10 +21,11 @@ int main()
           selling_price = (cost * profit) + cost;
 
     cout << endl;
-    cout << "An electronic company sells circuit boards at a\n";
-    cout << "35 percent profit. Therefore, the selling price\n";
-    cout << "of a circuit board that costs $" << cost << " is $";
-    cout << selling_price << endl << endl;
-
+    cout << "An electronic company sells circuit boards\nat ";
+    cout << (profit * 100);
+    cout << " percent profit. Therefore, the selling price\n";
+    cout << "of a curciut board that costs $" << cost;
+    cout << " is $" << selling_price << endl;
+    cout << endl;
     return 0;
 }

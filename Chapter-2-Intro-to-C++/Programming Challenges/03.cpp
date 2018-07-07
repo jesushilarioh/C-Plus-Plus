@@ -11,24 +11,20 @@
 *
 ********************************************************************/
 #include <iostream>
-#include <iomanip>
-
 using namespace std;
 
 int main()
 {
+    const float STATE_TAX = .04,
+          COUNTY_TAX = .02;
     int purchase = 95;
-    float stateSalesTax = .04,
-          countySalesTax = .02;
+        
+    float total_state_purchase = purchase * STATE_TAX,
+          total_county_purchase = purchase * COUNTY_TAX;
 
-    // Set decimal percision to 2 places after the decimal point. Ex 0.00
-    cout << setprecision(2) << fixed << endl;
-
-    cout << "The total state sales tax on a $95 dollar purchase is $";
-    cout << purchase * stateSalesTax << endl;
-
-    cout << "The total county sales tax on a $95 dollar purchase is $";
-    cout << purchase * countySalesTax << endl << endl;
-
+    cout << "The total state tax on $95 is $";
+    cout << total_state_purchase << endl;
+    cout << "The total county tax on $95 is $";
+    cout << total_county_purchase << endl;
     return 0;
 }
