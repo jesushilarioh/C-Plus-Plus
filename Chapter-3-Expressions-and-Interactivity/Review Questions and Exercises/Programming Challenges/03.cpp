@@ -18,36 +18,44 @@ using namespace std;
 
 int main()
 {
-    // Variables & Arrays
+    // Variables
     const int NUM_OF_SCORES = 5;
-    float testScores[NUM_OF_SCORES],
+
+    float score_1,
+          score_2,
+          score_3,
+          score_4,
+          score_5,
           average,
           total;
 
-    // Ask user for 5 test scores
-    cout << "\nThis program will calculate the average of 5 test scores.\n";
+    // Describe Program
+    cout << "\nThis program will calculate the average of ";
+    cout << "5 test scores.\n";
     cout << "\nPress enter to continue";
     cin.get();
     cout << endl;
 
-    // Put test scores into an array
-    for (int x = 0; x < NUM_OF_SCORES; x++)
-    {
-        cout << "Enter test score #" << (x + 1) << ": ";
-        cin >> testScores[x];
-
-        // Calculate total by adding test scores together
-        total += testScores[x];
-    }
+    // Ask user to enter 5 test scores
+    cout << "Enter score #1: ";
+    cin >> score_1;
+    cout << "Enter score #2: ";
+    cin >> score_2;
+    cout << "Enter score #3: ";
+    cin >> score_3;
+    cout << "Enter score #4: ";
+    cin >> score_4;
+    cout << "Enter score #5: ";
+    cin >> score_5;
 
     // Calculate average test score
+    total = score_1 + score_2 + score_3 + score_4 + score_5;
     average = total / NUM_OF_SCORES;
 
-    // Display average test score --> used fixed point with one decimal
     cout << setprecision(1) << fixed;
-    cout << "\nThe averages test score is " << average << endl;
-    cout << endl;
+    cout << "\nThe average test score is ";
+    cout << average << '\n' << endl;
 
-    //Terminate Program
+    // Terminate Program
     return 0;
 }

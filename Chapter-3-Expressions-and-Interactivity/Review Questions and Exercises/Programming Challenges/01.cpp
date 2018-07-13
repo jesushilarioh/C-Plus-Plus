@@ -18,25 +18,25 @@ using namespace std;
 int main()
 {
     // Variables
-    int numberOfGallons,
-        fullTankMiles;
-    float MPG;
+    float num_of_gallons,
+          full_tank_miles,
+          MPG;
 
-    // Ask user to enter number of gallons car can hold
+    // Ask user for num of gallons
     cout << endl;
     cout << "Enter number of gallons the car can hold: ";
-    cin >> numberOfGallons;
+    cin >> num_of_gallons;
 
-    // Ask user for number of miles can be driven on full tank
-    cout << "Enter number of miles the car can be " << endl;
+    // Ask for num of miles car can drive on full tank
+    cout << "Enter a number of miles the car can be \n";
     cout << "driven on a full tank of gas: ";
-    cin >> fullTankMiles;
+    cin >> full_tank_miles;
 
-    // Calculate number of miles that can be driven per gallon of gas
-    MPG = static_cast<float>(fullTankMiles) / numberOfGallons;
+    // Calculate num of miles the car can drive per gallon
+    MPG = full_tank_miles / num_of_gallons;
 
-    // Display number of miles driven per gallon of gas
-    cout << "The car gets " << MPG << " miles per gallon."<< endl;
-    cout << endl;
+    // Display calculation
+    cout << "The car gets " << MPG << " miles per gallon.";
+    cout << '\n' << endl;
     return 0;
 }
