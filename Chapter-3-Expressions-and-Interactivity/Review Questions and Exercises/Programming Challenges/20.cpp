@@ -30,20 +30,24 @@
 *       place of precision. Use a named constant for pi.
 *
 * 	Jesus Hilario Hernandez
-* 	January 28th 2017
+* 	August 3rd 2018
 *
-********************************************************************/
-#include <iostream>
-#include <cmath>    // For use of  pow() function.
-#include <iomanip>  // For use of setprecision() function.
+*********************************************************#include <iostream>
+#include <cmath>    // pow()
+#include <iomanip>
 using namespace std;
 
 int main()
 {
+    // Constants
     const float SLICE_AREA_SIZE = 14.125,
                 PI         = 3.14159;
-    float d,
-          r,
+
+    const int TWO = 2;
+
+    // Variables
+    float d,    // Diameter
+          r,    // Radius
           Area,
           num_of_slices;
 
@@ -54,15 +58,16 @@ int main()
 
     // Calculate the # of slices that may be taken from a pizza
     // of that size
-    r = d / 2;
-    Area = PI * pow(r, 2);
+    r = d / TWO;    // Radius
+    Area = PI * pow(r, TWO);
     num_of_slices = Area / SLICE_AREA_SIZE;
 
     // Display a message telling the number of slices.
     cout << setprecision(1) << fixed;
-    cout << "Number of slices = " << num_of_slices << endl;
+    cout << "Number of slices = ";
+    cout << num_of_slices << endl;
     cout << endl;
 
-    // Terminate program
+    // Terminate Program
     return 0;
 }
