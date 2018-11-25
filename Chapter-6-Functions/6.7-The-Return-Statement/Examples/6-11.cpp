@@ -16,7 +16,7 @@ int main()
 {
     double num1, num2;
 
-    cout << "Enter tow numbers and I will divide the first\n";
+    cout << "Enter two numbers and I will divide the first\n";
     cout << "number by the second number: ";
     num1 = inputVal(num1);
     num2 = inputVal(num2);
