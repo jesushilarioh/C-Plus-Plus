@@ -1,0 +1,76 @@
+<-- Short Answer -->
+
+1. Why do local variables lose their values between calls 
+    to the function in which they are defined?
+
+ANSWER: Local variables lose their values between calls
+        because they terminate each time the function
+        call returns a value.
+
+
+
+2. What is the difference between an argument and a parameter 
+    variable?
+
+ANSWER: An argument is a value that is passed within a function
+        call. While, a parameter declares the data type and the
+        name of it's local variable.
+
+
+
+
+3. Where do you define parameter variables?
+
+ANSWER: In the function header.
+
+
+
+
+4. If you are writing a function that accepts an argument and 
+    you want to make sure the function cannot change the value 
+    of the argument, what do you do?
+
+ANSWER: Do not pass by reference.
+
+
+
+
+5. When a function accepts multiple arguments, does it matter in 
+    what order the arguments are passed?
+
+ANSWER: Yes.
+
+
+
+
+6. How do you return a value from a function?
+
+ANSWER: with the return value preceding that value.
+
+
+
+
+7. What is the advantage of breaking your application’s code into 
+    several small procedures?
+
+ANSWER: The advantage is that the code becomes easier to manage.
+
+
+
+
+8. How would a static local variable be useful?
+
+ANSWER: a static local variable allows for the variable to 
+        be changed and to stay changed after the function has
+        been called.
+
+
+
+
+9. Give an example where passing an argument by reference would 
+    be useful.
+
+ANSWER: Passing an argument by reference allows that variable to
+        be change within the any function.
+
+
