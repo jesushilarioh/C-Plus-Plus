@@ -1,0 +1,59 @@
+10. The ____header_____ is the part of a function definition that shows the 
+    function name, return type, and parameter list.
+
+11. If a function doesn’t return a value, the word ____void_____ will appear 
+    as its return type.
+
+12. Either a function’s ____header_____ or its ____prototype_____ must precede all calls 
+    to the function.
+
+13. Values that are sent into a function are called ____arguments_____.
+
+14. Special variables that hold copies of function arguments are 
+    called ____parameters_____.
+
+15. When only a copy of an argument is passed to a function, it is 
+    said to be passed by _____value_____.
+
+16. A(n) _____prototype____ eliminates the need to place a function definition 
+    before all calls to the function.
+
+17. A(n) _____local____ variable is defined inside a function and is not 
+    accessible outside the function.
+
+18. _____Global____ variables are defined outside all functions and are 
+    accessible to any function within their scope.
+
+19. _____Global Constant____ variables provide an easy way to share large amounts of 
+    data among all the functions in a program.
+
+20. Unless you explicitly initialize global variables, they are automatically 
+    initialized to _____NULL or 0____.
+
+21. If a function has a local variable with the same name as a global variable, 
+    only the _____local____ variable can be seen by the function.
+
+22. ___Static______ local variables retain their value between function calls.
+
+23. The ____return_____ statement causes a function to end immediately.
+
+24. ____Default_____ arguments are passed to parameters automatically if no argument 
+    is provided in the function call.
+
+25. When a function uses a mixture of parameters with and without default 
+    arguments, the parameters with default arguments must be defined ____last_____.
+
+26. The value of a default argument must be a(n) ____literal value_____.
+
+27. When used as parameters, ____reference_____ variables allow a function to access 
+    the parameter’s original argument.
+
+28. Reference variables are defined like regular variables, except there 
+    is a(n) _____ampersand (&)____ in front of the name.
+
+29. Reference variables allow arguments to be passed by ____reference________.
+
+30. The ____exit()_____ function causes a program to terminate.
+
+31. Two or more functions may have the same name,as long as their____parameters_____are
+    different.

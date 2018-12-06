@@ -1,0 +1,53 @@
+38. Functions should be given names that reflect their purpose.
+TRUE
+
+39. Function headers are terminated with a semicolon.
+FALSE
+
+40. Function prototypes are terminated with a semicolon.
+TRUE
+
+41. If other functions are defined before main, the program still starts executing at function main.
+TRUE
+
+42. When a function terminates, it always branches back to main, regardless of where it was called from.
+TRUE
+
+43. Arguments are passed to the function parameters in the order they appear in the function call.
+TRUE
+
+44. The scope of a parameter is limited to the function which uses it.
+TRUE
+
+45. Changes to a function parameter always affect the original argument as well.
+FALSE
+
+46. In a function prototype, the names of the parameter variables may be left out.
+TRUE
+
+47. Many functions may have local variables with the same name.
+TRUE
+
+48. Overuse of global variables can lead to problems.
+TRUE
+
+49. Static local variables are not destroyed when a function returns.
+TRUE
+
+50. All static local variables are initialized to −1 by default.
+FALSE
+
+51. Initialization of static local variables only happens once, regardless of how many times the function in which they are defined is called.
+TRUE
+
+52. When a function with default arguments is called and an argument is left out, all arguments that come after it must be left out as well.
+TRUE
+
+53. It is not possible for a function to have some parameters with default arguments and some without.
+FALSE
+
+54. The exit function can only be called from main.
+FALSE
+
+55. A stub is a dummy function that is called instead of the actual function it represents.
+TRUE
