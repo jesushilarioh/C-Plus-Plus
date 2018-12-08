@@ -117,11 +117,8 @@ double inputValidate(double num)
 }
 
 /********************************************************
- * Definition of inputValidate()                        *
- * This function checks user input for negative values  *
- * and for other data types that are not of integer     *
- * type data. If user input is such, the user will be   *
- * prompted to try again.                               *
+ * Definition of checkItHighest()                       *
+ * uses an if statment to check for the highest number  *
  ********************************************************/
 void checkIfHighest(double sales1, 
                      double sales2, 

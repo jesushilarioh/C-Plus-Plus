@@ -1,25 +1,24 @@
 /************************************************************
 *
-*   04. Safest Driving Area
+*   05. Falling Distance
+*   
+*       When an object is falling because of gravity, the 
+*       following formula can be used to determine the distance 
+*       the object falls in a specific time period:
 *
-*   Write a program that determines which of five geographic 
-*   regions within a major city (north, south, east, west, 
-*   and central) had the fewest reported automobile accidents 
-*   last year. It should have the following two functions, 
-*   which are called by main.
+*       d 􏰀= 1/2gt^2 (d = )
 *
-*   • int getNumAccidents() is passed the name of a region. 
-*       It asks the user for the number of automobile 
-*       accidents reported in that region during the 
-*       last year, validates the input, then returns it. 
-*       It should be called once for each city region.
+*       The variables in the formula are as follows: d is 
+*       the distance in meters, g is 9.8, and t is the amount of 
+*       time, in seconds, that the object has been falling.
 *
-*   • void findLowest() is passed the five accident totals. 
-*       It determines which is the smallest and prints the 
-*       name of the region, along with its accident figure.
-*
-*   Input Validation: Do not accept an accident number that 
-*                       is less than 0.
+*       Write a function named fallingDistance that accepts an 
+*       object’s falling time (in seconds) as an argument. 
+*       The function should return the distance, in meters, 
+*       that the object has fallen during that time interval. 
+*       Write a program that demonstrates the function by 
+*       calling it in a loop that passes the values 1 through 
+*       10 as arguments and displays the return value.
 *
 * 	Jesus Hilario Hernandez
 * 	December 7, 2018
