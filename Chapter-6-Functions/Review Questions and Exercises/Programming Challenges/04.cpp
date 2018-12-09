@@ -114,8 +114,8 @@ void findLowest(double N_total,
 }
 
 /********************************************************
- * Definition of checkItSmallest()                        *
- * uses an if statment to check for the smallest number   *
+ * Definition of checkItSmallest()                      *
+ * uses an if statment to check for the smallest number *
  ********************************************************/
 void checkIfSmallest(double total1, 
                      double total2, 
