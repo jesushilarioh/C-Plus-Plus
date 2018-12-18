@@ -161,14 +161,39 @@ double averageScores(double score1,
 
     if (score1 == lowest)
     {
+        cout << "Scores being averaged: " << endl;
         if (score2 == highest)
+        {
+            cout << "score3 = " << score3 << endl
+                 << "score4 = " << score4 << endl
+                 << "score5 = " << score5 << endl
+                 << endl;
             average = (score3 + score4 + score5) / 3;
+        }   
         else if (score3 == highest)
+        {
+            cout << "score2 = " << score2 << endl
+                 << "score4 = " << score4 << endl
+                 << "score5 = " << score5 << endl
+                 << endl;
             average = (score2 + score4 + score5) / 3;
+        }   
         else if (score4 == highest)
+        {
+            cout << "score2 = " << score2 << endl
+                 << "score3 = " << score3 << endl
+                 << "score5 = " << score5 << endl
+                 << endl;
             average = (score2 + score3 + score5) / 3;
+        }   
         else if (score5 == highest)
+        {
+            cout << "score2 = " << score2 << endl
+                 << "score3 = " << score3 << endl
+                 << "score4 = " << score4 << endl
+                 << endl;
             average = (score2 + score3 + score4) / 3;
+        }
     }
     return average;
 }
