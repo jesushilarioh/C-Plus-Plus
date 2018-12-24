@@ -67,14 +67,14 @@ int main()
           cout << "Number of days spent in the hospital: ";
           days_spent = inputValidate(days_spent);
 
-          cout << "Daily rate: ";
+          cout << "Daily rate: $";
           daily_rate = inputValidate(daily_rate);
 
-          cout << "Hospital medication charges: ";
+          cout << "Hospital medication charges: $";
           med_charges = inputValidate(med_charges);
 
           cout << "Charges for hospital services\n"
-               << "(lab tests, etc.): ";
+               << "(lab tests, etc.): $";
           services_charge = inputValidate(services_charge);
 
           total_charges = calculateTotalCharges(days_spent,
@@ -82,23 +82,23 @@ int main()
                                                 med_charges,
                                                 services_charge);
                          
-          cout << "total_charges = " 
+          cout << "total_charges = $" 
                << total_charges
                << endl;
      }
      else 
      {
-          cout << "Hospital medication charges: ";
+          cout << "Hospital medication charges: $";
           med_charges = inputValidate(med_charges);
 
           cout << "Charges for hospital services\n"
-               << "(lab tests, etc.): ";
+               << "(lab tests, etc.): $";
           services_charge = inputValidate(services_charge);
 
           total_charges = calculateTotalCharges(med_charges,
                                                 services_charge);
 
-          cout << "total_charges = " 
+          cout << "total_charges = $" 
                << total_charges
                << endl;
      }

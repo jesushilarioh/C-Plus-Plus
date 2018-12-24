@@ -11,6 +11,12 @@ int main()
         string_size;
     bool is_num_bool;
 
+     cout << "Enter string: ";
+        cin >> user_string;
+
+        
+        string_size = user_string.size();
+
     do
     {
         cout << "Enter string: ";
@@ -19,19 +25,17 @@ int main()
         
         string_size = user_string.size();
 
+        if (user_string[0] == '-')
+            is_num++;
+
         for (int i = 0; i < string_size; i++)
         {
             if (isdigit(user_string[i]))
             {
                 is_num++;
-                // if (user_string[0] == '-')
-                // {
-                //     is_num++;
-                // }
-            }
-            else if (user_string[0] == '-')
-                is_num++;
                 
+                cout << "(" << i << ") isdigit." << endl;
+            }   
         }
 
         
