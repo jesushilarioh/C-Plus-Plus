@@ -29,7 +29,7 @@
  *                  data.
  *
  * 	Jesus Hilario Hernandez
- * 	December 18th, 2018
+ * 	December 25, 2018 --> "Merry Christmas!"
  *
  *************************************************************/
 #include <iostream>
@@ -152,6 +152,13 @@ double inputValidate(double num1)
     return num1;
 }
 
+/*******************************************************
+ * function definition for userChoice():               *
+ * userChoice() checks user unput for either a 1 or    *
+ * a 2. If neither is selected, an error message is    *
+ * displayed, the input stream is clear and ignored,   *
+ * and user is prompted to enter try again.            *
+ *******************************************************/
 char userChoice(char letter)
 {
     cin >> letter;
