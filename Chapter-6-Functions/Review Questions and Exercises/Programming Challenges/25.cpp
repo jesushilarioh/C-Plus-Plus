@@ -749,7 +749,7 @@ double inputValidate(double CONDITION)
         else
         {
             for (int i = 0; i < str_num.size(); i++)
-            {
+            { 
                 if (isdigit(str_num[i]))
                     is_num++;
 
