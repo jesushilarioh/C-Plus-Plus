@@ -40,12 +40,16 @@ int main()
         }
 
         if (decimal_count == 1)
-            is_num++;
+        {
+            // if contains a decimal
+            is_num = 0;
+        }
+            
 
         stringstream str_stream_object(str_num);
         str_stream_object >> user_num;
 
-        if (is_num == str_num.size() && user_num > 0)
+        if (is_num == str_num.size() /* [&& user_num > 0] -- USE IF less than or greater than */ )
         {
             
             is_num_bool = 1;
@@ -55,13 +59,14 @@ int main()
         }
         else
         {
-            cout << "Must be greater than 0." << endl;
+            // cout << "Must be greater than 0." << endl;
             cout << "Number must NOT contain spaces." << endl;
             cout << "Number must NOT contain letters." << endl;
             cout << "Number must contain only one decimal." << endl;
+            cout << "Must not be a decimal number." << endl; 
 
             cin.clear();
-            cin.ignore(1234, '\n');
+            cin.ignore(100000, '\n');
             
             is_num_bool = 0;
             is_num = 0;

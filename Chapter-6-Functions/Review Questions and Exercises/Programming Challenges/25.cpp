@@ -66,7 +66,7 @@
  *        paid by the employee.)
  * 
  *          The program should calculate and display the total 
- *      expenses incurred by the busi- nessperson, the total 
+ *      expenses incurred by the businessperson, the total 
  *      allowable expenses for the trip, the excess that must 
  *      be reimbursed by the businessperson, if any, and the 
  *      amount saved by the businessperson if the expenses were 
@@ -85,90 +85,126 @@
  *
  *************************************************************/
 #include <iostream>
+#include <ctype.h>  // isdigit() and isalpha()
+#include <sstream>  // stringstream
+#include <iomanip>  // setfill()
 using namespace std;
 
 // Function Prototypes
-int daysSpent(int);
-int arrivalTime(int);
-int arrivalTime(int);
-double roundTripAirfare(double);
-double carRentalAmount(double);
-int carMilage(int);
+int daysSpent();
+int departureTime();
+int arrivalTime();
+double roundTripAirfare();
+double carRentalAmount();
+int carMilage();
 double vehicleExpenses(double);
-double parkingFees(double);
+double parkingFees();
 double taxiFees(double);
 double conferenceFees(double conference_fees);
 double hotelExpenses(double hotel_expenses);
 double mealAmount(double meal_amount);
 void calculateAndDisplay();
+double inputValidate(double);
+int inputValidate(int);
+int validateTime();
+char validateChoice();
 
 int main()
 {
     // Variables
-    int days_spent = daysSpent(days_spent),
-        departure_time = departureTime(departure_time),
-        arrival_time = arrivalTime(arrival_time);
+    int days_spent = daysSpent(),
+        departure_time = departureTime(),
+        arrival_time = arrivalTime();
     
-    double round_trip_airfare = roundTripAirfare(round_trip_airfare),
-           car_rental_amount = carRentalAmount(car_rental_amount),
-           car_milage = carMilage(car_milage),
+    double round_trip_airfare = roundTripAirfare(),
+           car_rental_amount = carRentalAmount(),
+           car_milage = carMilage(),
            vehicle_expense = vehicleExpenses(car_milage),
-           parking_fees = parkingFees(parking_fees),   // ?
+           parking_fees = parkingFees(),   // ?
            taxi_fees = taxiFees(taxi_fees),    // ? 
            conference_fees = conferenceFees(conference_fees),
            hotel_expenses = hotelExpenses(hotel_expenses),
-           meal_amount = mealAmount(meal_amount);
+        //    meal_amount = mealAmount(meal_amount);
+            meal_amount,
+            mealAmount(meal_amount);
 
     calculateAndDisplay();
 
     return 0;
 }
 
-int daysSpent(int days_spent)
+/********************************************************
+ * function definition for daysSpent():                 *
+ * ---------------------------------------------------- *
+ * daysSpent ask for, recives, and returns the number   *
+ * of days spent on the trip. Input is validated by     *
+ * checking for and integer that is 1 or greater.       *
+ ********************************************************/
+int daysSpent()
 {
+    int days_spent;
     cout << "Enter total days spent on trip: ";
-    cin >> days_spent;
+    days_spent = inputValidate(1);
     return days_spent;
 }
-int departureTime(int departure_time)
+
+/********************************************************
+ * function definition for departureTime():             *
+ * ---------------------------------------------------- *
+ * departureTime ask for, recives, and returns the      *
+ * depature time for the first day of the trip. Input   *
+ * is validated by checking for valid clock times.      *
+ ********************************************************/
+int departureTime()
 {
-    cout << "Enter time of departure on 1st day\n"
-         << "(use military time. For example, \n"
-         << "10:02 am = 1002,\n"
-         << "11:00 am = 1100,\n"
-         << "12:31 pm = 1231,\n"
-         << " 1:00 pm = 1300,\n"
-         << " 2:46 pm = 1446,\n"
-         << " 3:15 pm = 1515,\n"
-         << " 4:00 pm = 1600, etc...): ";
-    cin >> departure_time;
+    int departure_time;
+
+    cout << "Let's start with time of departure on 1st day.\n"
+         << "Did you leave in the morning or the afternoon? \n"
+         << "Enter AM for morning or PM for afternoon: ";
+
+    departure_time = validateTime();
     return departure_time;
 }
-int arrivalTime(int arrival_time)
+
+/********************************************************
+ * function definition for arrivalTime():               *
+ * ---------------------------------------------------- *
+ * arrivalTime ask for, recives, and returns the        *
+ * arrival time for the first day of the trip. Input    *
+ * is validated by checking for valid clock times.      *
+ ********************************************************/
+int arrivalTime()
 {
-    cout << "Enter time of arrival on last day\n"
-         << "(use military time. For example, \n"
-         << "10:02 am = 1002,\n"
-         << "11:00 am = 1100,\n"
-         << "12:31 pm = 1231,\n"
-         << " 1:00 pm = 1300,\n"
-         << " 2:46 pm = 1446,\n"
-         << " 3:15 pm = 1515,\n"
-         << " 4:00 pm = 1600, etc...): ";
-    cin >> arrival_time;
+    int arrival_time;
+
+    cout << "Next, what was the time of arrival on last day?\n"
+         << "Did you leave in the morning or the afternoon? \n"
+         << "Enter AM for morning or PM for afternoon: ";
+
+    arrival_time = validateTime();
     return arrival_time;
 }
-double roundTripAirfare(double round_trip_airfare)
+
+/********************************************************
+ * function definition for roundTripAirfare():          *
+ * ---------------------------------------------------- *
+ * roundTripAirfare ask for, receives, validates, and   *
+ * returns the round trip airfare if any.               *
+ ********************************************************/
+double roundTripAirfare()
 {
+    double round_trip_airfare;
     char user_choice;
 
     cout << "Did you pay for round trip air fair? (y/n): ";
-    cin >> user_choice;
+    user_choice = validateChoice();
 
     if (user_choice == 'Y' || user_choice == 'y')
     {
         cout << "Enter amount of round-trip airfare: ";
-        cin >> round_trip_airfare;
+        round_trip_airfare = inputValidate(0);
+
         return round_trip_airfare;
     }
     else if (user_choice == 'N' || user_choice == 'n')
@@ -179,20 +215,30 @@ double roundTripAirfare(double round_trip_airfare)
     else
     {
         cout << "Error: Y or N must be chosen to proceed: ";
+        round_trip_airfare = 0;
+        return round_trip_airfare;
     }
     
 }
-double carRentalAmount(double car_rental_amount)
+
+/********************************************************
+ * function definition for carRentalAmount():           *
+ * ---------------------------------------------------- *
+ * carRentalAmount ask for, receives, validates, and    *
+ * returns the car rental amount if any.                *
+ ********************************************************/
+double carRentalAmount()
 {
+    double car_rental_amount;
     char user_choice;
 
     cout << "Did you rent a car? (y/n): ";
-    cin >> user_choice;
+    user_choice = validateChoice();
     
     if (user_choice == 'Y' || user_choice == 'y')
     {
         cout << "Enter amount of car rental: ";
-        cin >> car_rental_amount;
+        car_rental_amount = inputValidate(0);
         return car_rental_amount;
     }
     else if (user_choice == 'N' || user_choice == 'n')
@@ -203,20 +249,30 @@ double carRentalAmount(double car_rental_amount)
     else
     {
         cout << "Error: Y or N must be chosen to proceed: ";
+        car_rental_amount = 0;
+        return car_rental_amount;
     }
     
 }
-int carMilage(int car_milage)
+
+/********************************************************
+ * function definition for carMilage():                 *
+ * ---------------------------------------------------- *
+ * carMilage ask for, receives, validates, and          *
+ * returns the car milage amount if any.                *
+ ********************************************************/
+int carMilage()
 {
+    int car_milage;
     char user_choice;
 
     cout << "Did you use a personal vehicle? (y/n): ";
-    cin >> user_choice;
+    user_choice = validateChoice();
     
     if (user_choice == 'Y' || user_choice == 'y')
     {
         cout << "Enter miles driven in private vehicle: ";
-        cin >> car_milage;
+        car_milage = inputValidate(0);
         return car_milage;
     }
     else if (user_choice == 'N' || user_choice == 'n')
@@ -227,38 +283,59 @@ int carMilage(int car_milage)
     else
     {
         cout << "Error: Y or N must be chosen to proceed: ";
+        car_milage = 0;
+        return car_milage;
     }
 }
+
+/********************************************************
+ * function definition for vehicleExpenses():           *
+ * ---------------------------------------------------- *
+ * vehicleExpenses calculate vehicle expenses by        *
+ * multiplying car_milage by .27.                       *
+ ********************************************************/
 double vehicleExpenses(double car_milage)
 {
     return car_milage * .27;
 }
-double parkingFees(double parking_fees)
+
+/********************************************************
+ * function definition for parkingFees():               *
+ * ---------------------------------------------------- *
+ * parkingFees ask for, receives, validates, and        *
+ * returns, if any, parking fees.                       *
+ ********************************************************/
+double parkingFees()
 {
+    const double ALLOWED_AMOUNT = 6.00;
     char user_choice;
     int parking_days;
-    double fee,
-           amount_paid_by_employee;
+    double parking_fees = 0,
+           fee = 0,
+           amount_paid_by_employee = 0;
 
     cout << "Any parking fees? (y/n): ";
-    cin >> user_choice;
+    user_choice = validateChoice();
 
     if (user_choice == 'Y' || user_choice == 'y')
     {
         cout << "How many days did you pay for parking? ";
-        cin >> parking_days;
+        parking_days = inputValidate(0);
 
         for (int i = 0; i < parking_days; i++)
         {
             cout << "Enter fee amount for day "
                  << (i + 1) << ": ";
-            cin >> fee;
+            fee = inputValidate(0);
 
-            if (fee <= 6.00)
+            if (fee <= ALLOWED_AMOUNT)
                 parking_fees += fee;
             else
-                amount_paid_by_employee = fee - 6.00;
-
+            {
+                parking_fees += ALLOWED_AMOUNT;
+                amount_paid_by_employee += fee - ALLOWED_AMOUNT;
+            }
+            
         }
 
         return parking_fees;
@@ -273,9 +350,17 @@ double parkingFees(double parking_fees)
     else
     {
         cout << "Error: Y or N must be chosen to proceed: ";
+        parking_fees = 0;
+        return parking_fees;
     }
     
 }
+
+/********************************************************
+ * function definition for ():                          *
+ * ---------------------------------------------------- *
+ *                                                      *
+ ********************************************************/
 double taxiFees(double taxi_fees)
 {
     const double TAXI_LIMIT = 10.00;
@@ -318,8 +403,16 @@ double taxiFees(double taxi_fees)
     else
     {
         cout << "Error: Y or N must be chosen to proceed: ";
+        taxi_fees = 0;
+        return taxi_fees;
     }
 }
+
+/********************************************************
+ * function definition for ():                          *
+ * ---------------------------------------------------- *
+ *                                                      *
+ ********************************************************/
 double conferenceFees(double conference_fees)
 {
     char user_choice;
@@ -340,8 +433,16 @@ double conferenceFees(double conference_fees)
     else
     {
         cout << "Error: Y or N must be chosen to proceed: ";
+        conference_fees = 0;
+        return conference_fees;
     }
 }
+
+/********************************************************
+ * function definition for ():                          *
+ * ---------------------------------------------------- *
+ *                                                      *
+ ********************************************************/
 double hotelExpenses(double hotel_expenses)
 {
     const double HOTEL_LIMIT = 90.00;
@@ -384,14 +485,20 @@ double hotelExpenses(double hotel_expenses)
     else
     {
         cout << "Error: Y or N must be chosen to proceed: ";
-        cin >> user_choice;
+        hotel_expenses = 0;
+        return hotel_expenses;
     }
 
 }
 
-double mealAmount(double meal_amount, 
-                  double departure_time, 
-                  double arrival_time)
+/********************************************************
+ * function definition for ():                          *
+ * ---------------------------------------------------- *
+ *                                                      *
+ ********************************************************/
+void mealAmount(double meal_amount, 
+                double departure_time, 
+                double arrival_time)
 {
     const double BREAKFAST_LIMIT = 9.00,
                  LUNCH_LIMIT     = 12.00,
@@ -552,8 +659,19 @@ double mealAmount(double meal_amount,
         cin >> user_choice;
     }
 }
+
+/********************************************************
+ * function definition for ():                          *
+ * ---------------------------------------------------- *
+ *                                                      *
+ ********************************************************/
 void calculateAndDisplay()
 {
+    double total_expenses,
+           total_allowable_expenses,
+           total_reimbursement,
+           amount_saved;
+
     cout << "Total expenses incurred by businessperson: $"
          << total_expenses;
     
@@ -566,4 +684,350 @@ void calculateAndDisplay()
     cout << "Amount saved if expenses under total allowed: $"
          << amount_saved;
 
+}
+
+/********************************************************
+ * function definition for ():                          *
+ * ---------------------------------------------------- *
+ *                                                      *
+ ********************************************************/
+double inputValidate(double CONDITION)
+{
+    string str_num = "";
+    
+    int is_num = 0, 
+        decimal_count = 0;
+        
+    double user_num;
+
+    bool is_num_bool = 0;
+
+    do
+    {
+        cin >> str_num;
+
+        if (str_num[0] == '-')
+            is_num++;
+
+        if (str_num[0] == '0' && isdigit(str_num[1]))
+        {
+            is_num = 0;
+        }
+        else
+        {
+            for (int i = 0; i < str_num.size(); i++)
+            {
+                if (isdigit(str_num[i]))
+                    is_num++;
+
+                if (str_num[i] == '.')
+                {
+                    decimal_count++;
+                }
+            }
+        }
+
+        if (decimal_count == 1)
+            is_num++;
+
+        stringstream str_stream_object(str_num);
+        str_stream_object >> user_num;
+
+        if (is_num == str_num.size() && user_num > CONDITION)
+        {
+            
+            is_num_bool = 1;
+            cout << str_num << "(str_num) is a number!" << endl;
+            cout << user_num << "(user_num) is a number!" << endl;
+                
+        }
+        else
+        {
+            cout << "Invalid number. Must be a decimal integer and greater than " 
+                 << CONDITION << ": ";
+
+            cin.clear();
+            cin.ignore(100000, '\n');
+            
+            is_num_bool = 0;
+            is_num = 0;
+            decimal_count = 0;
+        }
+
+    } while (is_num_bool == 0);
+
+    return user_num;
+}
+
+/********************************************************
+ * function definition for ():                          *
+ * ---------------------------------------------------- *
+ *                                                      *
+ ********************************************************/
+int inputValidate(int CONDITION)
+{
+    string str_num = "";
+    
+    int is_num = 0, 
+        decimal_count = 0;
+        
+    double user_num;
+
+    bool is_num_bool = 0;
+
+    do
+    {
+        cout << "Enter number: ";
+        cin >> str_num;
+
+        if (str_num[0] == '-')
+            is_num++;
+
+        if (str_num[0] == '0' && isdigit(str_num[1]))
+        {
+            is_num = 0;
+        }
+        else
+        {
+            for (int i = 0; i < str_num.size(); i++)
+            {
+                if (isdigit(str_num[i]))
+                    is_num++;
+
+                if (str_num[i] == '.')
+                {
+                    decimal_count++;
+                }
+            }
+        }
+
+        if (decimal_count == 1)
+        {
+            // if contains a decimal
+            is_num = 0;
+        }
+            
+
+        stringstream str_stream_object(str_num);
+        str_stream_object >> user_num;
+
+        if (is_num == str_num.size() /* [&& user_num > 0] -- USE IF less than or greater than */ )
+        {
+            
+            is_num_bool = 1;
+            cout << str_num << "(str_num) is a number!" << endl;
+            cout << user_num << "(user_num) is a number!" << endl;
+                
+        }
+        else
+        {
+            // cout << "Must be greater than 0." << endl;
+            cout << "Number must NOT contain spaces." << endl;
+            cout << "Number must NOT contain letters." << endl;
+            cout << "Number must contain only one decimal." << endl;
+            cout << "Must not be a decimal number." << endl; 
+
+            cin.clear();
+            cin.ignore(100000, '\n');
+            
+            is_num_bool = 0;
+            is_num = 0;
+            decimal_count = 0;
+        }
+
+    } while (is_num_bool == 0);
+
+    return user_num;
+}
+
+/********************************************************
+ * function definition for validateTime():              *
+ * ---------------------------------------------------- *
+ * departureTime ask for, recives, and returns the      *
+ * depature time for the first day of the trip. Input   *
+ * is validated by checking for valid times.            *
+ ********************************************************/
+int validateTime()
+{
+    string hour,
+           minutes,
+           time_of_day,
+           user_time_string;
+
+    int is_num = 0,
+        int_hour,
+        int_minutes,
+        user_time;
+
+    bool is_num_bool = 0,
+         time_of_day_valid = 0;
+    
+    char correct_time;
+
+    do
+    {
+        char y_or_n,
+             y_or_n_valid;
+
+        do 
+        {
+            cin >> time_of_day;
+
+            if (time_of_day == "am" ||
+                time_of_day == "AM" ||
+                time_of_day == "aM" ||
+                time_of_day == "Am")
+            {
+                time_of_day_valid = 1;
+                time_of_day = "AM";
+            }
+            else if (time_of_day == "pm" ||
+                    time_of_day == "PM" ||
+                    time_of_day == "pM" ||
+                    time_of_day == "Pm")
+            {
+                time_of_day_valid = 1;
+                time_of_day = "PM";
+            }
+            else
+            {
+                time_of_day_valid = 0;
+                cout << "Error. Enter AM for monring and PM for afternoon: ";
+            }
+            
+        } while(time_of_day_valid == 0);
+
+        
+
+        cout << "First, " << endl;
+
+        do
+        {
+            cout << "Enter the hour: ";
+            cin >> hour;
+
+            for (int i = 0; i < hour.size(); i++)
+            {
+                if (isdigit(hour[i]))
+                    is_num++;
+            }
+
+            stringstream str_stream_object(hour);
+            str_stream_object >> int_hour;
+
+            if (is_num == hour.size() && (int_hour >= 0 && int_hour <= 12))
+            {
+                is_num_bool = 1;
+                cout << hour << "(hour) is a number!" << endl;
+                cout << int_hour << "(int_hour) is a number!" << endl;
+            }
+            else
+            {
+                cout << "Must be  anumber and between 0 and 12. ";
+
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                
+                is_num_bool = 0;
+                is_num = 0;
+            }
+
+        } while (is_num_bool == 0);
+
+
+        is_num_bool = 0;
+        is_num = 0;
+
+        cout << "Second, " << endl;
+        do
+        {
+            cout << "Enter the minutes: ";
+            cin >> minutes;
+
+            for (int i = 0; i < minutes.size(); i++)
+            {
+                if (isdigit(minutes[i]))
+                    is_num++;
+            }
+
+            stringstream str_stream_object(minutes);
+            str_stream_object >> int_minutes;
+
+            if (is_num == minutes.size() && (int_minutes >= 0 && int_minutes <= 59))
+            {
+                is_num_bool = 1;
+                cout << minutes << "(minutes) is a number!" << endl;
+                cout << int_minutes << "(int_minutes) is a number!" << endl;
+            }
+            else
+            {
+                cout << "Must be  anumber and between 0 and 12. ";
+
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                
+                is_num_bool = 0;
+                is_num = 0;
+            }
+
+        } while (is_num_bool == 0);
+
+        cout.fill('0');
+        cout << "Time = "
+            << int_hour
+            << ":"
+            << setw(2) << right << int_minutes
+            << " " << time_of_day
+            << endl;
+
+
+        cout << "Is this time correct? (Y/N): "; 
+        correct_time = validateChoice();
+
+
+    } while (correct_time == 'n' || correct_time == 'N');
+
+    if (int_minutes >= 0 || int_minutes < 10)
+    {
+        user_time_string = int_hour + 0 + int_minutes;
+        stringstream str_stream_object(user_time_string);
+        str_stream_object >> user_time;
+    }
+
+    return user_time;
+}
+
+/********************************************************
+ * function definition for validateChoice():            *
+ * ---------------------------------------------------- *
+ * validateChoice ask for, recives, validates and       *
+ * returns the user choice, whether Y.                  *
+ ********************************************************/
+char validateChoice()
+{
+    char user_choice,
+         user_choice_valid;
+    do 
+    {
+        cin >> user_choice;
+
+        if (user_choice == 'y' ||
+            user_choice == 'Y')
+        {
+            user_choice_valid = 1;
+        }
+        else if (user_choice == 'n' ||
+                user_choice == 'N')
+        {
+            user_choice_valid = 1;
+        }
+        else
+        {
+            user_choice_valid = 0;
+            cout << "Error. Enter Y for yes or N for no: ";
+        }
+        
+    } while(user_choice_valid == 0);
+
+    return user_choice;
 }
