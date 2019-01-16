@@ -97,12 +97,14 @@ int arrivalTime();
 double roundTripAirfare();
 double carRentalAmount();
 int carMilage();
+
 double vehicleExpenses(double);
-double parkingFees();
-double taxiFees(double);
-double conferenceFees(double conference_fees);
-double hotelExpenses(double hotel_expenses);
-double mealAmount(double meal_amount);
+double parkingFees(double &);
+double taxiFees(double &);
+double conferenceFees();
+double hotelExpenses(double &);
+
+double mealAmount(int, int, double &);
 void calculateAndDisplay();
 double inputValidate(double);
 int inputValidate(int);
@@ -112,21 +114,38 @@ char validateChoice();
 int main()
 {
     // Variables
-    int days_spent = daysSpent(),
-        departure_time = departureTime(),
-        arrival_time = arrivalTime();
+    int days_spent,
+        departure_time,
+        arrival_time;
     
-    double round_trip_airfare = roundTripAirfare(),
-           car_rental_amount = carRentalAmount(),
-           car_milage = carMilage(),
-           vehicle_expense = vehicleExpenses(car_milage),
-           parking_fees = parkingFees(),   // ?
-           taxi_fees = taxiFees(taxi_fees),    // ? 
-           conference_fees = conferenceFees(conference_fees),
-           hotel_expenses = hotelExpenses(hotel_expenses),
-        //    meal_amount = mealAmount(meal_amount);
-            meal_amount,
-            mealAmount(meal_amount);
+    double round_trip_airfare,
+           car_rental_amount,
+           car_milage,
+           vehicle_expense,
+           parking_fees,
+           amount_paid_by_employee, // Reference
+           taxi_fees,
+           conference_fees,
+           hotel_expenses,
+           meal_amount;
+
+
+     // Function Calls
+    days_spent = daysSpent();
+    departure_time = departureTime();
+    arrival_time = arrivalTime();
+    round_trip_airfare = roundTripAirfare();
+    car_rental_amount = carRentalAmount();
+    car_milage = carMilage();
+
+    vehicle_expense = vehicleExpenses(car_milage);
+    parking_fees = parkingFees(amount_paid_by_employee);
+    taxi_fees = taxiFees(amount_paid_by_employee);
+    conference_fees = conferenceFees();
+    hotel_expenses = hotelExpenses(amount_paid_by_employee);
+
+    // meal_amount = mealAmount(meal_amount);
+    meal_amount = mealAmount(departure_time, arrival_time, amount_paid_by_employee);
 
     calculateAndDisplay();
 
@@ -214,7 +233,7 @@ double roundTripAirfare()
     }
     else
     {
-        cout << "Error: Y or N must be chosen to proceed: ";
+        // cout << "Error: Y or N must be chosen to proceed: ";
         round_trip_airfare = 0;
         return round_trip_airfare;
     }
@@ -248,7 +267,7 @@ double carRentalAmount()
     }
     else
     {
-        cout << "Error: Y or N must be chosen to proceed: ";
+        // cout << "Error: Y or N must be chosen to proceed: ";
         car_rental_amount = 0;
         return car_rental_amount;
     }
@@ -282,7 +301,7 @@ int carMilage()
     }
     else
     {
-        cout << "Error: Y or N must be chosen to proceed: ";
+        // cout << "Error: Y or N must be chosen to proceed: ";
         car_milage = 0;
         return car_milage;
     }
@@ -305,14 +324,13 @@ double vehicleExpenses(double car_milage)
  * parkingFees ask for, receives, validates, and        *
  * returns, if any, parking fees.                       *
  ********************************************************/
-double parkingFees()
+double parkingFees(double &amount_paid_by_employee)
 {
     const double ALLOWED_AMOUNT = 6.00;
     char user_choice;
     int parking_days;
     double parking_fees = 0,
-           fee = 0,
-           amount_paid_by_employee = 0;
+           fee = 0;
 
     cout << "Any parking fees? (y/n): ";
     user_choice = validateChoice();
@@ -339,8 +357,7 @@ double parkingFees()
         }
 
         return parking_fees;
-        // Or
-        // return amount_paid_by_employee;
+
     }
     else if (user_choice == 'N' || user_choice == 'n')
     {
@@ -349,7 +366,7 @@ double parkingFees()
     }
     else
     {
-        cout << "Error: Y or N must be chosen to proceed: ";
+        // cout << "Error: Y or N must be chosen to proceed: ";
         parking_fees = 0;
         return parking_fees;
     }
@@ -357,21 +374,22 @@ double parkingFees()
 }
 
 /********************************************************
- * function definition for ():                          *
+ * function definition for taxiFees():                  *
  * ---------------------------------------------------- *
- *                                                      *
+ * taxiFees ask for, receives, validates, and           *
+ * returns, if any, taxi fees.                          *
  ********************************************************/
-double taxiFees(double taxi_fees)
+double taxiFees(double &amount_paid_by_employee)
 {
     const double TAXI_LIMIT = 10.00;
 
     char user_choice;
     int taxi_days;
-    double fee,
-           amount_paid_by_employee;
+    double taxi_fees = 0,
+           fee = 0;
 
     cout << "Any taxi fees? (y/n): ";
-    cin >> user_choice;
+    user_choice = validateChoice();
 
     if (user_choice == 'Y' || user_choice == 'y')
     {
@@ -382,18 +400,20 @@ double taxiFees(double taxi_fees)
         {
             cout << "Enter taxi fee amount for day "
                  << (i + 1) << ": ";
-            cin >> fee;
+            fee = inputValidate(0);
 
             if (fee <= TAXI_LIMIT)
                 taxi_fees += fee;
             else
-                amount_paid_by_employee = fee - TAXI_LIMIT;
+            {
+                taxi_fees += TAXI_LIMIT;
+                amount_paid_by_employee += fee - TAXI_LIMIT;
+            }
 
         }
 
         return taxi_fees;
-        // Or
-        // return amount_paid_by_employee;
+        
     }
     else if (user_choice == 'N' || user_choice == 'n')
     {
@@ -402,27 +422,30 @@ double taxiFees(double taxi_fees)
     }
     else
     {
-        cout << "Error: Y or N must be chosen to proceed: ";
+        // cout << "Error: Y or N must be chosen to proceed: ";
         taxi_fees = 0;
         return taxi_fees;
     }
 }
 
 /********************************************************
- * function definition for ():                          *
+ * function definition for conferenceFees():            *
  * ---------------------------------------------------- *
- *                                                      *
+ * conferenceFees ask for, receives, validates, and     *
+ * returns, if any, conference fees.                    *
  ********************************************************/
-double conferenceFees(double conference_fees)
+double conferenceFees()
 {
     char user_choice;
+    double conference_fees;
+
     cout << "Any conference or seminar registration fees? (y/n): ";
-    cin >> user_choice;
+    user_choice = validateChoice();
 
     if (user_choice == 'Y' || user_choice == 'y')
     {
         cout << "Enter Conference or seminar registration fees: ";
-        cin >> conference_fees;
+        conference_fees = inputValidate(0);
         return conference_fees;
     }
     else if (user_choice == 'N' || user_choice == 'n')
@@ -432,50 +455,53 @@ double conferenceFees(double conference_fees)
     }
     else
     {
-        cout << "Error: Y or N must be chosen to proceed: ";
+        // cout << "Error: Y or N must be chosen to proceed: ";
         conference_fees = 0;
         return conference_fees;
     }
 }
 
 /********************************************************
- * function definition for ():                          *
+ * function definition for hotelExpenses():             *
  * ---------------------------------------------------- *
- *                                                      *
+ * hotelExpenses ask for, receives, validates, and      *
+ * returns, if any, hotel expenses.                     *
  ********************************************************/
-double hotelExpenses(double hotel_expenses)
+double hotelExpenses(double &amount_paid_by_employee)
 {
     const double HOTEL_LIMIT = 90.00;
 
     char user_choice;
     int hotel_nights;
     double fee,
-           amount_paid_by_employee;
+           hotel_expenses;           
 
     cout << "Any hotel expenses? (y/n): ";
-    cin >> user_choice;
+    user_choice = validateChoice();
 
     if (user_choice == 'Y' || user_choice == 'y')
     {
         cout << "How many nights did you pay for a hotel? ";
-        cin >> hotel_nights;
+        hotel_nights = inputValidate(1);
 
         for (int i = 0; i < hotel_nights; i++)
         {
             cout << "Enter hotel expense amount for night "
                  << (i + 1) << ": ";
-            cin >> fee;
+            fee = inputValidate(0);
 
             if (fee <= HOTEL_LIMIT)
                 hotel_expenses += fee;
             else
-                amount_paid_by_employee = fee - HOTEL_LIMIT;
-
+            {
+                hotel_expenses += HOTEL_LIMIT;
+                amount_paid_by_employee += fee - HOTEL_LIMIT;
+            }
+                
         }
 
         return hotel_expenses;
-        // Or
-        // return amount_paid_by_employee;
+
     }
     else if (user_choice == 'N' || user_choice == 'n')
     {
@@ -484,7 +510,7 @@ double hotelExpenses(double hotel_expenses)
     }
     else
     {
-        cout << "Error: Y or N must be chosen to proceed: ";
+        // cout << "Error: Y or N must be chosen to proceed: ";
         hotel_expenses = 0;
         return hotel_expenses;
     }
@@ -492,13 +518,14 @@ double hotelExpenses(double hotel_expenses)
 }
 
 /********************************************************
- * function definition for ():                          *
+ * function definition for mealAmount():                *
  * ---------------------------------------------------- *
- *                                                      *
+ * mealAmount ask for, receives, validates, and         *
+ * returns, if any, the meal amount.                    *
  ********************************************************/
-void mealAmount(double meal_amount, 
-                double departure_time, 
-                double arrival_time)
+double mealAmount(int departure_time, 
+                int arrival_time,
+                double &amount_paid_by_employee)
 {
     const double BREAKFAST_LIMIT = 9.00,
                  LUNCH_LIMIT     = 12.00,
@@ -507,13 +534,14 @@ void mealAmount(double meal_amount,
     char user_choice;
 
     double fee,
-           amount_paid_by_employee;
+           meal_amount;
 
     // FOR DEPATURE!!
     // FOR DEPATURE!!
     // FOR DEPATURE!!
     cout << "Upon depature of your first day, did you have a meal? ";
-    cin >> user_choice;
+    user_choice = validateChoice();
+
     if (user_choice == 'Y' || user_choice == 'y')
     {
         if(departure_time < 700)   // Breakfast
@@ -521,15 +549,14 @@ void mealAmount(double meal_amount,
             cout << "Since your departure time was "
                  << departure_time << ", \n" 
                  << "What was amount for breakfast? ";
-            cin >> fee;
+            fee = inputValidate(0);
 
             if (fee < BREAKFAST_LIMIT)
-            {
                 meal_amount += fee;
-            }
             else
             {
-                amount_paid_by_employee = fee - BREAKFAST_LIMIT;
+                meal_amount += BREAKFAST_LIMIT;
+                amount_paid_by_employee += fee - BREAKFAST_LIMIT;
             }
         }
         else if(departure_time > 700 && departure_time < 1200)   // Lunch
@@ -537,15 +564,14 @@ void mealAmount(double meal_amount,
             cout << "Since your departure time was "
                  << departure_time << ", \n" 
                  << "What was amount for lunch? ";
-            cin >> fee;
+            fee = inputValidate(0);
 
             if (fee < LUNCH_LIMIT)
-            {
                 meal_amount += fee;
-            }
             else
             {
-                amount_paid_by_employee = fee - LUNCH_LIMIT;
+                meal_amount += LUNCH_LIMIT;
+                amount_paid_by_employee += fee - LUNCH_LIMIT;
             }
         }
         else if(departure_time > 1200 && departure_time < 1800)  // Dinner
@@ -553,14 +579,13 @@ void mealAmount(double meal_amount,
             cout << "Since your departure time was "
                  << departure_time << ", \n" 
                  << "What was amount for dinner? ";
-            cin >> fee;
+            fee = inputValidate(0);
 
             if (fee < DINNER_LIMIT)
-            {
                 meal_amount += fee;
-            }
             else
             {
+                meal_amount += DINNER_LIMIT;
                 amount_paid_by_employee = fee - DINNER_LIMIT;
             }
         }
@@ -569,26 +594,32 @@ void mealAmount(double meal_amount,
             cout << "Since your departure time was "
                  << departure_time << ", \n" 
                  << "What was amount for your meal? ";
-            cin >> fee;
+            fee = inputValidate(0);
 
-            amount_paid_by_employee = fee;
+            meal_amount = 0;
+            amount_paid_by_employee += fee;
         }
+
+        return meal_amount;
     }
     else if (user_choice == 'N' || user_choice == 'n')
     {
-        meal_amount = 0.00;
+        meal_amount = 0;
+        return meal_amount;
     }
     else
     {
-        cout << "Error: Y or N must be chosen to proceed: ";
-        cin >> user_choice;
+        // cout << "Error: Y or N must be chosen to proceed: ";
+        meal_amount = 0;
+        return meal_amount;
     }
 
     // FOR ARRIVAL
     // FOR ARRIVAL
     // FOR ARRIVAL
     cout << "Upon arrival on your last day, did you have a meal? ";
-    cin >> user_choice;
+    user_choice = validateChoice();
+
     if (user_choice == 'Y' || user_choice == 'y')
     {
         if(arrival_time > 800 && arrival_time < 1300)   // Breakfast
@@ -596,14 +627,13 @@ void mealAmount(double meal_amount,
             cout << "Since your arrival time was "
                  << arrival_time << ", \n" 
                  << "What was amount for breakfast? ";
-            cin >> fee;
+            fee = inputValidate(0);
 
             if (fee < BREAKFAST_LIMIT)
-            {
                 meal_amount += fee;
-            }
             else
             {
+                meal_amount += BREAKFAST_LIMIT;
                 amount_paid_by_employee = fee - BREAKFAST_LIMIT;
             }
         }
@@ -612,14 +642,13 @@ void mealAmount(double meal_amount,
             cout << "Since your arrival time was "
                  << arrival_time << ", \n" 
                  << "What was amount for lunch? ";
-            cin >> fee;
+            fee = inputValidate(0);
 
             if (fee < LUNCH_LIMIT)
-            {
                 meal_amount += fee;
-            }
             else
             {
+                meal_amount += LUNCH_LIMIT;
                 amount_paid_by_employee = fee - LUNCH_LIMIT;
             }
         }
@@ -628,14 +657,13 @@ void mealAmount(double meal_amount,
             cout << "Since your arrival time was "
                  << arrival_time << ", \n" 
                  << "What was amount for dinner? ";
-            cin >> fee;
+            fee = inputValidate(0);
 
             if (fee < DINNER_LIMIT)
-            {
                 meal_amount += fee;
-            }
             else
             {
+                meal_amount += DINNER_LIMIT;
                 amount_paid_by_employee = fee - DINNER_LIMIT;
             }
         }
@@ -644,19 +672,24 @@ void mealAmount(double meal_amount,
             cout << "Since your arrival time was "
                  << arrival_time << ", \n" 
                  << "What was amount for your meal? ";
-            cin >> fee;
+            fee = inputValidate(0);
 
+            meal_amount = 0;
             amount_paid_by_employee = fee;
         }
+
+        return meal_amount;
     }
     else if (user_choice == 'N' || user_choice == 'n')
     {
-        meal_amount = 0.00;
+        meal_amount = 0;
+        return meal_amount;
     }
     else
     {
-        cout << "Error: Y or N must be chosen to proceed: ";
-        cin >> user_choice;
+        // cout << "Error: Y or N must be chosen to proceed: ";
+        meal_amount = 0;
+        return meal_amount;
     }
 }
 
@@ -733,7 +766,7 @@ double inputValidate(double CONDITION)
         stringstream str_stream_object(str_num);
         str_stream_object >> user_num;
 
-        if (is_num == str_num.size() && user_num > CONDITION)
+        if (is_num == str_num.size() && !(user_num < CONDITION))
         {
             
             is_num_bool = 1;
@@ -747,7 +780,7 @@ double inputValidate(double CONDITION)
                  << CONDITION << ": ";
 
             cin.clear();
-            cin.ignore(100000, '\n');
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             
             is_num_bool = 0;
             is_num = 0;
@@ -811,7 +844,7 @@ int inputValidate(int CONDITION)
         stringstream str_stream_object(str_num);
         str_stream_object >> user_num;
 
-        if (is_num == str_num.size() /* [&& user_num > 0] -- USE IF less than or greater than */ )
+        if (is_num == str_num.size() && !(user_num < CONDITION))
         {
             
             is_num_bool = 1;
@@ -821,14 +854,11 @@ int inputValidate(int CONDITION)
         }
         else
         {
-            // cout << "Must be greater than 0." << endl;
-            cout << "Number must NOT contain spaces." << endl;
-            cout << "Number must NOT contain letters." << endl;
-            cout << "Number must contain only one decimal." << endl;
-            cout << "Must not be a decimal number." << endl; 
+            cout << "Invalid number. Must be an integer and greater than " 
+                 << CONDITION << ": ";
 
             cin.clear();
-            cin.ignore(100000, '\n');
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             
             is_num_bool = 0;
             is_num = 0;
