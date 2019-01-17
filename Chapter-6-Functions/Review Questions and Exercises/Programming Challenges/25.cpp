@@ -127,7 +127,9 @@ int main()
            taxi_fees,
            conference_fees,
            hotel_expenses,
-           meal_amount;
+           meal_amount,
+           total_expenses,
+           total_savings;
 
 
      // Function Calls
@@ -135,6 +137,7 @@ int main()
     departure_time = departureTime();
     arrival_time = arrivalTime();
     round_trip_airfare = roundTripAirfare();
+
     car_rental_amount = carRentalAmount();
     car_milage = carMilage();
 
@@ -144,10 +147,39 @@ int main()
     conference_fees = conferenceFees();
     hotel_expenses = hotelExpenses(amount_paid_by_employee);
 
-    // meal_amount = mealAmount(meal_amount);
     meal_amount = mealAmount(departure_time, arrival_time, amount_paid_by_employee);
 
-    calculateAndDisplay();
+
+    /********************************************************
+     * function definition for calculateAndDisplay():       *
+     * ---------------------------------------------------- *
+     * calculateAndDisplay calculates and displays the      *
+     * total expenses incurred by the businessperson, the   *
+     * total allowable expenses for the trip, the excess    *
+     * that must be reimbursed by the businessperson, if    *
+     * any, and the amount saved by the businessperson if   *
+     * the expenses were under the total allowed.           *
+     ********************************************************/
+    total_expenses = car_rental_amount  +
+                     vehicle_expense    +
+                     parking_fees       +
+                     taxi_fees          +
+                     conference_fees    +
+                     hotel_expenses     +
+                     meal_amount        +
+                     amount_paid_by_employee;
+
+    total_savings = total_expenses - amount_paid_by_employee;
+
+
+    cout << "\n---------------------------------------------"            << endl
+         << "Total expenses               = $" << total_expenses          << endl
+         << "Total Allowable expenses     = $"                            << endl
+         << "Total reimbursement expenses = $" << amount_paid_by_employee << endl
+         << "Total potential savings      = $" << total_savings           << endl 
+         << "---------------------------------------------"              << endl;
+
+    // calculateAndDisplay();
 
     return 0;
 }
@@ -694,35 +726,41 @@ double mealAmount(int departure_time,
 }
 
 /********************************************************
- * function definition for ():                          *
+ * function definition for calculateAndDisplay():       *
  * ---------------------------------------------------- *
- *                                                      *
+ * calculateAndDisplay calculates and displays the      *
+ * total expenses incurred by the businessperson, the   *
+ * total allowable expenses for the trip, the excess    *
+ * that must be reimbursed by the businessperson, if    *
+ * any, and the amount saved by the businessperson if   *
+ * the expenses were under the total allowed.           *
  ********************************************************/
-void calculateAndDisplay()
-{
-    double total_expenses,
-           total_allowable_expenses,
-           total_reimbursement,
-           amount_saved;
+// void calculateAndDisplay()
+// {
+//     double total_expenses,
+//            total_allowable_expenses,
+//            total_reimbursement,
+//            amount_saved;
 
-    cout << "Total expenses incurred by businessperson: $"
-         << total_expenses;
+//     cout << "Total expenses incurred by businessperson: $"
+//          << total_expenses;
     
-    cout << "Total allowable expenses for the trip : $"
-         << total_allowable_expenses;
+//     cout << "Total allowable expenses for the trip : $"
+//          << total_allowable_expenses;
 
-    cout << "Excess to be reimbursed to businessperson: $"
-         << total_reimbursement;
+//     cout << "Excess to be reimbursed to businessperson: $"
+//          << total_reimbursement;
 
-    cout << "Amount saved if expenses under total allowed: $"
-         << amount_saved;
+//     cout << "Amount saved if expenses under total allowed: $"
+//          << amount_saved;
 
-}
+// }
 
 /********************************************************
- * function definition for ():                          *
+ * function definition for inputValidate():             *
  * ---------------------------------------------------- *
- *                                                      *
+ * inputValidate validates a double. The argument       *
+ * passed declares condition.                           *
  ********************************************************/
 double inputValidate(double CONDITION)
 {
@@ -737,6 +775,7 @@ double inputValidate(double CONDITION)
 
     do
     {
+        cout << "\nEnter number: ";
         cin >> str_num;
 
         if (str_num[0] == '-')
@@ -770,8 +809,8 @@ double inputValidate(double CONDITION)
         {
             
             is_num_bool = 1;
-            cout << str_num << "(str_num) is a number!" << endl;
-            cout << user_num << "(user_num) is a number!" << endl;
+            // cout << str_num << "(str_num) is a number!" << endl;
+            // cout << user_num << "(user_num) is a number!" << endl;
                 
         }
         else
@@ -793,9 +832,10 @@ double inputValidate(double CONDITION)
 }
 
 /********************************************************
- * function definition for ():                          *
+ * function definition for inputValidate():             *
  * ---------------------------------------------------- *
- *                                                      *
+ * inputValidate validates an integer. The argument     *
+ * passed declares condition.                           *
  ********************************************************/
 int inputValidate(int CONDITION)
 {
@@ -810,7 +850,7 @@ int inputValidate(int CONDITION)
 
     do
     {
-        cout << "Enter number: ";
+        cout << "\nEnter number: ";
         cin >> str_num;
 
         if (str_num[0] == '-')
@@ -848,8 +888,8 @@ int inputValidate(int CONDITION)
         {
             
             is_num_bool = 1;
-            cout << str_num << "(str_num) is a number!" << endl;
-            cout << user_num << "(user_num) is a number!" << endl;
+            // cout << str_num << "(str_num) is a number!" << endl;
+            // cout << user_num << "(user_num) is a number!" << endl;
                 
         }
         else
@@ -873,9 +913,8 @@ int inputValidate(int CONDITION)
 /********************************************************
  * function definition for validateTime():              *
  * ---------------------------------------------------- *
- * departureTime ask for, recives, and returns the      *
- * depature time for the first day of the trip. Input   *
- * is validated by checking for valid times.            *
+ * validateTime validates clock time that the user      *
+ * enters into the console.                             *
  ********************************************************/
 int validateTime()
 {
@@ -948,8 +987,8 @@ int validateTime()
             if (is_num == hour.size() && (int_hour >= 0 && int_hour <= 12))
             {
                 is_num_bool = 1;
-                cout << hour << "(hour) is a number!" << endl;
-                cout << int_hour << "(int_hour) is a number!" << endl;
+                // cout << hour << "(hour) is a number!" << endl;
+                // cout << int_hour << "(int_hour) is a number!" << endl;
             }
             else
             {
@@ -986,8 +1025,8 @@ int validateTime()
             if (is_num == minutes.size() && (int_minutes >= 0 && int_minutes <= 59))
             {
                 is_num_bool = 1;
-                cout << minutes << "(minutes) is a number!" << endl;
-                cout << int_minutes << "(int_minutes) is a number!" << endl;
+                // cout << minutes << "(minutes) is a number!" << endl;
+                // cout << int_minutes << "(int_minutes) is a number!" << endl;
             }
             else
             {
@@ -1060,5 +1099,5 @@ char validateChoice()
     } while(user_choice_valid == 0);
 
     return user_choice;
-    
+
 }
