@@ -196,6 +196,12 @@ int daysSpent()
     int days_spent;
     cout << "Enter total days spent on trip: ";
     days_spent = inputValidate(1);
+
+    cout << "You've entered: "
+             << days_spent
+             << " days." 
+             << endl;
+
     return days_spent;
 }
 
@@ -210,8 +216,10 @@ int departureTime()
 {
     int departure_time;
 
-    cout << "Let's start with time of departure on 1st day.\n"
-         << "Did you leave in the morning or the afternoon? \n"
+    cout << "\nLet's start with the time of departure on 1st day.\n"
+         << "\nPress [Enter] to continue:\n";
+    cin.get();
+    cout << "\nDid you leave in the morning or the afternoon? \n"
          << "Enter AM for morning or PM for afternoon: ";
 
     departure_time = validateTime();
@@ -935,9 +943,7 @@ int validateTime()
 
     do
     {
-        char y_or_n,
-             y_or_n_valid;
-
+        
         do 
         {
             cin >> time_of_day;
@@ -968,11 +974,12 @@ int validateTime()
 
         
 
-        cout << "First, " << endl;
+        cout << "You've entered: "
+             << time_of_day <<  endl;
 
         do
         {
-            cout << "Enter the hour: ";
+            cout << "Next, enter the hour: ";
             cin >> hour;
 
             for (int i = 0; i < hour.size(); i++)
@@ -1007,10 +1014,12 @@ int validateTime()
         is_num_bool = 0;
         is_num = 0;
 
-        cout << "Second, " << endl;
+        cout << "You've entered: "
+             << hour <<  endl;
+
         do
         {
-            cout << "Enter the minutes: ";
+            cout << "To finish, enter the minutes: ";
             cin >> minutes;
 
             for (int i = 0; i < minutes.size(); i++)
