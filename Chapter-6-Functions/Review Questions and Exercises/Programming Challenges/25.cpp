@@ -110,6 +110,7 @@ double inputValidate(double);
 int inputValidate(int);
 int validateTime();
 char validateChoice();
+void pressEnterToContinue();
 
 int main()
 {
@@ -216,13 +217,12 @@ int departureTime()
 {
     int departure_time;
 
-    cout << "\nLet's start with the time of departure on 1st day.\n"
-         << "\nPress [Enter] to continue:\n";
-    cin.get();
-    cout << "\nDid you leave in the morning or the afternoon? \n"
-         << "Enter AM for morning or PM for afternoon: ";
+    cout << "\nNext, Let's start with the time of departure on 1st day.\n";
+    
+    pressEnterToContinue();
 
     departure_time = validateTime();
+
     return departure_time;
 }
 
@@ -946,6 +946,9 @@ int validateTime()
         
         do 
         {
+            cout << "\nDid you leave in the morning or the afternoon? \n"
+                 << "Enter AM for morning or PM for afternoon: ";
+
             cin >> time_of_day;
 
             if (time_of_day == "am" ||
@@ -967,19 +970,33 @@ int validateTime()
             else
             {
                 time_of_day_valid = 0;
-                cout << "Error. Enter AM for monring and PM for afternoon: ";
+                cout << "\nError. You must enter AM for morning or PM for afternoon.\n";
             }
             
         } while(time_of_day_valid == 0);
 
         
 
-        cout << "You've entered: "
-             << time_of_day <<  endl;
+        cout << "\nYou've entered: "
+             << time_of_day 
+             << endl 
+             << endl;
+
+        pressEnterToContinue();
+
+        cout << "Ok, in this next portion you will need to input\n"
+             << "the time in sections. \n\nThe first will be the hour\n"
+             << "that you departed and the second will be the minutes.\n"
+             << "For instance, if you departed at 9:50, the hour will be\n"
+             << "9 while the minutes will be 50.\n"
+             << "In another example, if you departed at 8:45, then the\n"
+             << "hour will be 8 and the minutes will be 45.\n\n";
+
+        // pressEnterToContinue();
 
         do
         {
-            cout << "Next, enter the hour: ";
+            cout << "Now, enter the hour: ";
             cin >> hour;
 
             for (int i = 0; i < hour.size(); i++)
@@ -999,7 +1016,7 @@ int validateTime()
             }
             else
             {
-                cout << "Must be  anumber and between 0 and 12. ";
+                cout << "Must be a number and between 0 and 12. ";
 
                 cin.clear();
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -1019,7 +1036,7 @@ int validateTime()
 
         do
         {
-            cout << "To finish, enter the minutes: ";
+            cout << "Next, enter the minutes: ";
             cin >> minutes;
 
             for (int i = 0; i < minutes.size(); i++)
@@ -1098,6 +1115,8 @@ char validateChoice()
                 user_choice == 'N')
         {
             user_choice_valid = 1;
+            cout << "Ok, let's try again.";
+            pressEnterToContinue();
         }
         else
         {
@@ -1109,4 +1128,12 @@ char validateChoice()
 
     return user_choice;
 
+}
+
+void pressEnterToContinue() 
+{
+    cout << "\n\nPress [Enter] to continue:\n";
+    cin.clear();
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    cin.get();
 }
