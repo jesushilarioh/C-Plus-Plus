@@ -21,32 +21,25 @@
 using namespace std;
 int main()
 {
-    // Constant variables
     const int NUM_OF_VAULTS = 3;
 
-    // Variables & Arrays
-    string pole_vaulter,                // Hold pole vaulter's name
-           vault_date[NUM_OF_VAULTS];   // An array of vault dates.
-    float vault_height[NUM_OF_VAULTS];  // An array of vault heights.
+    string pole_vaulter,
+           vault_date[NUM_OF_VAULTS];
+    float vault_height[NUM_OF_VAULTS];
 
-    // Ask for name, dates, and vault heights (in meters) of best 3 vaults
     cout << "Enter pole vaulter name: ";
     getline(cin, pole_vaulter);
 
-    // For loop to ask for 3 separate vaults & dates
     for (int i = 0; i < NUM_OF_VAULTS; i++)
     {
         int num = i + 1;
 
-        // Ask user for vault height
         cout << "Vault #" << num << " height (in meters): ";
         cin >> vault_height[i];
         cin.ignore();
 
-        // Input validation checks if height is within 2.0 and 5.0 range
         if (vault_height[i] < 2.0 || vault_height[i] > 5.0)
         {
-            // Explain error
             cout << endl;
             cout << "We're sorry, vault height must be between" << endl;
             cout << "2.0 and 5.0 meters. Rerun the program and try again." << endl;
@@ -54,7 +47,6 @@ int main()
             exit(EXIT_SUCCESS);
         }
 
-        // Ask user for vault date
         cout << "Vault #" << num << " date (e.g. 01/07/1922): ";
         getline(cin, vault_date[i]);
     }
@@ -132,6 +124,6 @@ int main()
     }
 
     cout << endl;
-    // Terminate program
+
     return 0;
 }
