@@ -100,7 +100,7 @@ int carMilage();
 
 double vehicleExpenses(double);
 double parkingFees(double &);
-double taxiFees(double &);
+double taxiFees(double &, double &);
 double conferenceFees();
 double hotelExpenses(double &);
 
@@ -124,12 +124,13 @@ int main()
            car_milage,
            vehicle_expense,
            parking_fees,
-           amount_paid_by_employee, // Reference
+           amount_paid_by_employee,     // Reference
            taxi_fees,
            conference_fees,
            hotel_expenses,
            meal_amount,
            total_expenses,
+           total_allowable_expenses = 0,    // Reference
            total_savings;
 
 
@@ -143,8 +144,8 @@ int main()
     car_milage = carMilage();
 
     vehicle_expense = vehicleExpenses(car_milage);
-    parking_fees = parkingFees(amount_paid_by_employee);
-    taxi_fees = taxiFees(amount_paid_by_employee);
+    parking_fees = parkingFees(total_allowable_expenses);
+    taxi_fees = taxiFees(amount_paid_by_employee, total_allowable_expenses);
     conference_fees = conferenceFees();
     hotel_expenses = hotelExpenses(amount_paid_by_employee);
 
@@ -172,13 +173,13 @@ int main()
 
     total_savings = total_expenses - amount_paid_by_employee;
 
-
-    cout << "\n---------------------------------------------"            << endl
-         << "Total expenses               = $" << total_expenses          << endl
-         << "Total Allowable expenses     = $"                            << endl
-         << "Total reimbursement expenses = $" << amount_paid_by_employee << endl
-         << "Total potential savings      = $" << total_savings           << endl 
-         << "---------------------------------------------"              << endl;
+    cout << setprecision(2) << fixed;
+    cout << "\n---------------------------------------------"               << endl
+         << "Total expenses               = $" << total_expenses            << endl
+         << "Total Allowable expenses     = $" << total_allowable_expenses  << endl
+         << "Total reimbursement expenses = $" << amount_paid_by_employee   << endl
+         << "Total potential savings      = $" << total_savings             << endl 
+         << "---------------------------------------------"                 << endl;
 
     // calculateAndDisplay();
 
@@ -222,7 +223,6 @@ int departureTime()
     pressEnterToContinue();
 
     departure_time = validateTime();
-
     return departure_time;
 }
 
@@ -237,9 +237,9 @@ int arrivalTime()
 {
     int arrival_time;
 
-    cout << "Next, what was the time of arrival on last day?\n"
-         << "Did you leave in the morning or the afternoon? \n"
-         << "Enter AM for morning or PM for afternoon: ";
+    cout << "\nNext, what was the time of arrival on last day?\n";
+
+    pressEnterToContinue();
 
     arrival_time = validateTime();
     return arrival_time;
@@ -364,7 +364,7 @@ double vehicleExpenses(double car_milage)
  * parkingFees ask for, receives, validates, and        *
  * returns, if any, parking fees.                       *
  ********************************************************/
-double parkingFees(double &amount_paid_by_employee)
+double parkingFees(double &total_allowable_expenses)
 {
     const double ALLOWED_AMOUNT = 6.00;
     char user_choice;
@@ -386,14 +386,10 @@ double parkingFees(double &amount_paid_by_employee)
                  << (i + 1) << ": ";
             fee = inputValidate(0);
 
-            if (fee <= ALLOWED_AMOUNT)
-                parking_fees += fee;
-            else
-            {
-                parking_fees += ALLOWED_AMOUNT;
-                amount_paid_by_employee += fee - ALLOWED_AMOUNT;
-            }
-            
+            if (fee > ALLOWED_AMOUNT)
+                total_allowable_expenses += ALLOWED_AMOUNT;
+                
+            parking_fees += fee;
         }
 
         return parking_fees;
@@ -419,7 +415,7 @@ double parkingFees(double &amount_paid_by_employee)
  * taxiFees ask for, receives, validates, and           *
  * returns, if any, taxi fees.                          *
  ********************************************************/
-double taxiFees(double &amount_paid_by_employee)
+double taxiFees(double &amount_paid_by_employee, double &total_allowable_amount)
 {
     const double TAXI_LIMIT = 10.00;
 
@@ -448,6 +444,7 @@ double taxiFees(double &amount_paid_by_employee)
             {
                 taxi_fees += TAXI_LIMIT;
                 amount_paid_by_employee += fee - TAXI_LIMIT;
+                total_allowable_expenses += TAXI_LIMIT;
             }
 
         }
@@ -1079,6 +1076,13 @@ int validateTime()
         cout << "Is this time correct? (Y/N): "; 
         correct_time = validateChoice();
 
+        if (correct_time == 'N' || correct_time == 'n')
+        {
+            cout << "You've chosen no ['N'].\n"
+                 << "Let's try again.";
+            pressEnterToContinue();
+        }
+
 
     } while (correct_time == 'n' || correct_time == 'N');
 
@@ -1102,29 +1106,24 @@ char validateChoice()
 {
     char user_choice,
          user_choice_valid;
-    do 
-    {
+
         cin >> user_choice;
 
-        if (user_choice == 'y' ||
-            user_choice == 'Y')
+        while (!((user_choice == 'y') || 
+                 (user_choice == 'Y') || 
+                 (user_choice == 'n') || 
+                 (user_choice == 'N')))
         {
+            cout << "ERROR: a Y or an N must be entered: ";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cin >> user_choice;
+        }
+
+        if (user_choice == 'y' || user_choice == 'Y')
             user_choice_valid = 1;
-        }
-        else if (user_choice == 'n' ||
-                user_choice == 'N')
-        {
+        else if (user_choice == 'n' || user_choice == 'N')
             user_choice_valid = 1;
-            cout << "Ok, let's try again.";
-            pressEnterToContinue();
-        }
-        else
-        {
-            user_choice_valid = 0;
-            cout << "Error. Enter Y for yes or N for no: ";
-        }
-        
-    } while(user_choice_valid == 0);
 
     return user_choice;
 

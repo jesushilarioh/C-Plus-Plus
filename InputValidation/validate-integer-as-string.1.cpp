@@ -61,7 +61,7 @@ int main()
             //     cout << "Number must contain only one decimal." << endl;
 
             //     cin.clear();
-            //     cin.ignore(1234, '\n');
+            //     cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 
             //     is_num_bool = 0;
             //     is_num = 0;
@@ -84,7 +84,7 @@ int main()
             cout << "Number must contain only one decimal." << endl;
 
             cin.clear();
-            cin.ignore(1234, '\n');
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             
             is_num_bool = 0;
             is_num = 0;

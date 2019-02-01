@@ -30,7 +30,6 @@ int main()
         cin >> letter;
     }
 
-    // Display letter entered
     if (letter == 'y' || letter == 'Y')
     {
         cout << "You've entered " << letter << ". Let's continue!" << endl;

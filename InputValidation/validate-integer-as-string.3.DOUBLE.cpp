@@ -49,19 +49,19 @@ int main()
         {
             
             is_num_bool = 1;
-            cout << str_num << "(str_num) is a number!" << endl;
-            cout << user_num << "(user_num) is a number!" << endl;
+            cout << str_num << "(str_num) is a number!\n";
+            cout << user_num << "(user_num) is a number!\n";
                 
         }
         else
         {
             // cout << "Must be greater than 0." << endl;
-            cout << "Number must NOT contain spaces." << endl;
-            cout << "Number must NOT contain letters." << endl;
-            cout << "Number must contain only one decimal." << endl;
+            cout << "Number must NOT contain spaces.\n";
+            cout << "Number must NOT contain letters.\n";
+            cout << "Number must contain only one decimal.\n";
 
             cin.clear();
-            cin.ignore(100000, '\n');
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             
             is_num_bool = 0;
             is_num = 0;

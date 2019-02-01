@@ -61,7 +61,7 @@ int main()
                 cout << "user_string must be greater that 0.";
                 is_num_bool = 0;
                 cin.clear();
-                cin.ignore(123456, '\n');
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 is_num = 0;
             }
 
@@ -72,7 +72,7 @@ int main()
             //     cout << "user_string must be greater that 0.";
             //     is_num_bool = 0;
             //     cin.clear();
-            //     cin.ignore(123456, '\n');
+            //     cin.ignore(numeric_limits<streamsize>::max(), '\n');
             //     is_num = 0;
             // }
             // else 
@@ -86,7 +86,7 @@ int main()
             cout << "(" << user_string_int << ") user_string IS NOT a number";
             is_num_bool = 0;
             cin.clear();
-            cin.ignore(123456, '\n');
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             is_num = 0;
         }
         
