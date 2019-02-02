@@ -38,7 +38,7 @@ int main()
 }
 ```
 
-##Programming Challenges
+## Programming Challenges
 In particular, as I've been plowing through the programming challenges at the end of each chapter, I've also been recording each programming challenge on my youtube channel. You can find the programming challenges in each chapter's directory under 
 ```
 /Review Questions and Exercises/Programming Challenges
