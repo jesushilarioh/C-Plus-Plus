@@ -20,35 +20,32 @@
 *       calories or fat grams were incorrectly entered.
 *
 * 	Jesus Hilario Hernandez
-* 	February 20, 2018
+* 	February 10, 2019
 *
 ********************************************************************/
 #include <iostream>
 using namespace std;
 int main()
 {
-    // Varibles
-    float cal_from_fat,
+    float calories_from_fat,
           fat_grams,
-          per_of_cal,
-          total_cal;
+          percentage_of_calories,
+          total_calories;
 
-    // Ask for the number of calories & fat grams in food
     cout << "\nEnter number of calories: ";
-    cin >> total_cal;
+    cin >> total_calories;
 
-    if (total_cal > 0)
+    if (total_calories > 0)
     {
         cout << "Enter number of fat grams: ";
         cin >> fat_grams;
 
         if (fat_grams > 0)
         {
-            // Calculate
-            cal_from_fat = fat_grams * 9;
-            per_of_cal = (cal_from_fat / total_cal) * 100;
-
-            if (cal_from_fat > total_cal)
+            calories_from_fat = fat_grams * 9;
+            percentage_of_calories = (calories_from_fat / total_calories) * 100; // .45 == 45
+            
+            if (calories_from_fat > total_calories)
             {
                 cout << "\nCalories from fat cannot be greater\n";
                 cout << "then the total number of calories." << endl;
@@ -58,30 +55,25 @@ int main()
             }
             else
             {
-                // Display the % of calories from fat
-                cout << "Total calories                         = " << total_cal << " cal"<< endl;
+                cout << "Total calories                         = " << total_calories << " cal"<< endl;
                 cout << "Total fat grams                        = " << fat_grams << " g" << endl;
-                cout << "Total calories from fat                = " << cal_from_fat << " cal from fat"<< endl;
-                cout << "Total percentage of calories from fat  = " << per_of_cal << '%' << endl;
+                cout << "Total calories from fat                = " << calories_from_fat << " cal from fat"<< endl;
+                cout << "Total percentage of calories from fat  = " << percentage_of_calories << '%' << endl;
                 cout << endl;
             }
         }
         else
         {
-            // Explain error and try again
-            cout << "We're sorry. Total fat grams must be more than 0.\n";
+            cout << "We're sorry. Fat grams must be more than 0.\n";
             cout << "Please rerun the progarm and try again." << endl;
         }
     }
     else
     {
-        // Explain error and try again
         cout << "We're sorry. Total calories must be more than 0.\n";
         cout << "Please rerun the progarm and try again." << endl;
     }
+    
 
-    // If calories from fat are less than 30%, display "food is low in fat"
-
-    // Terminate program
     return 0;
 }

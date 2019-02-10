@@ -49,7 +49,7 @@ int main()
         stringstream str_stream_object(user_string_num);
         str_stream_object >> user_converted_num;
 
-        if (is_num == user_string_num.size() /* [&& user_converted_num > 0] -- USE IF less than or greater than */ )
+        if (is_num == user_string_num.size() )
         {
             
             is_num_bool = 1;

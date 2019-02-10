@@ -23,7 +23,7 @@
 *       distances less than 0.
 *
 * 	Jesus Hilario Hernandez
-* 	February 21, 2018
+* 	February 21, 2019
 *
 ********************************************************************/
 #include <iostream>
@@ -31,13 +31,16 @@
 using namespace std;
 int main()
 {
-    // Variables
-    int user_select;
+    const int AIR_FEET_PER_SECOND = 1100,
+              WATER_FEET_PER_SECOND = 4900,
+              STEEL_FEET_PER_SECOND = 16400,
+              MINIMUM_DISTANCE = 0;
+
+    int user_menu_choice;
+
     float length_of_travel,
           amount_of_time;
 
-    // Display menu
-    // Ask user to select from menu
     cout << "===================" << endl;
     cout << "    Choose one:    " << endl;
     cout << "-------------------" << endl;
@@ -45,54 +48,55 @@ int main()
     cout << "    2. Water       " << endl;
     cout << "    3. Steel       " << endl;
     cout << "===================" << endl;
-    cin >> user_select;
+    cin >> user_menu_choice;
 
-    // Decision statement
-    switch (user_select)
+    switch (user_menu_choice)
     {
         case 1:
         case 2:
         case 3:
-            // Ask user to enter the distance sound wave will travel
             cout << "\nHow far will the sound wave travel? ";
             cin >>  length_of_travel;
 
-            // If less that 0, error check
-            if (length_of_travel < 0)
+            if (length_of_travel < MINIMUM_DISTANCE)
             {
-                cout << "\nWe're sorry. Distance must be more than 0.\n";
+                cout << "\nError. Distance must be more than 0.\n";
                 cout << "Rerun the program and try again.\n" << endl;
             }
             else
             {
-                if (user_select == 1)
+                // Valid
+                if (user_menu_choice == 1)
                 {
-                    amount_of_time = length_of_travel / 1100;
+                    amount_of_time = length_of_travel / 
+                                     AIR_FEET_PER_SECOND;
                     cout << "In air ";
+                    
                 }
-                else if (user_select == 2)
+                else if (user_menu_choice == 2)
                 {
-                    amount_of_time = length_of_travel / 4900;
+                    amount_of_time = length_of_travel / 
+                                     WATER_FEET_PER_SECOND;
                     cout << "In water ";
                 }
-                else if (user_select == 3)
+                else if (user_menu_choice == 3)
                 {
-                    amount_of_time = length_of_travel / 16400;
+                    amount_of_time = length_of_travel / 
+                                     STEEL_FEET_PER_SECOND;
                     cout << "In steel ";
                 }
-
-                // Display amount of time it will take
                 cout << setprecision(4) << fixed;
                 cout << "the sound wave will take " << amount_of_time;
                 cout << " seconds to travel." << endl << endl;
             }
             break;
-
+    
         default:
             cout << "\nWe're sorry. Choose a number between 1 and 3." << endl;
             cout << "Rerun the program and try again.\n" << endl;
+            break;
     }
 
-    // Terminate program
+
     return 0;
 }

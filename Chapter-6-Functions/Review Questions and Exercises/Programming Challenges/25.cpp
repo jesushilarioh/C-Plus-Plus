@@ -100,7 +100,7 @@ int carMilage();
 
 double vehicleExpenses(double);
 double parkingFees(double &);
-double taxiFees(double &, double &);
+double taxiFees(double &);
 double conferenceFees();
 double hotelExpenses(double &);
 
@@ -110,7 +110,10 @@ double inputValidate(double);
 int inputValidate(int);
 int validateTime();
 char validateChoice();
+
 void pressEnterToContinue();
+void display(string, int);
+void display(string, double);
 
 int main()
 {
@@ -131,25 +134,50 @@ int main()
            meal_amount,
            total_expenses,
            total_allowable_expenses = 0,    // Reference
-           total_savings;
+           total_savings,
+           potential_savings;
 
 
      // Function Calls
     days_spent = daysSpent();
+    display("days_spent", days_spent);
+
     departure_time = departureTime();
+    display("departure_time", departure_time);
+    
     arrival_time = arrivalTime();
+    display("arrival_time", arrival_time);
+    
     round_trip_airfare = roundTripAirfare();
+    display("round_trip_airfare", round_trip_airfare);
 
     car_rental_amount = carRentalAmount();
+    display("car_rental_amount", car_rental_amount);
+    
     car_milage = carMilage();
+    display("car_milage", car_milage);
 
     vehicle_expense = vehicleExpenses(car_milage);
+    display("vehicle_expenses", vehicle_expense);
+    
     parking_fees = parkingFees(total_allowable_expenses);
-    taxi_fees = taxiFees(amount_paid_by_employee, total_allowable_expenses);
+    display("total_allowable_expenses", total_allowable_expenses);
+    display("parking_fees", parking_fees);
+    
+    taxi_fees = taxiFees(total_allowable_expenses);
+    display("total_allowable_expenses", total_allowable_expenses);
+    display("taxi_fees", taxi_fees);
+    
     conference_fees = conferenceFees();
-    hotel_expenses = hotelExpenses(amount_paid_by_employee);
+    display("conference_fees", conference_fees);
+    
+    hotel_expenses = hotelExpenses(total_allowable_expenses);
+    display("total_allowable_expenses", total_allowable_expenses);
+    display("hotel_expenses", hotel_expenses);
 
-    meal_amount = mealAmount(departure_time, arrival_time, amount_paid_by_employee);
+    meal_amount = mealAmount(departure_time, arrival_time, total_allowable_expenses);
+    display("total_allowable_expenses", total_allowable_expenses);
+    display("meal_amount", meal_amount);
 
 
     /********************************************************
@@ -168,17 +196,18 @@ int main()
                      taxi_fees          +
                      conference_fees    +
                      hotel_expenses     +
-                     meal_amount        +
-                     amount_paid_by_employee;
+                     meal_amount;
 
+    amount_paid_by_employee = total_expenses - total_allowable_expenses;
     total_savings = total_expenses - amount_paid_by_employee;
+    potential_savings = amount_paid_by_employee - total_allowable_expenses;
 
     cout << setprecision(2) << fixed;
     cout << "\n---------------------------------------------"               << endl
          << "Total expenses               = $" << total_expenses            << endl
          << "Total Allowable expenses     = $" << total_allowable_expenses  << endl
          << "Total reimbursement expenses = $" << amount_paid_by_employee   << endl
-         << "Total potential savings      = $" << total_savings             << endl 
+         << "Total potential savings      = $" << potential_savings         << endl 
          << "---------------------------------------------"                 << endl;
 
     // calculateAndDisplay();
@@ -218,9 +247,7 @@ int departureTime()
 {
     int departure_time;
 
-    cout << "\nNext, Let's start with the time of departure on 1st day.\n";
-    
-    pressEnterToContinue();
+    cout << "\nNext, Let's start with the time of departure on 1st day.\n\n";
 
     departure_time = validateTime();
     return departure_time;
@@ -237,9 +264,7 @@ int arrivalTime()
 {
     int arrival_time;
 
-    cout << "\nNext, what was the time of arrival on last day?\n";
-
-    pressEnterToContinue();
+    cout << "\nNext, what was the time of arrival on last day?\n\n";
 
     arrival_time = validateTime();
     return arrival_time;
@@ -415,7 +440,7 @@ double parkingFees(double &total_allowable_expenses)
  * taxiFees ask for, receives, validates, and           *
  * returns, if any, taxi fees.                          *
  ********************************************************/
-double taxiFees(double &amount_paid_by_employee, double &total_allowable_amount)
+double taxiFees(double &total_allowable_expenses)
 {
     const double TAXI_LIMIT = 10.00;
 
@@ -438,15 +463,10 @@ double taxiFees(double &amount_paid_by_employee, double &total_allowable_amount)
                  << (i + 1) << ": ";
             fee = inputValidate(0);
 
-            if (fee <= TAXI_LIMIT)
-                taxi_fees += fee;
-            else
-            {
-                taxi_fees += TAXI_LIMIT;
-                amount_paid_by_employee += fee - TAXI_LIMIT;
+            if (fee > TAXI_LIMIT)
                 total_allowable_expenses += TAXI_LIMIT;
-            }
 
+            taxi_fees += fee;
         }
 
         return taxi_fees;
@@ -504,7 +524,7 @@ double conferenceFees()
  * hotelExpenses ask for, receives, validates, and      *
  * returns, if any, hotel expenses.                     *
  ********************************************************/
-double hotelExpenses(double &amount_paid_by_employee)
+double hotelExpenses(double &total_allowable_expenses)
 {
     const double HOTEL_LIMIT = 90.00;
 
@@ -527,14 +547,11 @@ double hotelExpenses(double &amount_paid_by_employee)
                  << (i + 1) << ": ";
             fee = inputValidate(0);
 
-            if (fee <= HOTEL_LIMIT)
-                hotel_expenses += fee;
-            else
-            {
-                hotel_expenses += HOTEL_LIMIT;
-                amount_paid_by_employee += fee - HOTEL_LIMIT;
-            }
-                
+            if (fee > HOTEL_LIMIT)
+                total_allowable_expenses += HOTEL_LIMIT;
+
+            hotel_expenses += fee;
+    
         }
 
         return hotel_expenses;
@@ -562,7 +579,7 @@ double hotelExpenses(double &amount_paid_by_employee)
  ********************************************************/
 double mealAmount(int departure_time, 
                 int arrival_time,
-                double &amount_paid_by_employee)
+                double &total_allowable_expenses)
 {
     const double BREAKFAST_LIMIT = 9.00,
                  LUNCH_LIMIT     = 12.00,
@@ -576,7 +593,7 @@ double mealAmount(int departure_time,
     // FOR DEPATURE!!
     // FOR DEPATURE!!
     // FOR DEPATURE!!
-    cout << "Upon depature of your first day, did you have a meal? ";
+    cout << "Upon depature of your first day, did you have a meal? (y/n): ";
     user_choice = validateChoice();
 
     if (user_choice == 'Y' || user_choice == 'y')
@@ -588,13 +605,10 @@ double mealAmount(int departure_time,
                  << "What was amount for breakfast? ";
             fee = inputValidate(0);
 
-            if (fee < BREAKFAST_LIMIT)
-                meal_amount += fee;
-            else
-            {
-                meal_amount += BREAKFAST_LIMIT;
-                amount_paid_by_employee += fee - BREAKFAST_LIMIT;
-            }
+            if (fee > BREAKFAST_LIMIT)
+                total_allowable_expenses += BREAKFAST_LIMIT;
+            
+            meal_amount += fee;
         }
         else if(departure_time > 700 && departure_time < 1200)   // Lunch
         {
@@ -603,13 +617,10 @@ double mealAmount(int departure_time,
                  << "What was amount for lunch? ";
             fee = inputValidate(0);
 
-            if (fee < LUNCH_LIMIT)
-                meal_amount += fee;
-            else
-            {
-                meal_amount += LUNCH_LIMIT;
-                amount_paid_by_employee += fee - LUNCH_LIMIT;
-            }
+            if (fee > LUNCH_LIMIT)
+                total_allowable_expenses += LUNCH_LIMIT;
+            
+            meal_amount += fee;
         }
         else if(departure_time > 1200 && departure_time < 1800)  // Dinner
         {
@@ -618,13 +629,10 @@ double mealAmount(int departure_time,
                  << "What was amount for dinner? ";
             fee = inputValidate(0);
 
-            if (fee < DINNER_LIMIT)
-                meal_amount += fee;
-            else
-            {
-                meal_amount += DINNER_LIMIT;
-                amount_paid_by_employee = fee - DINNER_LIMIT;
-            }
+            if (fee > DINNER_LIMIT)
+                total_allowable_expenses += DINNER_LIMIT;
+            
+            meal_amount += fee;
         }
         else    // If not within time restrains of Breakfast, Lunch, or Dinner.
         {
@@ -633,28 +641,25 @@ double mealAmount(int departure_time,
                  << "What was amount for your meal? ";
             fee = inputValidate(0);
 
-            meal_amount = 0;
-            amount_paid_by_employee += fee;
+            meal_amount += fee;
+
         }
 
-        return meal_amount;
     }
     else if (user_choice == 'N' || user_choice == 'n')
     {
         meal_amount = 0;
-        return meal_amount;
     }
     else
     {
         // cout << "Error: Y or N must be chosen to proceed: ";
         meal_amount = 0;
-        return meal_amount;
     }
 
     // FOR ARRIVAL
     // FOR ARRIVAL
     // FOR ARRIVAL
-    cout << "Upon arrival on your last day, did you have a meal? ";
+    cout << "Upon arrival on your last day, did you have a meal? (y/n): ";
     user_choice = validateChoice();
 
     if (user_choice == 'Y' || user_choice == 'y')
@@ -666,13 +671,10 @@ double mealAmount(int departure_time,
                  << "What was amount for breakfast? ";
             fee = inputValidate(0);
 
-            if (fee < BREAKFAST_LIMIT)
-                meal_amount += fee;
-            else
-            {
-                meal_amount += BREAKFAST_LIMIT;
-                amount_paid_by_employee = fee - BREAKFAST_LIMIT;
-            }
+            if (fee > BREAKFAST_LIMIT)
+                total_allowable_expenses += BREAKFAST_LIMIT;
+            
+            meal_amount += fee;
         }
         else if(arrival_time > 1300 && arrival_time < 1900)   // Lunch
         {
@@ -681,13 +683,10 @@ double mealAmount(int departure_time,
                  << "What was amount for lunch? ";
             fee = inputValidate(0);
 
-            if (fee < LUNCH_LIMIT)
-                meal_amount += fee;
-            else
-            {
-                meal_amount += LUNCH_LIMIT;
-                amount_paid_by_employee = fee - LUNCH_LIMIT;
-            }
+            if (fee > LUNCH_LIMIT)
+                total_allowable_expenses += LUNCH_LIMIT;
+            
+            meal_amount += fee;
         }
         else if(arrival_time > 1900)  // Dinner
         {
@@ -696,13 +695,10 @@ double mealAmount(int departure_time,
                  << "What was amount for dinner? ";
             fee = inputValidate(0);
 
-            if (fee < DINNER_LIMIT)
-                meal_amount += fee;
-            else
-            {
-                meal_amount += DINNER_LIMIT;
-                amount_paid_by_employee = fee - DINNER_LIMIT;
-            }
+            if (fee > DINNER_LIMIT)
+                total_allowable_expenses += DINNER_LIMIT;
+            
+            meal_amount += fee;
         }
         else    // If not within time restrains of Breakfast, Lunch, or Dinner.
         {
@@ -711,8 +707,7 @@ double mealAmount(int departure_time,
                  << "What was amount for your meal? ";
             fee = inputValidate(0);
 
-            meal_amount = 0;
-            amount_paid_by_employee = fee;
+            meal_amount += fee;
         }
 
         return meal_amount;
@@ -979,8 +974,6 @@ int validateTime()
              << endl 
              << endl;
 
-        pressEnterToContinue();
-
         cout << "Ok, in this next portion you will need to input\n"
              << "the time in sections. \n\nThe first will be the hour\n"
              << "that you departed and the second will be the minutes.\n"
@@ -1010,6 +1003,52 @@ int validateTime()
                 is_num_bool = 1;
                 // cout << hour << "(hour) is a number!" << endl;
                 // cout << int_hour << "(int_hour) is a number!" << endl;
+                if (time_of_day == "PM")
+                {
+                    switch (int_hour)
+                    {
+                        case 1:
+                            hour = "13";
+                            break;
+                        case 2:
+                            hour = "14";
+                            break;
+                        case 3:
+                            hour = "15";
+                            break;
+                        case 4:
+                            hour = "16";
+                            break;
+                        case 5:
+                            hour = "17";
+                            break;
+                        case 6:
+                            hour = "18";
+                            break;
+                        case 7:
+                            hour = "19";
+                            break;
+                        case 8:
+                            hour = "20";
+                            break;
+                        case 9:
+                            hour = "21";
+                            break;
+                        case 10:
+                            hour = "22";
+                            break;
+                        case 11:
+                            hour = "23";
+                            break;
+                        
+                    }
+                }
+                else if (time_of_day == "AM")
+                {
+                    if (int_hour == 12)
+                        hour = "0";
+
+                }
             }
             else
             {
@@ -1029,7 +1068,7 @@ int validateTime()
         is_num = 0;
 
         cout << "You've entered: "
-             << hour <<  endl;
+             << int_hour <<  endl;
 
         do
         {
@@ -1050,10 +1089,56 @@ int validateTime()
                 is_num_bool = 1;
                 // cout << minutes << "(minutes) is a number!" << endl;
                 // cout << int_minutes << "(int_minutes) is a number!" << endl;
+                if (time_of_day == "PM")
+                {
+                    switch (int_hour)
+                    {
+                        case 1:
+                            hour = "13";
+                            break;
+                        case 2:
+                            hour = "14";
+                            break;
+                        case 3:
+                            hour = "15";
+                            break;
+                        case 4:
+                            hour = "16";
+                            break;
+                        case 5:
+                            hour = "17";
+                            break;
+                        case 6:
+                            hour = "18";
+                            break;
+                        case 7:
+                            hour = "19";
+                            break;
+                        case 8:
+                            hour = "20";
+                            break;
+                        case 9:
+                            hour = "21";
+                            break;
+                        case 10:
+                            hour = "22";
+                            break;
+                        case 11:
+                            hour = "23";
+                            break;
+                        
+                    }
+                }
+                else if (time_of_day == "AM")
+                {
+                    if (int_hour == 12)
+                        hour = "0";
+
+                }
             }
             else
             {
-                cout << "Must be  anumber and between 0 and 12. ";
+                cout << "Must be a number and between 0 and 12. ";
 
                 cin.clear();
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -1068,7 +1153,7 @@ int validateTime()
         cout << "Time = "
             << int_hour
             << ":"
-            << setw(2) << right << int_minutes
+            << setw(2) << right << minutes
             << " " << time_of_day
             << endl;
 
@@ -1079,16 +1164,21 @@ int validateTime()
         if (correct_time == 'N' || correct_time == 'n')
         {
             cout << "You've chosen no ['N'].\n"
-                 << "Let's try again.";
-            pressEnterToContinue();
+                 << "Let's try again.\n";
         }
 
 
     } while (correct_time == 'n' || correct_time == 'N');
 
-    if (int_minutes >= 0 || int_minutes < 10)
+    if (int_minutes >= 0 && int_minutes < 10)
     {
-        user_time_string = int_hour + 0 + int_minutes;
+        user_time_string = hour + "0" + minutes;
+        stringstream str_stream_object(user_time_string);
+        str_stream_object >> user_time;
+    }
+    else 
+    {
+        user_time_string = hour + minutes;
         stringstream str_stream_object(user_time_string);
         str_stream_object >> user_time;
     }
@@ -1129,10 +1219,35 @@ char validateChoice()
 
 }
 
+/**
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * Stubs and Driver
+ */ 
 void pressEnterToContinue() 
 {
     cout << "\n\nPress [Enter] to continue:\n";
     cin.clear();
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cin.get();
+}
+void display(string description, int variable) 
+{
+    cout << endl
+         << description << " = " 
+         << variable
+         << endl;
+}
+void display(string description, double variable) 
+{
+    cout << endl
+         << description << " = " 
+         << variable
+         << endl;
 }

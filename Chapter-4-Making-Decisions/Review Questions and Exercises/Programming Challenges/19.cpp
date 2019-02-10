@@ -17,13 +17,11 @@
 using namespace std;
 int main()
 {
-    // Variables
     double wavelength;
-    // Ask for wavelength (in meters)
-    cout << "/nEnter wavelength (in meters): ";
-    cin >> wavelength;
 
-    // Display the type of wave according to chart
+    cout << "\nEnter wavelength (in meters): ";
+    cin >> wavelength; // .0001
+
     if (wavelength >= 1E-2)
         cout << "Radio Waves" << endl;
     else if (wavelength <= 1E-2 && wavelength >= 1E-3)
@@ -39,8 +37,7 @@ int main()
     else if (wavelength <= 1E-11)
         cout << "Gamma Rays" << endl;
 
-    // Format line break
     cout << endl;
-    // Terminate program
+
     return 0;
 }
