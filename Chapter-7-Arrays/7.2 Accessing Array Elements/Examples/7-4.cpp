@@ -22,6 +22,5 @@ int main()
 
     cout << "The numbers were saved to the file.\n";
 
-
     return 0;
 }
