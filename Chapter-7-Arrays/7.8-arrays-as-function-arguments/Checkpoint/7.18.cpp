@@ -20,7 +20,7 @@ int main()
         cin >> userNums[count];
     }
     cout << "The average of those numbers is "
-         << avgArray(userNums, SIZE) << endl;
+         << avgArray(userNums, SIZE) << endl; //ABCDEFGH
     
     return 0;
 }
