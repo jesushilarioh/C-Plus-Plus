@@ -1,0 +1,45 @@
+1. What is the difference between a size declarator and a subscript? 
+
+2. Look at the following array definition.
+int values[10];
+How many elements does the array have?
+What is the subscript of the first element in the array?
+What is the subscript of the last element in the array?
+Assuming that an int uses four bytes of memory, how much memory does the array use?
+
+3. Why should a function that accepts an array as an argument, and processes that array, also accept an argument specifying the array’s size?
+
+4. Consider the following array definition:
+int values[5] = { 4, 7, 6, 8, 2 };
+What does each of the following statements display?
+cout << values[4] << endl; __________
+cout << (values[2] + values[3]) << endl; __________ cout << ++values[1] << endl; __________
+
+5. How do you define an array without providing a size declarator?
+
+6. Look at the following array definition.
+int numbers[5] = { 1, 2, 3 }; What value is stored in numbers[2]? What value is stored in numbers[4]?
+
+7. Assuming that array1 and array2 are both arrays, why is it not possible to assign the contents of array2 to array1 with the following statement?
+array1 = array2;
+
+8. Assuming that numbers is an array of doubles, will the following statement display
+the contents of the array?
+cout << numbers << endl;
+
+9. Is an array passed to a function by value or by reference?
+
+10. When you pass an array name as an argument to a function, what is actually being passed?
+
+11. How do you establish a parallel relationship between two or more arrays?
+
+12. Look at the following array definition.
+double sales[8][10];
+How many rows does the array have?
+How many columns does the array have?
+How many elements does the array have?
+Write a statement that stores a number in the last column of the last row in the array.
+
+13. When writing a function that accepts a two-dimensional array as an argument, which size declarator must you provide in the parameter for the array?
+
+14. What advantages does a vector offer over an array?
