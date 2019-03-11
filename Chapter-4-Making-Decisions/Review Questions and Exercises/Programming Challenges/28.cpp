@@ -1,33 +1,36 @@
-// 1, 1, 1
+// Vegetarian, Vegan, Gluten-Free
+
+// yes, yes, yes
 // Corner Cafe
 // The Chef's Kitchen
-// 1, 0, 0
+// yes, no, no
 // Main Street Pizza Company
 // Corner Cafe
 // Mama's Fine Italian
 // The Chef's Kitchen
-// 1, 1, 0
+// yes, yes, no
 // Corner Cafe
 // The Chef's Kitchen
-// 1, 0, 1
+// yes, no, yes
 // Main Street Pizza Company
 // Corner Cafe
 // The Chef's Kitchen
 
 
-// 0, 1, 1
+
+// no, yes, yes
 // Corner Cafe
 // The Chef's Kitchen
-// 0, 0, 0
+// no, no, no
 // Joe's Gourmet Burgers
 // Main Street Pizza Company
 // Corner Cafe
 // Mama's Fine Italian
 // The Chef's Kitchen
-// 0, 1, 0
+// no, yes, no
 // Corner Cafe
 // The Chef's Kitchen
-// 0, 0, 1
+// no, no, yes
 // Main Street Pizza Company
 // Corner Cafe
 // The Chef's Kitchen
@@ -44,14 +47,12 @@ int main()
     cin >> vegetarian;
     if (vegetarian == "yes" || vegetarian == "no") 
     {
-        cout << "Is anyone in your party a vegan?\n"
-             << "(1 for yes, 0 for no): ";
+        cout << "Is anyone in your party a vegan? ";
         cin >> vegan;
 
         if (vegan == "yes" || vegan == "no") 
         {
-            cout << "Is anyone in your party a gluten-free?\n"
-                 << "(1 for yes, 0 for no): ";
+            cout << "Is anyone in your party a gluten-free? ";
             cin >> gluten_free;
 
             if (gluten_free == "yes" || gluten_free == "no") 
