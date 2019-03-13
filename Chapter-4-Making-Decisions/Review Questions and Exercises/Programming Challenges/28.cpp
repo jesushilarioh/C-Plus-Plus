@@ -34,7 +34,15 @@
 // Main Street Pizza Company
 // Corner Cafe
 // The Chef's Kitchen
+// You have a group of friends coming to visit for your high school reunion, and you want to take them out to eat at a local restaurant. You aren’t sure if any of them have dietary restrictions, but your restaurant choices are as follows:
 
+// Joe’s Gourmet Burgers—Vegetarian: No, Vegan: No, Gluten-Free: No
+// Main Street Pizza Company—Vegetarian: Yes, Vegan: No, Gluten-Free: Yes
+// Corner Cafe—Vegetarian: Yes, Vegan:Yes, Gluten-Free: Yes
+// Mama’s Fine Italian—Vegetarian: Yes, Vegan: No, Gluten-Free: No
+// The Chef’s Kitchen—Vegetarian: Yes, Vegan: Yes, Gluten-Free: Yes
+
+// Write a program that asks whether any members of your party are vegetarian, vegan, or gluten-free, then display only the restaurants that you may take the group to.
 #include <iostream>
 using namespace std;
 int main()
