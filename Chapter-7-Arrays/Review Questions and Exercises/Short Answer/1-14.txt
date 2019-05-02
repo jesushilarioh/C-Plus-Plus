@@ -1,45 +1,75 @@
 1. What is the difference between a size declarator and a subscript? 
+// A size declarator determines the size of the array, while the subscript us used to access any single element within the array.
 
 2. Look at the following array definition.
 int values[10];
 How many elements does the array have?
+--> The array has 10 elements.
+
 What is the subscript of the first element in the array?
+--> The subscript of the first element in the array is values[0].
+
 What is the subscript of the last element in the array?
+--> The subscript of the last element in the array is values[9].
+
 Assuming that an int uses four bytes of memory, how much memory does the array use?
+--> Since one int uses 4 bytes of memory, and the given array has 10 elements, the array uses 40 bytes of memory.
 
 3. Why should a function that accepts an array as an argument, and processes that array, also accept an argument specifying the array’s size?
+--> Since an array is passed by reference, a size argeument must be passed and used to process the array within a function.
 
 4. Consider the following array definition:
 int values[5] = { 4, 7, 6, 8, 2 };
 What does each of the following statements display?
-cout << values[4] << endl; __________
-cout << (values[2] + values[3]) << endl; __________ cout << ++values[1] << endl; __________
+cout << values[4] << endl; --> answer: 2
+cout << (values[2] + values[3]) << endl; --> answer: 14
+cout << ++values[1] << endl; --> answer: 8
 
 5. How do you define an array without providing a size declarator?
+--> You can define an array without specifying it's size if you provide an initialization list.
 
 6. Look at the following array definition.
-int numbers[5] = { 1, 2, 3 }; What value is stored in numbers[2]? What value is stored in numbers[4]?
+int numbers[5] = { 1, 2, 3 }; What value is stored in numbers[2]? 
+--> The value 3 is stored in the numbers[2] element.
+What value is stored in numbers[4]?
+--> The value 0 is stored in the numbers[4] element. Uninitialized elements will automatically be set to 0.
 
 7. Assuming that array1 and array2 are both arrays, why is it not possible to assign the contents of array2 to array1 with the following statement?
 array1 = array2;
+--> It is not possible because what this statement attempts to assign the beginning memory address of array1 to array2.
 
 8. Assuming that numbers is an array of doubles, will the following statement display
 the contents of the array?
 cout << numbers << endl;
+--> No.When this statement executes, cout will display the array's memory address, not the array's contents.
 
 9. Is an array passed to a function by value or by reference?
+--> An array is passed toa function by reference. Imagine creating a copy of a 10,000 element array every time it is called by a function.
 
 10. When you pass an array name as an argument to a function, what is actually being passed?
+--> When you pass an array name as an argument to a function, you are actually passing the beginning memory address of an array.
 
 11. How do you establish a parallel relationship between two or more arrays?
+--> You establish a parallel relationship between two or more arrays by using a subscript to access both arrays.
 
 12. Look at the following array definition.
 double sales[8][10];
 How many rows does the array have?
+--> The sales array has 8 columns.
+
 How many columns does the array have?
+--> The array has 10 columns.
+
 How many elements does the array have?
+--> The array has 80 elements.
+
 Write a statement that stores a number in the last column of the last row in the array.
+sales[7][9] = 1900;
 
 13. When writing a function that accepts a two-dimensional array as an argument, which size declarator must you provide in the parameter for the array?
+--> When writing a function that accepts a two-dimensional array as an argument, you must provide the column size declarator in the parameter. This is true in C++ because of the way two-dimensional arrays are stored in memory.
 
 14. What advantages does a vector offer over an array?
+--> a. With a vector you do no have to declare the number of elements that the vector will have.
+--> b. With a vector, if you add a value to a vector that is already full, the vector will automatically increase its size to accommodate the new value.
+--> c. Vectors can report the number of elements they contain.
