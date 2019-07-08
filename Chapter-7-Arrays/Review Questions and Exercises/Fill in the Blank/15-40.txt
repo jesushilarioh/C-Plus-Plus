@@ -1,27 +1,27 @@
-Fill-in-the-Blank
+Fill-in-the-Blank:
 15. The __size declarator__ indicates the number of elements, or values, an array can hold.
 16. The size declarator must be a(n) __constant integer expression__ with a value greater than __zero__.
 17. Each element of an array is accessed and indexed by a number known as a(n) __subscript__.
 18. Subscript numbering in C++ always starts at __0__.
 19. The number inside the brackets of an array definition is the __size declarator__, but the number inside an array’s brackets in an assignment statement, or any other statement that works with the contents of the array, is the __subscript__.
-20. C++ has no array _________ checking, which means you can inadvertently store data past the end of an array.
-21. Starting values for an array may be specified with a(n) _________ list.
-22. If an array is partially initialized, the uninitialized elements will be set to _________.
-23. If the size declarator of an array definition is omitted, C++ counts the number of items in the _________ to determine how large the array should be.
-24. By using the same _________ for multiple arrays, you can build relationships between the data stored in the arrays.
-25. You cannot use the _________ operator to copy data from one array to another in a single statement.
-26. Any time the name of an array is used without brackets and a subscript, it is seen as _________.
-27. To pass an array to a function, pass the _________ of the array.
-28. A(n) _________ array is like several arrays of the same type put together.
-29. It’s best to think of a two-dimensional array as having _________ and _________.
-30. To define a two-dimensional array, _________ size declarators are required.
-31. When initializing a two-dimensional array, it helps to enclose each row’s initialization list in _________.
-32. When a two-dimensional array is passed to a function the _________ size must be specified.
-33. The ____________________ is a collection of programmer-defined data types and algo- rithms that you may use in your programs.
-34. The two types of containers defined by the STL are ___________ and ______________.
-35. The vector data type is a(n) ______________ container.
-36. To define a vector in your program, you must #include the ____________ header file.
-37. To store a value in a vector that does not have a starting size, or that is already full, use the ________________ member function.
-38. To determine the number of elements in a vector, use the _____________ member function.
-39. Use the ________________ member function to remove the last element from a vector.
-40. To completely clear the contents of a vector, use the ___________ member function.
+20. C++ has no array __bounds__ checking, which means you can inadvertently store data past the end of an array.
+21. Starting values for an array may be specified with a(n) __initialization__ list.
+22. If an array is partially initialized, the uninitialized elements will be set to __0__.
+23. If the size declarator of an array definition is omitted, C++ counts the number of items in the __initialization_list__ to determine how large the array should be.
+24. By using the same __subscript__ for multiple arrays, you can build relationships between the data stored in the arrays.
+25. You cannot use the __assignment__ operator to copy data from one array to another in a single statement.
+26. Any time the name of an array is used without brackets and a subscript, it is seen as __the starting memory address of the array__.
+27. To pass an array to a function, pass the __name__ of the array.
+28. A(n) __two-dimensional__ array is like several arrays of the same type put together.
+29. It’s best to think of a two-dimensional array as having __rows__ and __columns__.
+30. To define a two-dimensional array, __two__ size declarators are required.
+31. When initializing a two-dimensional array, it helps to enclose each row’s initialization list in __set of braces__.
+32. When a two-dimensional array is passed to a function the __array__ size must be specified.
+33. The __Standard Template Library (STL)__ is a collection of programmer-defined data types and algorithms that you may use in your programs.
+34. The two types of containers defined by the STL are __sequence__ and __associative__.
+35. The vector data type is a(n) __sequence__ container.
+36. To define a vector in your program, you must #include the __<vector>__ header file.
+37. To store a value in a vector that does not have a starting size, or that is already full, use the __push_back()__ member function.
+38. To determine the number of elements in a vector, use the __size()__ member function.
+39. Use the __pop_back()__ member function to remove the last element from a vector.
+40. To completely clear the contents of a vector, use the __clear()__ member function.
