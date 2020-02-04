@@ -1,0 +1,99 @@
+50.An array’s size declarator can be either a literal, a named constant,or a variable.
+FALSE: cannot be a variable, because a variable is subject to change.
+
+51. To calculate the amount of memory used by an array, multiply the number of elements by the number of bytes each element uses.
+TRUE. array_size x number_of_bytes
+
+52. The individual elements of an array are accessed and indexed by unique numbers.
+TRUE: individual elements are accessed by using a subscript
+
+53. The first element in an array is accessed by the subscript 1.
+FALSE: the first element in an array is accessed by the subscript 0.
+
+54. The subscript of the last element in a single-dimensional array is one less than the total number of elements in the array.
+TRUE
+
+55. The contents of an array element cannot be displayed with cout.
+TRUE
+
+56. Subscript numbers may be stored in variables.
+TRUE
+
+57. You can write programs that use invalid subscripts for an array.
+TRUE: the program will write beyond the array's boundaries.
+
+58. Arrays cannot be initialized when they are defined. A loop or other means must be used.
+FALSE: Arrays may be initialized when defined, using braces and separated by commas.
+
+59. The values in an initialization list are stored in the array in the order they appear in the list.
+TRUE
+
+60. C++ allows you to partially initialize an array.
+TRUE
+
+61. If an array is partially initialized,the uninitialized elements will contain “garbage.”
+FALSE: uninitialized elements will be set to 0.
+
+62. If you leave an element uninitialized, you do not have to leave all the ones that follow it uninitialized.
+FALSE: C++ does not provide a way to skip elements in the initialization list.
+
+63. If you leave out the size declarator of an array definition, you do not have to include an initialization list.
+FALSE: an initialization list must be provided if a size declarator is not present in an array definition.
+
+64. The uninitialized elements of a string array will automatically be set to the value "0".
+FALSE: uninitialized elements of a string array are automatically set to empty strings
+
+65. You cannot use the assignment operator to copy one array’s contents to another in a single statement.
+TRUE
+
+66. When an array name is used without brackets and a subscript, it is seen as the value of the first element in the array.
+FALSE: When an array name is used without brackets and a subscript, it is seen as the array’s beginning memory address.
+
+67. To pass an array to a function, pass the name of the array.
+TRUE.
+
+68. When defining a parameter variable to hold a single-dimensional array argument, you do not have to include the size declarator.
+TRUE, becuase the parameter variable is special variable that can accept the address of an array.
+
+69. When an array is passed to a function, the function has access to the original array.
+FALSE: when an array is passed to a function, it is passed by reference; Not by value.
+
+70. A two-dimensional array is like several identical arrays put together.
+TRUE. It is useful for storing multiple sets of data.
+
+71. It’s best to think of two-dimensional arrays as having rows and columns.
+TRUE.
+
+72. The first size declarator (in the declaration of a two-dimensional array) represents the number of columns. The second size definition represents the number of rows.
+FALSE. The first number represents (rows), while the second number represents (columns).
+
+73. Two-dimensional arrays may be passed to functions, but the row size must be specified in the definition of the parameter variable.
+FALSE. Two-dimensional arrays may be passed to functions, but the COLUMN size must be specified in the definition of the parameter variable.
+
+74. C++ allows you to create arrays with three or more dimensions.
+TRUE.
+
+75. A vector is an associative container.
+FALSE. A vector is a SEQUENCE container.
+
+76. To use a vector, you must include the vector header file.
+TRUE. #include <vector>
+
+77. A vectors can report the number of elements they contain.
+TRUE.
+
+78. You can use the [] operator to insert a value into a vector that has no elements.
+FALSE. You cannot use the [] operator to access a vector element that does not exist. To store a value in a vector that does not have a starting size, or that is already full, use the push_back member function.
+
+79. If you add a value to a vector that is already full, the vector will automatically increase its size to accommodate the new value.
+TRUE.
+
+
+
+
+
+
+
+
+
+

@@ -21,20 +21,15 @@
 #include <ctime>    // For time() function
 using namespace std;
 
-// Function Prototypes
 void coinToss();
 int inputValidate(int);
 
 int main()
 {
-    // Variables
     int choice;
-    // Get system time.
     unsigned seed = time(0);
-    // Seed random number generator
     srand(seed);
 
-    // asks user how many times coin should be tossed
     cout << "How many times should the coin be tossed? ";
     choice = inputValidate(choice);
 
@@ -45,35 +40,7 @@ int main()
 }
 
 /********************************************************
- * Definition of coinToss function:                     *
- * The coinToss function simulates the tossing of a     *
- * coin. It generates a random number, either 1 or 2.   *
- * If 1 is generated "heads" will be displayed. If 2    *
- * it displays "tails".                                 * 
- ********************************************************/
-void coinToss()
-{
-    // Constant local variables
-    const int MIN_VALUE = 1,
-              MAX_VALUE = 2;
-    
-    // Local variables
-    int coin;
-
-    // Assign a random number to coin variable
-    coin = (rand() % (MAX_VALUE - MIN_VALUE + 1)) + MIN_VALUE;
-
-    // Display heads or tails using the conditional operator
-    cout << (coin == MIN_VALUE ? "Heads" : "Tails") << endl;
-}
-
-/********************************************************
- * Definition of inputValidate function:                *
- * This function checks user input. When the            *
- * user enters anything other than an (int), the        *
- * inputValidate will display an error, clear the input *
- * stream, ignore previous input up untill the new      *
- * line (\n) character.                                 *
+ * inputValidate()                                      *
  ********************************************************/
 int inputValidate(int num)
 {
@@ -81,7 +48,22 @@ int inputValidate(int num)
     {
         cout << "Error. An integer above 0 must be entered: ";
         cin.clear();
-        cin.ignore(123, '\n');
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
     }
     return num;
+}
+
+/********************************************************
+ * coinToss()                                           *
+ ********************************************************/
+void coinToss()
+{
+    const int MIN_VALUE = 1,
+              MAX_VALUE = 2;
+    
+    int coin;
+
+    coin = (rand() % (MAX_VALUE - MIN_VALUE + 1)) + MIN_VALUE;
+
+    cout << (coin == MIN_VALUE ? "Heads" : "Tails") << endl;
 }

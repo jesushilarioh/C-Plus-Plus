@@ -50,7 +50,7 @@ using namespace std;
 double inputValidate(double, double);
 void getOrderInfo();
 void displayOrderInfo(double, double, double = 10.00);
-char YorNCheck(char);
+char inputValidate(char);
 
 int main()
 {
@@ -85,7 +85,7 @@ void getOrderInfo()
     num_spools_in_stock = inputValidate(num_spools_in_stock, 0);
 
     cout << "Any special shipping & handling charges? (y/n):";
-    user_choice = YorNCheck(user_choice);
+    user_choice = inputValidate(user_choice);
 
     if (user_choice == 'Y' || user_choice == 'y')
     {
@@ -119,25 +119,21 @@ double inputValidate(double num1, double num2)
         cout << "Error. Integer must not be "
              << " less than " << num2 << ": ";
         cin.clear();
-        cin.ignore(1234, '\n');
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
     }
 
     return num1;
 }
 
-char YorNCheck(char letter)
+char inputValidate(char letter)
 {
     cin >> letter;
-    // Error check algorithim
+
     while (!((letter == 'y') || (letter == 'Y') || (letter == 'n') || (letter == 'N')))
     {
-        // Explain error
         cout << "ERROR: a Y or an N must be entered: ";
-        // Clear input stream
         cin.clear();
-        // Discard previous input
-        cin.ignore(132, '\n');
-        // Receive input again
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
         cin >> letter;
     }
     return letter;
@@ -171,9 +167,11 @@ void displayOrderInfo(double num_spools_ordered,
     cout << "num_spools_ordered = " 
          << num_spools_ordered
          << endl;
+
     cout << "num_spools_in_stock = " 
          << num_spools_in_stock
          << endl;
+
     cout << "special_charges = " 
          << special_charges
          << endl;

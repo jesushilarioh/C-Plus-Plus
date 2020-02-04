@@ -25,43 +25,49 @@
 *************************************************************/
 #include <iostream>
 #include <cmath>    // for pow() function
+#include <iomanip>
+
 using namespace std;
 
-// Function Prototypes
-double kineticEnergy(double, double);
 double inputValidate(double);
+double kineticEnergy(double, double);
 void displayInfo(double, double, double);
 
 int main()
 {
-    // Variables
-    double KE,  // kinetic energy
-            m,  // object’s mass in kilograms, 
-            v;  // object’s velocity, in meters per second.
+	double KINETIC_ENERGY,
+            mass,
+            velocity;
 
-    // asks user for mass.
     cout << "Enter the object's mass: ";
-    m = inputValidate(m);
+    mass = inputValidate(mass);
 
-    // asks user for velocity.
     cout << "Enter the object's velocity: ";
-    v = inputValidate(v);
-    
-    // Calculate Kinetic Energy
-    KE = kineticEnergy(m, v);
+    velocity = inputValidate(velocity);
 
-    // Display Info
-    displayInfo(m, v, KE);
+	KINETIC_ENERGY = kineticEnergy(mass, velocity);
 
-    return 0;
+	displayInfo(mass, velocity, KINETIC_ENERGY);
+
+  	return 0;
+}
+
+/********************************************************
+ * Definition of inputValidate()                        *                                        *
+ ********************************************************/
+double inputValidate(double num)
+{
+    while(!(cin >> num))
+    {
+        cout << "Error. A number must be entered. Try again: ";
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    }
+    return num;
 }
 
 /********************************************************
  * Definition of kineticEnergy function:                *
- * The kineticEnergy function accepts an object’s mass  *
- * (in kilograms) and velocity (in meters per second)   *
- * as arguments. It also returns the amount of kinetic  *
- * energy that the object has.                          *
  ********************************************************/
 double kineticEnergy(double mass, double velocity)
 {
@@ -69,33 +75,14 @@ double kineticEnergy(double mass, double velocity)
 }
 
 /********************************************************
- * Definition of inputValidate()                        *
- * This function checks user input errors. When the     *
- * user enters anything other than an integer, the user *
- * will receive an error message and as the user to     *
- * retry again.                                         *
- ********************************************************/
-double inputValidate(double num)
-{
-    while(!(cin >> num))
-    {
-        cout << "Error. An integer above 0 must be entered: ";
-        cin.clear();
-        cin.ignore(123, '\n');
-    }
-    return num;
-}
-
-/********************************************************
- * Definition of displayInfo.                           *
- * The displayInfo function displays mass, volume, and  *
- * kinetic energy of an object.                         *
+ * Definition of displayInfo()                          *
  ********************************************************/ 
-void displayInfo(double m, double v, double KE)
+void displayInfo(double mass, double velocity, double KINETIC_ENERGY)
 {
+	cout << setprecision(2) << fixed;
     cout << endl;
-    cout << "Mass           = " << m << endl;
-    cout << "Velocity       = " << v << endl;
-    cout << "Kinetic Energy = " << KE << endl;
+    cout << "Mass           = " << mass << endl;
+    cout << "Velocity       = " << velocity << endl;
+    cout << "Kinetic Energy = " << KINETIC_ENERGY << endl;
     cout << endl;
 }

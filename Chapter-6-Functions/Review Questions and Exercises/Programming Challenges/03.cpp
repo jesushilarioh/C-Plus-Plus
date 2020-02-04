@@ -18,7 +18,6 @@
 *           name of the high grossing division, along with its 
 *           sales figure.
 *
-*
 *       Input Validation: Do not accept dollar amounts less 
 *                           than $0.00.
 *
@@ -27,28 +26,27 @@
 *
 *************************************************************/
 #include <iostream>
+#include <string>
+
 using namespace std;
 
-// Global constants
 const string NE = "North East",
              NW = "North West",
-             SE = "South Eest",
+             SE = "South East",
              SW = "South West";
 
-// Prototype
-double getSales(string);
 double inputValidate(double);
+double getSales(string);
 void findHighest(double, double, double, double);
 void checkIfHighest(double, double, double, double, string);
 
-int main()
+int main() 
 {
-    // Variables
     double NE_sales,
            NW_sales,
            SE_sales,
            SW_sales;
-
+           
     NE_sales = getSales(NE);
     NW_sales = getSales(NW);
     SE_sales = getSales(SE);
@@ -59,17 +57,20 @@ int main()
     return 0;
 }
 
-/********************************************************
- * double getSales() is passed the name of a division.  *
- * It asks the user for a division’s quarterly sales    *
- * figure, validates the input, then returns it. It     *
- * should be called once for each division.             *
- ********************************************************/
+double inputValidate(double num)
+{
+    while(!(cin >> num) || num < 0)
+    {
+        cout << "Error. An integer above 0 must be entered: ";
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    }
+    return num;
+}
+
 double getSales(string division)
 {
     double sales;
-    // asks the user for a division’s quarterly 
-    // sales figure
     cout << "What is the quarterly sales figure\n"
          << "for " << division << "? $";
     sales = inputValidate(sales);
@@ -77,12 +78,6 @@ double getSales(string division)
     return sales;
 }
 
-/********************************************************
- * void findHighest() is passed the four sales totals.  *
- * It determines which is the largest and prints the  *
- * name of the high grossing division, along with its   *
- * sales figure.                                        *
- ********************************************************/
 void findHighest(double NE_sales, 
                  double NW_sales, 
                  double SE_sales, 
@@ -98,42 +93,21 @@ void findHighest(double NE_sales,
     cout << endl << endl;
 }
 
-/********************************************************
- * Definition of inputValidate()                        *
- * This function checks user input for negative values  *
- * and for other data types that are not of integer     *
- * type data. If user input is such, the user will be   *
- * prompted to try again.                               *
- ********************************************************/
-double inputValidate(double num)
-{
-    while(!(cin >> num))
-    {
-        cout << "Error. An integer above 0 must be entered: ";
-        cin.clear();
-        cin.ignore(123, '\n');
-    }
-    return num;
-}
-
-/********************************************************
- * Definition of checkItHighest()                       *
- * uses an if statment to check for the highest number  *
- ********************************************************/
 void checkIfHighest(double sales1, 
                      double sales2, 
                      double sales3, 
                      double sales4,
                      string division)
 {
-   if (sales1 > sales2)
+   if (sales1 >= sales2)
    {
-       if (sales1 > sales3)
+       if (sales1 >= sales3)
        {
-           if (sales1 > sales4)
+           if (sales1 >= sales4)
             {
                 cout << division << " with a sales figure at: "
-                     << "$" << sales1;
+                     << "$" << sales1
+					 << endl;
             }
        }          
    }

@@ -26,30 +26,29 @@
 *
 *************************************************************/
 #include <iostream>
+#include <string>
+
 using namespace std;
 
-// Global constants
 const string NORTH = "North",
              SOUTH = "South",
              EAST = "East",
              WEST = "West",
              CENTRAL = "Central";
 
-// Prototype
+double inputValidate(double);
 int getNumAccidents(string);
 void findLowest(double, double, double, double, double);
 void checkIfSmallest(double, double, double, double, double,string);
-double inputValidate(double);
 
 int main()
 {
-    // Variables
     double N_total,
            S_total,
            E_total,
            W_total,
            C_total;
-    
+
     N_total = getNumAccidents(NORTH);
     S_total = getNumAccidents(SOUTH);
     E_total = getNumAccidents(EAST);
@@ -61,24 +60,24 @@ int main()
                E_total, 
                W_total, 
                C_total);
-
+    
     return 0;
 }
 
-/********************************************************
- * getNumAccidents() is passed the name of a region.    *
- * It asks the user for the number of automobile        *
- * accidents reported in that region during the last    * 
- * year, validates the input, then returns it. It       * 
- * should be called once for each city region.          *
- ********************************************************/
+double inputValidate(double num)
+{
+    while(!(cin >> num) || num < 0)
+    {
+        cout << "Error. An integer above 0 must be entered: ";
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    }
+    return num;
+}
+
 int getNumAccidents(string region)
 {
     double num;
-
-    // asks the user for the number of automobile 
-    // accidents reported in that region during the last 
-    // year, validates the input, then returns it.
     cout << "What is the number of automobile accidents\n"
          << "reported in the " << region << " region \n"
          << "during the last year? ";
@@ -90,11 +89,6 @@ int getNumAccidents(string region)
     return num;
 }
 
-/********************************************************
- * findLowest() is passed the five accident totals. It  *
- * determines which is the smallest and prints the name *     
- * of the region, along with its accident figure.       *
- ********************************************************/
 void findLowest(double N_total, 
                 double S_total, 
                 double E_total, 
@@ -113,10 +107,6 @@ void findLowest(double N_total,
     cout << endl << endl;    
 }
 
-/********************************************************
- * Definition of checkItSmallest()                      *
- * uses an if statment to check for the smallest number *
- ********************************************************/
 void checkIfSmallest(double total1, 
                      double total2, 
                      double total3, 
@@ -124,36 +114,22 @@ void checkIfSmallest(double total1,
                      double total5,
                      string region)
 {
-    if (total1 < total2)
+    if (total1 <= total2)
    {
-       if (total1 < total3)
+       if (total1 <= total3)
        {
-           if (total1 < total4)
+           if (total1 <= total4)
             {
-                if (total1 < total5)
+                if (total1 <= total5)
                 {
-                    cout << region << ", with it's total\n"
-                         << "being " << total1 << '.';
+                    cout << endl
+                         << region 
+                         << ", with it's total\n"
+                         << "being " 
+                         << total1 << '.'
+                         << endl;
                 }
             }
        }          
    }
-}
-/********************************************************
- * Definition of inputValidate()                        *
- * This function checks user input for negative values  *
- * and for other data types that are not of double      *
- * type data and does not accept a number that is less  *
- * than 0. If user input is such, the user will be     *
- * prompted to try again.                               *
- ********************************************************/
-double inputValidate(double num)
-{
-    while(!(cin >> num) || num < 0)
-    {
-        cout << "Error. An integer above 0 must be entered: ";
-        cin.clear();
-        cin.ignore(123, '\n');
-    }
-    return num;
 }

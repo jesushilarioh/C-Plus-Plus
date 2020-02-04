@@ -22,35 +22,32 @@
 #include <iostream>
 using namespace std;
 
-// Function Prototypes
 double celsius(double);
 
 int main()
 {
-    // Variables
+    const int MIN_TEMP = 0,
+              MAX_TEMP = 20;
     double C;
 
-    // Demonstrate the function by calling it in a loop that 
-    // displays a table of the Fahrenheit temperatures 0 through 
-    // 20 and their Celsius equivalents.
     cout << "-----------------------------------|\n";
     cout << "Fahrenheit     | Celsius\n";
     cout << "-----------------------------------|\n";
-    for (int F = 0; F <= 20; F++)
-    {
-        cout << F << "               ";
-        cout << celsius(F) << endl;
-    }
 
+    for (int F = MIN_TEMP; F <= MAX_TEMP; F++)
+    {
+        C = celsius(F);
+
+        cout << F << "               ";
+        cout << C << endl;
+
+    }
+    
     return 0;
 }
 
 /********************************************************
- * Definition of celsius function:                      *
- * The celsius function accepts a Fahrenheit            *
- * temperature as an argument. The celsius funtion      *
- * also returns the Fahrenheit temperature converted    *
- * to Celsius                                           *
+ * celsius()                                            *
  ********************************************************/
 double celsius(double F)
 {

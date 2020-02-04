@@ -146,7 +146,7 @@ double inputValidate(double num1)
         cout << "Error. Number must not be "
              << " 0 or greater:";
         cin.clear();
-        cin.ignore(1234, '\n');
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
     }
 
     return num1;

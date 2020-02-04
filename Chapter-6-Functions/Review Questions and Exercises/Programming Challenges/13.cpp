@@ -55,8 +55,10 @@ int main()
 
     num_employees = numEmployees();
     cout << endl;
+
     total_days_absent = daysAbsent(num_employees);
     cout << endl;
+
     avg_days_absent = avgDaysAbsent(num_employees, total_days_absent);
     cout << endl;
 
@@ -102,7 +104,7 @@ int numEmployees()
  ********************************************************/
 int daysAbsent(int num_employees)
 {
-    int total_employees = 0;
+    int total_days_absent = 0;
 
     cout << "Enter number of days each employee missed\n"
          << "during the past year: " 
@@ -111,10 +113,10 @@ int daysAbsent(int num_employees)
     for (int i = 0; i < num_employees; i++)
     {
         cout << "Employee #" << (i + 1) << ": ";
-        total_employees += inputValidate(total_employees, 0);
+        total_days_absent += inputValidate(total_days_absent, 0);
     }
 
-    return total_employees;
+    return total_days_absent;
 }
 
 /********************************************************
@@ -148,7 +150,7 @@ int inputValidate(int num1, int num2)
         cout << "Error. Integer must not be "
              << " less than " << num2 << ": ";
         cin.clear();
-        cin.ignore(1234, '\n');
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
     }
 
     return num1;

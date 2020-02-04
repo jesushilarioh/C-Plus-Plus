@@ -28,37 +28,28 @@
 #include <cmath>    // for pow() function
 using namespace std;
 
-// Global constants
-const double g = 9.8;   // gravity
+const double g = 9.8; 
 
-// Prototype
 double fallingDistance(double);
 
 int main()
 {
-    // Variables
-    double d,       // distance
-           t;       // time in seconds
+	double d,
+           t;
 
-    for (int i = 0; i < 10; i++)
+	for (int i = 0; i < 10; i++)
     {
-        d = fallingDistance(i + 1);
+		t = i + 1;
+        d = fallingDistance(t);
         
-        cout << i + 1 << ". "
-             << d
+        cout << t << " seconds =  "
+             << d << " meters"
              << endl;
     }
-
-    return 0;
+	
+  	return 0;
 }
 
-/********************************************************
- * Definition of fallingDistance function:              *
- * The fallingDistance fucntion accepts object's        *
- * falling time (in seconds) as an argument. It returns *
- * the distance (d), in meters, that the object has     *
- * fallen during that time interval.                    *
- ********************************************************/
 double fallingDistance(double falling_time)
 {
     return (0.5) * g * pow(falling_time, 2);

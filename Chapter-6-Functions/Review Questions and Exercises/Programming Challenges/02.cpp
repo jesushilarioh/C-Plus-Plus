@@ -37,7 +37,6 @@
 #include <string>
 using namespace std;
 
-// Function prototypes
 double inputValidate(double num);
 double getLength(double);
 double getWidth(double);
@@ -50,8 +49,6 @@ int main()
            width,
            area;
 
-    // ask the user to enter the width and length of a 
-    // rectangle and then display the rectangle’s area.
     length = getLength(length);
     width  = getWidth(width);
     area   = getArea(length, width);
@@ -60,65 +57,39 @@ int main()
     return 0;
 }
 
-/********************************************************
- * Definition of function getLength – This function     *
- * should ask the user to enter the rectangle’s length  *
- * and then return that value as a double.              *
- ********************************************************/
 double getLength(double num)
 {
     cout << "Enter rectangle's length: ";
     num = inputValidate(num);
     return num;
 }
-/********************************************************
- * Definition of function getWidth – This function      *
- * should ask the user to enter the rectangle’s width   *
- * and then return that value as a double.              *
- ********************************************************/
+
 double getWidth(double num)
 {
     cout << "Enter rectangle's width: ";
     num = inputValidate(num);
     return num; 
 }
-/********************************************************
- * Definition of function getArea – This function       *
- * should accept the rectangle’s length and width as    *
- * arguments and return the rectangle’s area. The area  *
- * is calculated by multiplying the length by the       *
- * width.                                               *
- ********************************************************/
+
 double getArea(double length, double width)
 {
     return length * width;
 }
-/********************************************************
- * Definition of function displayData – This function   *
- * should accept the rectangle’s length, width, and     *
- * area as arguments and display them in an appropriate *
- * message on the screen.                               *
- ********************************************************/
+
 void displayData(double l, double w, double a)
 {
     cout << "Length = " << l << endl;
     cout << "Width  = " << w << endl;
     cout << "Area   = " << a << endl;
 }
-/********************************************************
- * Definition of inputValidate()                        *
- * This function checks user input for negative values  *
- * and for other data types that are not of integer     *
- * type data. If user input is such, the user will be   *
- * prompted to try again.                               *
- ********************************************************/
+
 double inputValidate(double num)
 {
     while(!(cin >> num))
     {
         cout << "Error. An integer above 0 must be entered: ";
         cin.clear();
-        cin.ignore(123, '\n');
+        cin.ignore(1200, '\n');
     }
     return num;
 }

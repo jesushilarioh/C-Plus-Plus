@@ -41,6 +41,7 @@ using namespace std;
 // Function Prototypes
 double presentValue(double, double, double);
 double inputValidate(double);
+char inputValidate(char);
 
 int main()
 {
@@ -50,7 +51,7 @@ int main()
            r,   // Annual interest rate
            n;   // Number of years
     
-    char choice;
+    char user_choice;
 
     do 
     {
@@ -63,14 +64,16 @@ int main()
         cout << "What is the number of years? ";
         n = inputValidate(n);
 
+        P = presentValue(F, r, n);
         cout << "The present value should be: $"
-             << presentValue(F, r, n) << '\n' << endl;
+             << P << '\n' << endl;
 
         cout << "Would you like to make another calculation? (y/n):";
-        cin >> choice;
+        user_choice = inputValidate(user_choice);
+        
         cout << endl;
 
-    } while (choice == 'y' || choice == 'Y');
+    } while (user_choice == 'y' || user_choice == 'Y');
     
     return 0;
 }
@@ -91,7 +94,7 @@ double presentValue(double F, double r, double n)
 /********************************************************
  * Definition of inputValidate function:                *
  * This function checks user input. When the            *
- * user enters anything other than a (double), the        *
+ * user enters anything other than a (double), the      *
  * inputValidate will display an error, clear the input *
  * stream, ignore previous input up untill the new      *
  * line (\n) character.                                 *
@@ -102,7 +105,25 @@ double inputValidate(double num)
     {
         cout << "Error. An integer above 0 must be entered: ";
         cin.clear();
-        cin.ignore(123, '\n');
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
     }
     return num;
+}
+
+char inputValidate(char letter)
+{
+    cin >> letter;
+
+    while (!(letter == 'y' || 
+           letter == 'Y' || 
+           letter == 'N' || 
+           letter == 'n'))
+    {
+        cout << "ERROR: a Y or an N must be entered: ";
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cin >> letter;
+    }
+
+    return letter;
 }

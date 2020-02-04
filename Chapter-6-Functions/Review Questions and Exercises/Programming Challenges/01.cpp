@@ -31,56 +31,45 @@
 
 using namespace std;
 
-// Function prototypes
 double calculateRetail(double, double);
 double inputValidate(double);
 
 int main()
 {
-    // Variables
     double wholesale_cost,
            markup_percent,
            retail_price;
 
-    // Ask the user for wholesale cost and its markup percentage
     cout << "Enter wholesale cost: ";
     wholesale_cost = inputValidate(wholesale_cost);
 
     cout << "Enter it's markup percentage: ";
     markup_percent = inputValidate(markup_percent) * .01;
 
-    // Calculate
     retail_price = calculateRetail(wholesale_cost, markup_percent);
 
-    // display the item’s retail price
-    cout << "Markup percentage = %" << (markup_percent / .01) << endl;
+    cout << "Markup percentage = %" 
+         << (markup_percent / .01) 
+         << endl;
 
-    cout << setprecision(2) << fixed;
-    cout << "Wholesale cost    = $" << wholesale_cost << endl;
-    cout << "Retail price      = $" << retail_price << endl;
+    cout << setprecision(2) << fixed
     
+         << "Wholesale cost    = $" 
+         << wholesale_cost 
+         << endl
 
+         << "Retail price      = $" 
+         << retail_price 
+         << endl;
+    
     return 0;
 }
 
-/********************************************************
- * Definition of calculateRetail                        *
- * It receives the wholesale cost and the markup        *
- * percentage as arguments and returns the retail price *
- * of the item.                                         *
- ********************************************************/
 double calculateRetail(double num1, double num2)
 {
     return (num1 * num2) + num1;
 }
 
-/********************************************************
- * Definition of inputValidate()                        *
- * This function checks user input for negative values  *
- * and for other data types that are not of integer     *
- * type data. If user input is such, the user will be   *
- * prompted to try again.                               *
- ********************************************************/
 double inputValidate(double num)
 {
     while(!(cin >> num) || (num < 0))
