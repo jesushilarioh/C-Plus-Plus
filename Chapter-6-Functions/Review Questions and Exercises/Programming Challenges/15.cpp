@@ -55,8 +55,8 @@ int main()
 
      // ask if the patient was admitted as an in-patient or an 
      // out-patient.
-     cout << "Where you admitted as an in-patient or an\n"
-          << "out-patient? \n"
+     cout << "Where you admitted as an " << endl
+          << "in-patient or an out-patient? " << endl
           << "Enter 1 for in-patient or 2 for out-patient"
           << endl;
      

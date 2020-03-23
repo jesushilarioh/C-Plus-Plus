@@ -42,6 +42,7 @@
  *
  *************************************************************/
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
 // Global constants
@@ -55,7 +56,6 @@ char inputValidate(char);
 int main()
 {
     getOrderInfo();
-
     return 0;
 }
 
@@ -129,7 +129,11 @@ char inputValidate(char letter)
 {
     cin >> letter;
 
-    while (!((letter == 'y') || (letter == 'Y') || (letter == 'n') || (letter == 'N')))
+    while (!((letter == 'y') || 
+             (letter == 'Y') || 
+             (letter == 'n') || 
+             (letter == 'N'))
+          )
     {
         cout << "ERROR: a Y or an N must be entered: ";
         cin.clear();
@@ -164,15 +168,16 @@ void displayOrderInfo(double num_spools_ordered,
            total,
            total_special_charges;
 
-    cout << "num_spools_ordered = " 
+    cout << setprecision(2) << fixed << endl;
+    cout << "num_spools_ordered    =  " 
          << num_spools_ordered
          << endl;
 
-    cout << "num_spools_in_stock = " 
+    cout << "num_spools_in_stock   =  " 
          << num_spools_in_stock
          << endl;
 
-    cout << "special_charges = " 
+    cout << "special_charges       = $" 
          << special_charges
          << endl;
 
@@ -192,31 +197,31 @@ void displayOrderInfo(double num_spools_ordered,
         
         total = subtotal + total_special_charges;
 
-        cout << "spools_on_backorder = " 
+        cout << "spools_on_backorder   =  " 
              << spools_on_backorder
              << endl;
 
-        cout << "spools_ready_to_ship = " 
+        cout << "spools_ready_to_ship  =  " 
              << spools_ready_to_ship
              << endl;
 
-        cout << "PRICE_PER_SPOOL = " 
+        cout << "PRICE_PER_SPOOL       = $" 
              << PRICE_PER_SPOOL
              << endl;
 
-        cout << "subtotal = " 
+        cout << "subtotal              = $" 
              << subtotal
              << endl;
             
-        cout << "special_charges = " 
+        cout << "special_charges       = $" 
              << special_charges
              << endl;
         
-        cout << "total_special_charges = "
+        cout << "total_special_charges = $"
              << total_special_charges
              << endl;
 
-        cout << "total = "
+        cout << "total                 = $"
              << total
              << endl;
     } 
@@ -232,27 +237,27 @@ void displayOrderInfo(double num_spools_ordered,
 
         total = subtotal + total_special_charges;
 
-        cout << "spools_ready_to_ship = " 
+        cout << "spools_ready_to_ship  =  " 
              << spools_ready_to_ship
              << endl;
 
-        cout << "PRICE_PER_SPOOL = " 
+        cout << "PRICE_PER_SPOOL       = $" 
              << PRICE_PER_SPOOL
              << endl;
 
-        cout << "subtotal = " 
+        cout << "subtotal              = $" 
              << subtotal
              << endl;
 
-        cout << "special_charges = " 
+        cout << "special_charges       = $" 
              << special_charges
              << endl;
 
-        cout << "total_special_charges = "
+        cout << "total_special_charges = $"
              << total_special_charges
              << endl;
 
-        cout << "total = " 
+        cout << "total                 = $" 
              << total
              << endl;
     }

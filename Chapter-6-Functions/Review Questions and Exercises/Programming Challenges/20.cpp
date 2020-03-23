@@ -5,7 +5,7 @@
  *      The profit from the sale of a stock can be calculated 
  *      as follows:
  * 
- *      Profit = ((NS x SP) - SC) 􏰂 ((NS x PP) + PC)
+ *      Profit = ((NS x SP) - SC) - ((NS x PP) + PC)
  *      
  *      where NS is the number of shares, SP is the sale price 
  *      per share, SC is the sale commission paid, PP is the 
