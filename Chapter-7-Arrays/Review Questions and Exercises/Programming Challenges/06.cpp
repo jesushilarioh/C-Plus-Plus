@@ -33,16 +33,16 @@ string weather_types[ROWS]  = {"Rainy", "Cloudy", "Sunny"};
 string months[ROWS]         = {"June", "July", "August"};
 char weather_day_names[ROWS]= {'R', 'C', 'S'};
 
-void getInfoFromFile(char[][COLUMNS]);
+void getInfoFromFile(char[][COLUMNS], string);
 void displayMonths(char[][COLUMNS], int);
 void displayDays(char[][COLUMNS], int);
-void displayLowest(char[][COLUMNS]);
+void displayHighest(char[][COLUMNS]);
 
 int main()
 {
     char weather_conditions[ROWS][COLUMNS];
 
-    getInfoFromFile(weather_conditions);
+    getInfoFromFile(weather_conditions, "RainOrShine.txt");
 
     for (int letter = 0; letter < ROWS; letter++)
         displayDays(weather_conditions, letter);
@@ -50,18 +50,18 @@ int main()
     for (int i = 0; i < ROWS; i++)
         displayMonths(weather_conditions, i);
 
-    displayLowest(weather_conditions);
+    displayHighest(weather_conditions);
 
     cout << endl;
 
     return 0;
 }
 
-void getInfoFromFile(char array[][COLUMNS])
+void getInfoFromFile(char array[][COLUMNS], string file_name)
 {
     ifstream inputFile;
 
-    inputFile.open("RainOrShine.txt");
+    inputFile.open(file_name);
 
     for(int row = 0; row < ROWS; row++)
     {
@@ -109,7 +109,7 @@ void displayMonths(char array[][COLUMNS], int i)
 
 }
 
-void displayLowest(char array[][COLUMNS])
+void displayHighest(char array[][COLUMNS])
 {
     int sum;
     int total_rainy_days[ROWS];

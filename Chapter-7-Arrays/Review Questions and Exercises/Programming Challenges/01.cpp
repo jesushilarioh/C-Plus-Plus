@@ -20,6 +20,8 @@ const int ARRAY_SIZE = 10;
 int inputValidate(int);
 void getValues(int [], int);
 void displayValues(int []);
+int getLargestValue(int []);
+int getSmallestValue(int []);
 
 int main()
 {
@@ -27,7 +29,13 @@ int main()
     int user_number;
 
     getValues(user_value_array, user_number);
-    displayValues(user_value_array);
+    // displayValues(user_value_array);
+
+    int largest_value = getLargestValue(user_value_array);
+    cout << "Largest value = " << largest_value << endl;
+
+    int smallest_value = getSmallestValue(user_value_array);
+    cout << "Smallest value = " << smallest_value << endl;
 
     return 0;
 }
@@ -65,4 +73,33 @@ void displayValues(int array[])
              << array[i]
              << endl;
     }
+}
+
+int getLargestValue(int array[])
+{
+    int largest = array[0];
+
+    for (int i = 1; i < ARRAY_SIZE; i++)
+    {
+        if (array[i] >= largest)
+            largest = array[i];
+        
+    }
+
+    return largest;
+
+}
+
+int getSmallestValue(int array[])
+{
+    int smallest = array[0];
+
+    for (int i = 1; i < ARRAY_SIZE; i++)
+    {
+        if (array[i] <= smallest)
+            smallest = array[i];
+        
+    }
+    
+    return smallest;
 }

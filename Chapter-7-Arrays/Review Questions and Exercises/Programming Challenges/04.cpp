@@ -26,7 +26,7 @@ int main()
                                      11, 12, 13, 14, 15, 
                                      16, 17, 18, 19, 20,
                                      21, 22, 23, 24, 25, 
-                                     26, 27, 28, 29, 30,};
+                                     26, 27, 28, 29, 30};
     int n = 20;
 
     greaterNumbers(numbers_array, ARRAY_SIZE, n);
@@ -47,7 +47,11 @@ void greaterNumbers(int array[], const int ARRAY_SIZE, int n)
     {
         if (array[i] > n)
         {
-            cout << array[i] << ", ";
+            if(i == ARRAY_SIZE - 1)
+                cout << array[i];
+            else
+                cout << array[i] << ", ";
+            
         }
 
     }

@@ -37,7 +37,6 @@ int main()
     ifstream inputFile;
     string user_file_name;
 
-    // 1. asks the user for a file name
     cout << "What is the file name? ";
     cin >> user_file_name;
 
@@ -47,20 +46,17 @@ int main()
     {
         cout << "Valid file." << endl;
 
-        // 2. read the contents of the file into an array
         while(inputFile >> file_number)
             numbers.push_back(file_number);
-            
-        // For testing:
-        // cout << "Values: " << endl;
-        // for (int val : numbers)
-        //     cout << val << endl;
 
         inputFile.close();
     }
     else
+    {
         cout << "Invalid file." << endl;
-
+        exit(EXIT_SUCCESS);
+    }
+        
     double lowest_number = numbers[0];
     for (int i = 1; i < numbers.size(); i++)
         if (numbers[i] <= lowest_number)

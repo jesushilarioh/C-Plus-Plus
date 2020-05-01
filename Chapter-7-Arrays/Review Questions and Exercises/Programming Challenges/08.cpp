@@ -40,7 +40,7 @@ int main()
                                                  {8, 1, 6}};
 
     cout << "Array is";
-    cout << (isLoShuMagicSquare(grid_array_2) ? " " : " NOT ");
+    cout << (isLoShuMagicSquare(grid_array_1) ? " " : " NOT ");
     cout << "a Lo Shu Magic Square!" 
          << endl;
 

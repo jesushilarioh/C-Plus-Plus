@@ -81,18 +81,19 @@ double inputValidate(double number)
 void getInfo(double array[][COLUMNS], int ROWS)
 {
     double number_of_pounds;
-    cout << "Enter the following information: \n";
-    for(int i = 0; i < ROWS; i++)
+    cout << "Enter the following information, " << endl
+         << "How many pounds of food eaten per day: ";
+    for(int row = 0; row < ROWS; row++)
     {
-        for(int j = 0; j < COLUMNS; j++)
+        for(int column = 0; column < COLUMNS; column++)
         {
             cout << "Monkey #" 
-                 << (i + 1)
+                 << (row + 1)
                  << ", on day "
-                 << (j + 1)
+                 << (column + 1)
                  << ": ";
 
-            array[i][j] = inputValidate(number_of_pounds);
+            array[row][column] = inputValidate(number_of_pounds);
         }
         cout << endl;
     }
@@ -103,10 +104,10 @@ double getAverage(double array[][COLUMNS], int ROWS)
     double columns_sum;
     int total_elements = ROWS * COLUMNS;
 
-    for(int r = 0; r < ROWS; r++)
+    for(int row = 0; row < ROWS; row++)
     {
-        for(int c = 0; c < COLUMNS; c++)
-            columns_sum += array[r][c];
+        for(int column = 0; column < COLUMNS; column++)
+            columns_sum += array[row][column];
     }
 
     return columns_sum / total_elements;
