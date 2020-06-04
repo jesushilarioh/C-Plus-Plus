@@ -1,0 +1,22 @@
+8.1 Discribe the difference between the linear search and the binary search.
+ANSWER: Instead of testing the array's first element, like linear search, 
+        the binary search algorithm starts with the element in the middle.
+        Also, unlike binary search, linear search doesn't require the data
+        in the array to be stored in any particular order.
+
+8.2 On average, with an array of 20,000 elements, how many comparisons will the 
+    linear search perform? (Assume the items being searched for are consistently 
+    found in the array.)     
+ANSWER: N/2 is the average number of comparisons.
+
+8.3 With an array of 20,000 elements, what is the maximum number of comparisons
+the binary search will perform?
+ANSWER: The maximum number of comparisons is 15 as in 2^15.
+
+8.4 If a linear search is performed on an array, and it is known that some 
+    items are searched for more frequently than others, how can the contents 
+    of the array be reordered to improve the average performance of the search?
+ANSWER: To improve the average performance of a linear search, I would move the
+        more frequently searched items to the front of the array. This would allow
+        less iterations to occur since the frequently searched items are at the front
+        of the array.

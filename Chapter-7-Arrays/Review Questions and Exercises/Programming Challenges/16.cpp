@@ -36,56 +36,76 @@
 #include <string>
 
 using namespace std;
+
+void getContentsFromFile(const string, vector<string> &);
+void displayVector(const vector<string>);
+void getRunningTotal(const vector<string>, int &, const string);
+void displayInfo(const string, const int);
+
 int main()
+{    
+    vector<string> teams;
+    getContentsFromFile("Teams.txt", teams);
+
+    vector<string> world_series_winners;
+    getContentsFromFile("WorldSeriesWinners.txt", world_series_winners);
+    
+    cout << "\nMajor League Baseball teams: \n" << endl;
+    displayVector(teams);
+    
+    cout << "\n\nEnter the name of one of these teams: \n" << endl;
+    string user_team;
+    getline(cin, user_team);
+    
+    int number_of_titles_won = 0;
+    getRunningTotal(world_series_winners, number_of_titles_won, user_team);
+
+    displayInfo(user_team, number_of_titles_won);
+
+    return 0;
+}
+
+void getContentsFromFile(const string file_name, vector<string> &vector_array)
 {
     ifstream inputFile;
-    string team;
-    string user_team;
-    int number_of_titles_won = 0;
-    vector<string> world_series_winners;
-    
 
-    inputFile.open("Teams.txt");
+    inputFile.open(file_name);
 
     if(inputFile.fail())
         cout << "Error opening file" << endl;
     else
     {
-        cout << endl;
-        while(getline(inputFile, team))
-            cout << team << endl;
+        string vector_element;
 
+        while(getline(inputFile, vector_element))
+            vector_array.push_back(vector_element);
+            
         inputFile.close();
     }
-    cout << endl;
+}
 
-    cout << "\nEnter the name of one of these teams: \n" << endl;
-    getline(cin, user_team);
+void displayVector(const vector<string> vector_array)
+{
+    for (int i = 0; i < vector_array.size(); i++)
+        cout << vector_array[i] << endl;
+}
 
-    inputFile.open("WorldSeriesWinners.txt");
-    if(inputFile.fail())
-        cout << "Error opening file." << endl;
-    else
+void getRunningTotal(const vector<string> vector_array,
+                     int &running_total,
+                     const string user_choice)
+{
+    for(int i = 0; i < vector_array.size(); i++)
     {
-        string winning_team;
-        while(getline(inputFile, winning_team))
-        {
-            world_series_winners.push_back(winning_team);
-        }
-        inputFile.close();
+        if(user_choice == vector_array[i])
+            running_total++;
     }
-    
-    for(int i = 0; i < world_series_winners.size(); i++)
-    {
-        if(user_team == world_series_winners[i])
-            number_of_titles_won++;
-    }
+}
 
+void displayInfo(const string user_team, const int number_of_titles_won)
+{
     cout << user_team << " have won the world series " 
          << number_of_titles_won 
          << " times."
          << endl
          << endl;
-
-    return 0;
 }

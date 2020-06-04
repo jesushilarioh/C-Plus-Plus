@@ -16,6 +16,7 @@
  *
  *************************************************************/
 #include <iostream>
+#include <vector>
 using namespace std;
 
 // Global constants
@@ -26,9 +27,9 @@ double inputValidate(double);
 void getValues(double []);
 double average(double);
 double calculateTotal(double []);
-int findHighestMonth(double []);
-int findLowestMonth(double []);
-void display(double, double, int, int);
+void findHighestMonths(double [], vector<int> &);
+void findLowestMonths(double [], vector<int> &);
+void display(double, double, vector<int>, vector<int>);
 
 
 int main()
@@ -39,9 +40,14 @@ int main()
 
     double total_rainfall = calculateTotal(rainfall);
     double avarage_rainfall = average(total_rainfall);
-    int highest_month = findHighestMonth(rainfall);
-    int lowest_month = findLowestMonth(rainfall);
-    display(total_rainfall, avarage_rainfall, highest_month, lowest_month);
+
+    vector<int>highest_months;
+    findHighestMonths(rainfall, highest_months);
+
+    vector<int>lowest_months;
+    findLowestMonths(rainfall, lowest_months);
+
+    display(total_rainfall, avarage_rainfall, highest_months, lowest_months);
 
     return 0;
 }
@@ -87,48 +93,59 @@ double average(double sum)
     return sum / ARRAY_SIZE;
 }
 
-int findHighestMonth(double array[])
+void findHighestMonths(double array[], vector<int> &vector_array)
 {
     double max = array[0];
-    int index = 1;
+    vector_array.push_back(0);
 
     for (int i = 1; i < ARRAY_SIZE; i++)
     {
-        if(array[i] >= max)
+        if(array[i] > max)
         {
             max = array[i];  
-            index = (i + 1); 
+            vector_array.clear();
+            vector_array.push_back(i);        
         }
-      
+        else if (array[i] == max)
+        {
+            max = array[i];
+            vector_array.push_back(i);
+        }
+        
     }
 
-    return index;
 }
 
-int findLowestMonth(double array[])
+void findLowestMonths(double array[], vector<int> &vector_array)
 {
     double min = array[0];
-    int index = 1;
+    vector_array.push_back(0);
 
     for (int i = 1; i < ARRAY_SIZE; i++)
     {
-        if(array[i] <= min)
+        if(array[i] < min)
         {
             min = array[i];
-            index = (i + 1);
+            vector_array.clear();
+            vector_array.push_back(i);
         }
+        else if (array[i] == min)
+        {
+            min = array[i];
+            vector_array.push_back(i);
+        }
+        
             
     }
     
-    return index;
 }
 
-void display(double total, double average, int highest, int lowest)
+void display(double total, double average, vector<int> highest_months, vector<int> lowest_months)
 {
-    string months[] = {"January", "February", "March",
-                       "April"  , "May"     , "June",
-                       "July"   , "August"  , "September",
-                       "October", "November", "December"};
+    const string MONTHS[] = {"January", "February", "March",
+                             "April"  , "May"     , "June",
+                             "July"   , "August"  , "September",
+                             "October", "November", "December"};
 
     cout << "\nTotal rainfall for the year   = "
          << total
@@ -139,15 +156,27 @@ void display(double total, double average, int highest, int lowest)
          << endl;
     
     cout << "Month with highest amount     = ";
-    for (int i = 0; i < ARRAY_SIZE; i++)
+
+    for (int i = 0; i < highest_months.size(); i++)
     {
-        if (highest == (i + 1))
-            cout << months[i];
+        if(i == highest_months.size() - 1)
+            cout << MONTHS[highest_months[i]];
+        else
+            cout << MONTHS[highest_months[i]] << ", ";
         
     }
+
     cout << endl;
     
-    cout << "Month with lowest amount      = "
-         << lowest
-         << endl;
+    cout << "Month with lowest amount      = ";
+
+    for (int i = 0; i < lowest_months.size(); i++)
+    {
+        if(i == lowest_months.size() - 1)
+            cout << MONTHS[lowest_months[i]];
+        else
+            cout << MONTHS[lowest_months[i]] << ", ";
+    }
+            
+    cout << endl;
 }

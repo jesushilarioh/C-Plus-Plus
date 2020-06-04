@@ -36,8 +36,11 @@
 using namespace std;
 
 char inputValidate(char);
-void displayArray(char[], string, int);
+void displayArray(const char[], string, int);
 void displayVector(vector<int>, string);
+void getAnswers(char[], const int);
+void checkAnswers(const char[], const char[], int &, vector<int> &, const int);
+void displayResults(const int, const char[], const char[], vector<int>, const int);
 
 int main() 
 {
@@ -51,13 +54,39 @@ int main()
     vector<int> incorrect_answers;
 
 
+    getAnswers(student_answers, NUMBER_OF_QUESTIONS);
+
+    checkAnswers(student_answers, 
+                 correct_answers, 
+                 number_of_correct_answers, 
+                 incorrect_answers, 
+                 NUMBER_OF_QUESTIONS);
+
+    displayResults(number_of_correct_answers,
+                   student_answers,
+                   correct_answers,
+                   incorrect_answers,
+                   NUMBER_OF_QUESTIONS);
+    
+    return 0;
+}
+
+void getAnswers(char student_answers[], const int NUMBER_OF_QUESTIONS)
+{
     cout << "Enter answers for 20 questions: " << endl;
     for(int i = 0; i < NUMBER_OF_QUESTIONS; i++)
     {
         cout << "Answer #" << (i + 1) << ": ";
         student_answers[i] = inputValidate(student_answers[i]);
     }
+}
 
+void checkAnswers(const char student_answers[],
+                  const char correct_answers[],
+                  int &number_of_correct_answers,
+                  vector<int> &incorrect_answers,
+                  const int NUMBER_OF_QUESTIONS)
+{
     for(int i = 0; i < NUMBER_OF_QUESTIONS; i++)
     {
         if (student_answers[i] == correct_answers[i])
@@ -66,7 +95,14 @@ int main()
             incorrect_answers.push_back(i + 1);
 
     }
+}
 
+void displayResults(const int number_of_correct_answers,
+                    const char student_answers[],
+                    const char correct_answers[],
+                    vector<int> incorrect_answers,
+                    const int NUMBER_OF_QUESTIONS)
+{
     cout << "\n\nOutcome: " 
          << (number_of_correct_answers >= 15 ? "Pass" : "Fail") 
          << endl;
@@ -88,8 +124,6 @@ int main()
     displayVector(incorrect_answers, "Incorrect Answers: ");
     cout << endl
          << endl;
-    
-    return 0;
 }
 
 char inputValidate(char letter)
@@ -123,16 +157,28 @@ char inputValidate(char letter)
     return toupper(letter);
 }
 
-void displayArray(char array[], string array_name, int ARRAY_SIZE)
+void displayArray(const char array[], string array_name, int ARRAY_SIZE)
 {
     cout << array_name << endl;
     for(int i = 0; i < ARRAY_SIZE; i++)
-        cout << array[i] << ", ";
+    {
+        if (i == (ARRAY_SIZE - 1))
+            cout << array[i];
+        else
+            cout << array[i] << ", ";
+        
+    }
 }
 
 void displayVector(vector<int> vector, string vector_name)
 {
     cout << vector_name << endl;
     for(int i = 0; i < vector.size(); i++)
-        cout << vector[i] << ", ";
+    {
+        if (i == (vector.size() - 1))
+            cout << vector[i];
+        else
+            cout << vector[i] << ", ";
+    }
+
 }

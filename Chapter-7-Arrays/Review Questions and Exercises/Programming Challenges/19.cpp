@@ -2,7 +2,8 @@
  *
  *   19. 2D Array Operations
  * 
- *  Write a program that g 
+ *  Write a program that creates a two-dimensional array 
+ *  initialized with test data. Use any data type you wish. 
  *  The program should have the following functions:
  * 
  *  • getTotal. This function should accept a two-dimensional 
@@ -64,19 +65,17 @@ int main()
                                        {7, 2, 20, 2, 9},
                                        {3, 3, 3, 3, 3}};
 
+    int row = 1;
     cout << "Total = " << getTotal(test_data) << endl;
     cout << "Average = " << getAverage(test_data) << endl;
-    cout << "Row #2 total = " << getRowTotal(test_data, 2) << endl; 
-    cout << "Column #2 total = " << getColumnTotal(test_data, 2) << endl;
-    cout << "Highest in Row #2 = " << getHighestInRow(test_data, 2) << endl;
-    cout << "Lowest in Row #2 = " << getLowestInRow(test_data, 2) << endl;
+    cout << "Row #" << row << " total = " << getRowTotal(test_data, row) << endl; 
+    cout << "Column #" << row << " total = " << getColumnTotal(test_data, row) << endl;
+    cout << "Highest in Row #" << row << " = " << getHighestInRow(test_data, row) << endl;
+    cout << "Lowest in Row #" << row << " = " << getLowestInRow(test_data, row) << endl;
     
     return 0;
 }
 
-// getTotal. This function should accept a two-dimensional 
-// array as its argument and return the total of all the 
-// values in the array.
 double getTotal(double array[][COLUMNS])
 {
     double total = 0;
@@ -90,9 +89,6 @@ double getTotal(double array[][COLUMNS])
     return total;
 }
 
-// getAverage. This function should accept a two-dimensional 
-// array as its argument and return the average of all 
-// the values in the array.
 double getAverage(double array[][COLUMNS])
 {
     double total_array_elements = 0,
@@ -110,11 +106,6 @@ double getAverage(double array[][COLUMNS])
     return sum / total_array_elements;
 }
 
-// getRowTotal. This function should accept a two-dimensional 
-// array as its first argument and an integer as its 
-// second argument. The second argument should be the 
-// subscript of a row in the array. The function should 
-// return the total of the values in the specified row.
 double getRowTotal(double array[][COLUMNS], int ROW)
 {
     double row_total = 0;
@@ -129,12 +120,6 @@ double getRowTotal(double array[][COLUMNS], int ROW)
     return row_total;
 }
 
-// getColumnTotal. This function should accept a two-dimensional 
-// array as its first argument and an integer as its 
-// second argument. The second argument should be 
-// the subscript of a column in the array. The 
-// function should return the total of the values 
-// in the specified column.
 double getColumnTotal(double array[][COLUMNS], int COLUMN)
 {
     double column_total = 0;
@@ -149,12 +134,6 @@ double getColumnTotal(double array[][COLUMNS], int COLUMN)
     return column_total;
 }
 
-// getHighestInRow. This function should accept a 
-// two-dimensional array as its first argument and 
-// an integer as its second argument. The second 
-// argument should be the subscript of a row in the array. 
-// The function should return the highest value in the 
-// specified row of the array.
 double getHighestInRow(double array[][COLUMNS], int ROW)
 {
     // array[(ROW - 1)][0]
@@ -174,12 +153,6 @@ double getHighestInRow(double array[][COLUMNS], int ROW)
     return highest;
 }
 
-// getLowestInRow. This function should accept a 
-// two-dimensional array as its first argument and an 
-// integer as its second argument. The second argument 
-// should be the subscript of a row in the array. The 
-// function should return the lowest value in the 
-// specified row of the array.
 double getLowestInRow(double array[][COLUMNS], int ROW)
 {
     double lowest = array[(ROW - 1)][0];

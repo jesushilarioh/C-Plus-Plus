@@ -33,32 +33,122 @@
 using namespace std;
 
 const int NUMBER_OF_TESTS = 4;
+const int NUMBER_OF_STUDENTS = 5;
 
 double inputValidate(double);
-void getStudentTestScores(double[], int = NUMBER_OF_TESTS);
-double calculateAverageOfArray(double[], int);
+void getStudentTestScores(double[]);
+double calculateAverageOfArray(const double[], int);
 char getAverageLetterGrade(double);
+void getStudentNames(string[]);
+void getAllTestScores(const string[],
+                      double[],
+                      double[],
+                      double[],
+                      double[],
+                      double[]);
+void calculateAndDisplayAverages(const string[],
+                                 const double[],
+                                 const double[],
+                                 const double[],
+                                 const double[],
+                                 const double[]);
 
 int main()
 {
-    const int NUMBER_OF_STUDENTS = 5;
-    double average;
-    char average_letter_grade;
     string studentNames[NUMBER_OF_STUDENTS];
-    char letterGrades[NUMBER_OF_STUDENTS];
+
     double student1TestScores[NUMBER_OF_TESTS];
     double student2TestScores[NUMBER_OF_TESTS];
     double student3TestScores[NUMBER_OF_TESTS];
     double student4TestScores[NUMBER_OF_TESTS];
     double student5TestScores[NUMBER_OF_TESTS];
 
+    getStudentNames(studentNames);
+
+    getAllTestScores(studentNames,
+                     student1TestScores,
+                     student2TestScores,
+                     student3TestScores,
+                     student4TestScores,
+                     student5TestScores);
+
+    calculateAndDisplayAverages(studentNames,
+                                student1TestScores,
+                                student2TestScores,
+                                student3TestScores,
+                                student4TestScores,
+                                student5TestScores);
+    
+    return 0;
+}
+
+// 6. Input Validation: Do not accept test scores less than 0 or greater than 100.
+double inputValidate(double number)
+{
+    while(!(cin >> number) || (number < 0 || number > 100))
+    {
+        cout << "Error. A number from 0 thru 100 must be entered: ";
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    }
+
+    return number;
+}
+
+void getStudentTestScores(double array[])
+{
+    for (int i = 0; i < NUMBER_OF_TESTS; i++)
+    {
+        cout << "Test #" << (i + 1) << ": ";
+        array[i] = inputValidate(array[i]);
+    }
+}
+
+double calculateAverageOfArray(const double array[], int ARRAY_SIZE)
+{
+    double sum = 0;
+
+    for (int i = 0; i < ARRAY_SIZE; i++)
+        sum += array[i];
+
+    return sum / ARRAY_SIZE;
+}
+
+char getAverageLetterGrade(double average)
+{
+    char letter;
+
+    if (average <= 100 && average >= 90)
+        letter = 'A';
+    else if (average < 90 && average >= 80)
+        letter = 'B';
+    else if (average < 80 && average >= 70)
+        letter = 'C';
+    else if (average < 70 && average >= 60)
+        letter = 'D';
+    else if (average < 60 && average >= 0)
+        letter = 'F';
+    
+    return letter;
+}
+
+void getStudentNames(string studentNames[])
+{
     cout << "Enter student names: " << endl;
     for(int i = 0; i < NUMBER_OF_STUDENTS; i++)
     {
         cout << "Student " << (i + 1) << " name: ";
         getline(cin, studentNames[i]);
     }
+}
 
+void getAllTestScores(const string studentNames[],
+                      double student1TestScores[],
+                      double student2TestScores[],
+                      double student3TestScores[],
+                      double student4TestScores[],
+                      double student5TestScores[])
+{
     cout << "\nEnter test scores for " << studentNames[0] << endl;
     getStudentTestScores(student1TestScores);
 
@@ -73,12 +163,20 @@ int main()
 
     cout << "\nEnter test scores for " << studentNames[4] << endl;
     getStudentTestScores(student5TestScores);
+}
 
+void calculateAndDisplayAverages(const string studentNames[],
+                                 const double student1TestScores[],
+                                 const double student2TestScores[],
+                                 const double student3TestScores[],
+                                 const double student4TestScores[],
+                                 const double student5TestScores[])
+{
     // Student #1
-    average = calculateAverageOfArray(student1TestScores, NUMBER_OF_TESTS);
+    double average = calculateAverageOfArray(student1TestScores, NUMBER_OF_TESTS);
     cout << "\nAverage test score for " << studentNames[0] << " = " << average << endl;
 
-    average_letter_grade = getAverageLetterGrade(average);
+    char average_letter_grade = getAverageLetterGrade(average);
     cout << "Letter grade = " << average_letter_grade << endl;
     cout << endl;
 
@@ -113,59 +211,4 @@ int main()
     average_letter_grade = getAverageLetterGrade(average);
     cout << "Letter grade = " << average_letter_grade << endl;
     cout << endl;
-    
-
-    return 0;
-}
-
-// 6. Input Validation: Do not accept test scores less than 0 or greater than 100.
-double inputValidate(double number)
-{
-    while(!(cin >> number) || (number < 0 || number > 100))
-    {
-        cout << "Error. A number from 0 thru 100 must be entered: ";
-        cin.clear();
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-    }
-
-    return number;
-}
-
-// This function gets student test scores. 2 arguments: array
-// and ARRAY_SIZE
-void getStudentTestScores(double array[], int ARRAY_SIZE)
-{
-    for (int i = 0; i < ARRAY_SIZE; i++)
-    {
-        cout << "Test #" << (i + 1) << ": ";
-        array[i] = inputValidate(array[i]);
-    }
-}
-
-double calculateAverageOfArray(double array[], int ARRAY_SIZE)
-{
-    double sum = 0;
-
-    for (int i = 0; i < ARRAY_SIZE; i++)
-        sum += array[i];
-
-    return sum / ARRAY_SIZE;
-}
-
-char getAverageLetterGrade(double average)
-{
-    char letter;
-
-    if (average <= 100 && average >= 90)
-        letter = 'A';
-    else if (average <= 89 && average >= 80)
-        letter = 'B';
-    else if (average <= 79 && average >= 70)
-        letter = 'C';
-    else if (average <= 69 && average >= 60)
-        letter = 'D';
-    else if (average <= 59 && average >= 0)
-        letter = 'F';
-    
-    return letter;
 }

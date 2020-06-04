@@ -222,6 +222,7 @@ bool checkIfWinnerDiagonalLeftToRight(char array[][ROWS_AND_COLUMNS], char lette
     
     return winner;
 }
+
 bool checkIfWinnerDiagonalRightToLeft(char array[][ROWS_AND_COLUMNS], char letter, string &game_winner)
 {
     int letter_diagonal = 0; 

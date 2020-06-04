@@ -33,11 +33,11 @@ const int ROWS    = 3,
           COLUMNS = 5;
 
 // Function Prototypes
-double inputValidate(double);
-void getInfo(double[][COLUMNS], int);
-double getAverage(double[][COLUMNS], int);
-double getLeast(double[][COLUMNS], int);
-double getHighest(double[][COLUMNS], int);
+double inputValidate();
+void getInfo(double[][COLUMNS]);
+double getAverage(const double[][COLUMNS]);
+double getLeast(const double[][COLUMNS]);
+double getHighest(const double[][COLUMNS]);
 
 int main()
 {
@@ -46,29 +46,31 @@ int main()
            least_per_week,
            highest_per_week;
 
-    getInfo(pounds_of_food, ROWS);
+    getInfo(pounds_of_food);
 
-    average_per_day = getAverage(pounds_of_food, ROWS);
+    average_per_day = getAverage(pounds_of_food);
     cout << "Average amount eaten during the week per day = "
          << average_per_day
          << endl;
 
-    least_per_week = getLeast(pounds_of_food, ROWS);
+    least_per_week = getLeast(pounds_of_food);
     cout << "Lowest amount eaten during the week = "
          << least_per_week
          << endl;
 
-    highest_per_week = getHighest(pounds_of_food, ROWS);
+    highest_per_week = getHighest(pounds_of_food);
     cout << "Highest amount eaten during the week = "
          << highest_per_week
+         << endl
          << endl;
 
 
     return 0;
 }
 
-double inputValidate(double number)
+double inputValidate()
 {
+    double number;
     while(!(cin >> number) || number < 0)
     {
         cout << "Error, enter a positive number: ";
@@ -78,11 +80,11 @@ double inputValidate(double number)
     return number;
 }
 
-void getInfo(double array[][COLUMNS], int ROWS)
+void getInfo(double array[][COLUMNS])
 {
     double number_of_pounds;
-    cout << "Enter the following information, " << endl
-         << "How many pounds of food eaten per day: ";
+    cout << "\nEnter the following information, " << endl
+         << "How many pounds of food eaten per day: " << endl;
     for(int row = 0; row < ROWS; row++)
     {
         for(int column = 0; column < COLUMNS; column++)
@@ -93,13 +95,13 @@ void getInfo(double array[][COLUMNS], int ROWS)
                  << (column + 1)
                  << ": ";
 
-            array[row][column] = inputValidate(number_of_pounds);
+            array[row][column] = inputValidate();
         }
         cout << endl;
     }
 }
 
-double getAverage(double array[][COLUMNS], int ROWS)
+double getAverage(const double array[][COLUMNS])
 {
     double columns_sum;
     int total_elements = ROWS * COLUMNS;
@@ -113,11 +115,10 @@ double getAverage(double array[][COLUMNS], int ROWS)
     return columns_sum / total_elements;
 }
 
-double getLeast(double array[][COLUMNS], int ROWS)
+double getLeast(const double array[][COLUMNS])
 {
     double sum, 
-           local_array[ROWS], 
-           lowest_number;
+           local_array[ROWS];
 
     for(int row = 0; row < ROWS; row++)
     {
@@ -129,7 +130,7 @@ double getLeast(double array[][COLUMNS], int ROWS)
 
     }
 
-    lowest_number = local_array[0];
+    double lowest_number = local_array[0];
     for (int number = 1; number < ROWS; number++)
     {
         if (local_array[number] <= lowest_number)
@@ -140,11 +141,10 @@ double getLeast(double array[][COLUMNS], int ROWS)
     return lowest_number;
 }
 
-double getHighest(double array[][COLUMNS], int ROWS)
+double getHighest(const double array[][COLUMNS])
 {
     double sum, 
-           local_array[ROWS], 
-           highest_number;
+           local_array[ROWS];
 
     for(int row = 0; row < ROWS; row++)
     {
@@ -156,7 +156,7 @@ double getHighest(double array[][COLUMNS], int ROWS)
 
     }
 
-    highest_number = local_array[0];
+    double highest_number = local_array[0];
     for (int number = 1; number < ROWS; number++)
     {
         if (local_array[number] >= highest_number)

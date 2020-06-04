@@ -50,9 +50,9 @@ using namespace std;
 
 const int NUMBER_OF_QUESTIONS = 20;
 
-void readFileContentsIntoArray(char[], string, const int);
+void readFileContentsIntoArray(char[], string[], const int);
 void displayArray(const char[], const int);
-void displayAnswers(const vector<int>, const char[]);
+void displayAnswers(vector<int>, char[]);
 void checkAnswers(const char[], 
                   const char[], 
                   int &, 
@@ -63,13 +63,6 @@ void checkAnswers(const char[],
                   const int);
 void displayAllAnswers(const char[], const char[], const int);
 double calculatePercentage(const int, const int);
-void displayFinalInfo(const vector<int>,
-                      const vector<int>,
-                      const char[],
-                      const char[],
-                      int,
-                      int,
-                      double);
 
 int main()
 {
@@ -84,9 +77,11 @@ int main()
 
     vector<int> incorrect_questions;
     vector<int> correct_questions;
+
+    string fileNames[] = {"CorrectAnswers.txt", "StudentAnswers.txt"};
     
-    readFileContentsIntoArray(correct_answers, "CorrectAnswers.txt", NUMBER_OF_QUESTIONS);
-    readFileContentsIntoArray(student_answers, "StudentAnswers.txt", NUMBER_OF_QUESTIONS);
+    readFileContentsIntoArray(correct_answers, fileNames, NUMBER_OF_QUESTIONS);
+    // readFileContentsIntoArray(student_answers, "StudentAnswers.txt", NUMBER_OF_QUESTIONS);
 
     displayAllAnswers(correct_answers, student_answers, NUMBER_OF_QUESTIONS);
     
@@ -102,34 +97,70 @@ int main()
 
     percentage_correctly_answered = calculatePercentage(total_correct_questions, NUMBER_OF_QUESTIONS);
     
-    displayFinalInfo(correct_questions,
-                     incorrect_questions,
-                     correct_answers,
-                     student_answers,
-                     total_missed_questions,
-                     total_correct_questions,
-                     percentage_correctly_answered);
+    cout << "Questions answered correctly: " << endl; 
+    displayAnswers(correct_questions, correct_answers);
+    cout << endl;
+
+    cout << "Questions answered incorrectly: " << endl;
+    displayAnswers(incorrect_questions, student_answers);
+    cout << endl;
+    
+    cout << "Total missed questions : " 
+         << total_missed_questions 
+         << endl;
+
+    cout << "Total correct questions: " 
+         << total_correct_questions 
+         << endl;
+    cout << endl;
+
+    cout << setprecision(1) << fixed;
+    cout << "Percentage of questions answered: %" 
+         << percentage_correctly_answered 
+         << endl;
+
+    cout << "You " 
+         << (percentage_correctly_answered >= 70 ? "passed" : "failed")
+         << " the exam."
+         << endl;
 
     return 0;
     
 }
 
-void readFileContentsIntoArray(char array[], string fileName, const int ARRAY_SIZE)
+void readFileContentsIntoArray(char array[], string fileNames[], const int ARRAY_SIZE)
 {
-    ifstream inputFile;
+    ifstream inputFile[2];
 
-    inputFile.open(fileName);
-
-    if (inputFile.fail())
-        cout << "Error opening file." << endl;
-    else
+    for (int i = 0; i < 2; i++)
     {
-        for (int i = 0; i < ARRAY_SIZE; i++)
-            inputFile >> array[i];
+        inputFile[i].open(fileNames[i]);
 
-        inputFile.close();
+        if (inputFile[i].fail())
+            cout << "Error opening file." << endl;
+        else
+        {
+            for (int i = 0; i < ARRAY_SIZE; i++)
+                inputFile[i] >> array[i];
+
+            inputFile[i].close();
+
+        }
 
     }
+    
+    // inputFile.open(fileName);
+
+    // if (inputFile.fail())
+    //     cout << "Error opening file." << endl;
+    // else
+    // {
+    //     for (int i = 0; i < ARRAY_SIZE; i++)
+    //         inputFile >> array[i];
+
+    //     inputFile.close();
+
+    // }
     
 }
 
@@ -147,7 +178,7 @@ void displayArray(const char array[], const int ARRAY_SIZE)
     cout << endl;
 }
 
-void displayAnswers(const vector<int> vector, const char array[])
+void displayAnswers(vector<int> vector, char array[])
 {
     for (int i = 0; i < vector.size(); i++)
     {
@@ -199,40 +230,4 @@ void displayAllAnswers(const char correct_answers[], const char student_answers[
 double calculatePercentage(const int total_correct_questions, const int NUMBER_OF_QUESTIONS)
 {
     return (total_correct_questions / static_cast<double>(NUMBER_OF_QUESTIONS)) * 100;
-}
-
-void displayFinalInfo(const vector<int> correct_questions,
-                      const vector<int> incorrect_questions,
-                      const char correct_answers[],
-                      const char student_answers[],
-                      int total_missed_questions,
-                      int total_correct_questions,
-                      double percentage_correctly_answered)
-{
-    cout << "Questions answered correctly: " << endl; 
-    displayAnswers(correct_questions, correct_answers);
-    cout << endl;
-
-    cout << "Questions answered incorrectly: " << endl;
-    displayAnswers(incorrect_questions, student_answers);
-    cout << endl;
-    
-    cout << "Total missed questions : " 
-         << total_missed_questions 
-         << endl;
-
-    cout << "Total correct questions: " 
-         << total_correct_questions 
-         << endl;
-    cout << endl;
-
-    cout << setprecision(1) << fixed;
-    cout << "Percentage of questions answered: %" 
-         << percentage_correctly_answered 
-         << endl;
-
-    cout << "You " 
-         << (percentage_correctly_answered >= 70 ? "passed" : "failed")
-         << " the exam."
-         << endl;
 }

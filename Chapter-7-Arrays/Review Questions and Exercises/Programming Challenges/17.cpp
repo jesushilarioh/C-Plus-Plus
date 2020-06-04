@@ -33,25 +33,23 @@ void showMenu();
 bool checkIfValueInVector(vector<string>, string);
 void displayIfAmongMostPopular(vector<string>, string);
 int inputValidate(int);
+void program(const vector<string>, const vector<string>);
 
 int main()
 {
     vector<string> boy_names;
-    vector<string> girl_names;
-    // 1. reads the contents of the two files 
-    //      into two separate arrays or vectors.
     readFileContentsIntoVector(boy_names, "BoyNames.txt");
+
+    vector<string> girl_names;
     readFileContentsIntoVector(girl_names, "GirlNames.txt");
 
-    // if(boy_names.empty())
-    //     cout << "Vector empty. " << endl;
-    // else
-    //     cout << "Vector not empty. " << endl;
-    
-    // 2. The user should be able to enter a boy’s name, 
-    //      a girl’s name, or both, and the application 
-    //      should display messages indicating whether 
-    //      the names were among the most popular.
+    program(boy_names, girl_names);
+
+    return 0;
+}
+
+void program(const vector<string> boy_names, const vector<string> girl_names)
+{
     const int BOYS_NAME_CHOICE = 1,
               GIRLS_NAME_CHOICE = 2, 
               BOYS_AND_GIRLS_NAME_CHOICE = 3,
@@ -64,11 +62,9 @@ int main()
     do
     {
         showMenu();
-
         user_menu_choice = inputValidate(user_menu_choice);
 
         cout << endl;
-
         if(user_menu_choice == BOYS_NAME_CHOICE)
         {
             cout << "Enter a boy's name: ";
@@ -100,9 +96,6 @@ int main()
         cout << endl;
 
     } while(user_menu_choice != QUIT_PROGRAM_CHOICE);
-
-
-    return 0;
 }
 
 int inputValidate(int number)

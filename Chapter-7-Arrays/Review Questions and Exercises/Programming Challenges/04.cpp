@@ -12,10 +12,8 @@
 #include <iostream>
 using namespace std;
 
-// Global constants
-
 // Function Prototypes
-void greaterNumbers(int[], const int, int);
+void greaterNumbers(const int[], int, int);
 
 int main()
 {
@@ -29,7 +27,9 @@ int main()
                                      26, 27, 28, 29, 30};
     int n = 20;
 
+    cout << "All numbers greater that " << n << " are: ";
     greaterNumbers(numbers_array, ARRAY_SIZE, n);
+    cout << endl;
     
     return 0;
 }
@@ -37,11 +37,9 @@ int main()
 /********************************************************
  * void greaterNumbers(): prints numbers greater that n
  ********************************************************/
-void greaterNumbers(int array[], const int ARRAY_SIZE, int n)
+void greaterNumbers(const int array[], int ARRAY_SIZE, int n)
 {
-    cout << "All numbers greater that "
-         << n 
-         << " are: ";
+
 
     for (int i = 0; i < ARRAY_SIZE; i++)
     {
@@ -56,5 +54,4 @@ void greaterNumbers(int array[], const int ARRAY_SIZE, int n)
 
     }
     
-    cout << endl;
 }
