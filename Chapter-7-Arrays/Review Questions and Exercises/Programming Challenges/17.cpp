@@ -28,10 +28,10 @@
 
 using namespace std;
 
-void readFileContentsIntoVector(vector<string> &, string);
+void readFileContentsIntoVector(vector<string> &, const string);
 void showMenu();
-bool checkIfValueInVector(vector<string>, string);
-void displayIfAmongMostPopular(vector<string>, string);
+bool checkIfValueInVector(const vector<string>, const string);
+void displayIfAmongMostPopular(const vector<string>, const string);
 int inputValidate(int);
 void program(const vector<string>, const vector<string>);
 
@@ -110,7 +110,7 @@ int inputValidate(int number)
     
 }
 
-void readFileContentsIntoVector(vector<string> &vector, string file_name)
+void readFileContentsIntoVector(vector<string> &vector, const string file_name)
 {
     ifstream inputFile;
 
@@ -147,7 +147,7 @@ void showMenu()
 
 }
 
-bool checkIfValueInVector(vector<string> vector, string value)
+bool checkIfValueInVector(const vector<string> vector, const string value)
 {
     bool value_exists = false;
     for(int i = 0; i < vector.size(); i++)
@@ -159,7 +159,7 @@ bool checkIfValueInVector(vector<string> vector, string value)
     return value_exists;
 }
 
-void displayIfAmongMostPopular(vector<string> vector, string name)
+void displayIfAmongMostPopular(const vector<string> vector, const string name)
 {
     cout << endl
          << name 

@@ -26,13 +26,14 @@
  **/
 #include <iostream>
 #include <vector>
+
 using namespace std;
 
 void getUserNumbers(int[], const int);
 
 void findDuplicateNumbers(vector<int> &);
 
-void getMatchingDigits(vector<int>,
+void getMatchingDigits(const vector<int>,
                        vector<int> &,
                        const int[],
                        int &,
@@ -43,6 +44,7 @@ void displayInfo(const int[],
                  const vector<int>,
                  const int,
                  const int);
+
 
 int main()
 {
@@ -56,8 +58,8 @@ int main()
     getUserNumbers(user_numbers, ARRAY_SIZE);
 
     for (int i = 0; i < ARRAY_SIZE; i++)
-        duplicate_numbers.push_back(user_numbers[i]);
-    
+        duplicate_numbers.push_back(user_numbers[i]);  // 5 5 7 8 9
+
     findDuplicateNumbers(duplicate_numbers);
 
     getMatchingDigits(duplicate_numbers,
@@ -65,7 +67,7 @@ int main()
                       lottery_numbers, 
                       total_matching_digits, 
                       ARRAY_SIZE);
-    
+
     displayInfo(user_numbers,
                 lottery_numbers,
                 matching_digits,
@@ -73,7 +75,7 @@ int main()
                 ARRAY_SIZE);
 
     return 0;
-}
+} // End int main()
 
 void getUserNumbers(int user_numbers[], const int ARRAY_SIZE)
 {
@@ -114,7 +116,7 @@ void findDuplicateNumbers(vector<int> &duplicate_numbers)
     }
 }
 
-void getMatchingDigits(vector<int> duplicate_numbers,
+void getMatchingDigits(const vector<int> duplicate_numbers,
                        vector<int> &matching_digits,
                        const int lottery_numbers[],
                        int &total_matching_digits,
