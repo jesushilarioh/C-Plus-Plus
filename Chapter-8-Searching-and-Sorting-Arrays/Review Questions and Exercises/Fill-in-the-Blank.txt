@@ -1,0 +1,17 @@
+8. The __linear__ search algorithm steps sequentially through 
+an array, comparing each item with the search value.
+
+9. The __binary__ search algorithm repeatedly divides the 
+portion of an array being searched in half.
+
+10. The __linear__ search algorithm is adequate for small
+arrays but not large arrays.
+
+11. The __binary__ search algorithm requires that the
+array's contents be sorted.
+
+12. If an array is sorted in __ascending__ order, the 
+values are stored from lowest to highest.
+
+13. If an array is sorted in __descending__ order, the
+values are stored from highest to lowest.

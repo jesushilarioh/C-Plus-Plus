@@ -1,0 +1,33 @@
+1. Why is the linear search also called "sequential search"?
+ANSWER: It uses a loop to sequentially step through an array,
+        starting at the first element.
+
+2. If a linear search function is searching for a value that is
+stored in the last element of a 10,000-element array, how many
+elements will the search code have to read to locate the value?
+ANSWER: 10,000
+
+3. In an average case involving an array of N elements, how many
+times will a linear search function have to read the array to locate
+a specific value?
+ANSWER: N/2
+
+4. A binary search function is searching for a value that is stored
+in the middle element of an array. How many times will the function 
+read an element in the array before finding the value?
+ANSWER: once.
+
+5. What is the maximum number of comparisons that a binary 
+search function will make when searching for a value in a 
+1,000-element array?
+ANSWER: 10, cause in using the powers of 2, 2^10 = 1024
+
+6. Why is the bubble sort inefficient for large arrays?
+ANSWER: because values move by only one element at a time
+toward their final destination in the array.
+
+7. Why is the selection sort more efficient than the bubble
+sort of large arrays?
+ANSWER: Selection sort usually performs fewer swaps because 
+it moves items immidiately to their final position in the 
+array.

@@ -1,0 +1,43 @@
+14. If data are sorted in ascending order, 
+it means they are ordered from lowest value 
+to highest value.
+ANSWER: T
+
+15. If data are sorted in descending order, 
+it means they are ordered from lowest value 
+to highest value.
+ANSWER: F 
+
+16. The average number of comparisions performed 
+by the linear search on an array of N elements is 
+N/2 (assuming the search values are consitently found).
+ANSWER: T
+
+17. The maximum number of comparisions performed 
+by the linear search on an array of N elements is 
+N/2 (assuming the search values are consitently found).
+ANSWER: F 
+
+Linear Search:
+Average Comparisions ->
+50 elements: N/2 = 25
+500 elements: N/2 = 250
+10,000 elements: N/2 = 5,000
+100,000 elements: N/2 = 50,000
+10,000,000 elements: N/2 = 5,000,000
+
+Linear Search:
+Maximum Comparisions ->
+50 elements: N = 50
+500 elements: N = 500
+10,000 elements: N = 10,000
+100,000 elements: N = 100,000
+10,000,000 elements: N = 10,000,000
+
+Binary Search:
+Maximum Comparisions ->
+50 elements: 2^6 = 64 -> 6
+500 elements: 2^9 = 512 -> 9
+10,000 elements: 2^14 = 16,3844 -> 14
+100,000 elements: 2^17 = 131,072 -> 17
+10,000,000 elements: 2^24 = 16,777,216 -> 24
