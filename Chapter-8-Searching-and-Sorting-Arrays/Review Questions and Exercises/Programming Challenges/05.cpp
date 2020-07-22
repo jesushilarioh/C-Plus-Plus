@@ -31,22 +31,14 @@ int main()
 {
     double rainfall[ARRAY_SIZE];
     int months[ARRAY_SIZE] = { 1, 2, 3, 4,  5,  6,
-                                  7, 8, 9, 10, 11, 12 };
-    string month_names[ARRAY_SIZE] = { "January", "February", "March", "April", "May", "June",
-                                       "July", "August", "September", "October", "November", "December" };
+                               7, 8, 9, 10, 11, 12 };
+    string month_names[ARRAY_SIZE] = { "January", "February", "March", 
+                                       "April"  , "May"     , "June",
+                                       "July"   , "August"  , "September", 
+                                       "October", "November", "December" };
 
     cout << "Enter average rainfall for each month: " << endl;
     getValues(rainfall);
-
-    selectionSort(rainfall, months, ARRAY_SIZE);
-
-    cout << endl;
-    for (int i = 0; i < ARRAY_SIZE; i++)
-        cout << month_names[months[i] - 1] << "(" 
-             << months[i] << ")" << ": " 
-             << rainfall[i] 
-             << endl;
-    cout << endl;
 
     double total_rainfall = calculateTotal(rainfall);
     double avarage_rainfall = average(total_rainfall);
@@ -57,6 +49,16 @@ int main()
     vector<int>lowest_months;
     findLowestMonths(rainfall, lowest_months);
 
+    selectionSort(rainfall, months, ARRAY_SIZE);
+
+    cout << endl;
+    for (int i = 0; i < ARRAY_SIZE; i++)
+        cout << month_names[months[i] - 1] << "(" 
+             << months[i] << ")" << ": " 
+             << rainfall[i] 
+             << endl;
+    cout << endl;
+    
     display(total_rainfall, avarage_rainfall, highest_months, lowest_months);
 
     return 0;

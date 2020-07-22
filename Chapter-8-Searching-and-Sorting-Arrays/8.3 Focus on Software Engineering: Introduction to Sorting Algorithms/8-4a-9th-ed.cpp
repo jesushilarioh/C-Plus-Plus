@@ -31,16 +31,22 @@ void bubbleSort(int array[], int size)
         index;
 
     for (maxElement = size - 1; maxElement > 0; maxElement--)
-    {
+    // {   
+    //     for (int i = 0; i < size; i++)
+    //     {
+    //         cout << array[i] << " ";
+    //     }
+    //     cout << endl;
+
         for (index = 0; index < maxElement; index++)
         {
             if (array[index] > array[index + 1])
             {
                 swap(array[index], array[index + 1]);
+                
             }
             
         }
-        
     }
     
 }

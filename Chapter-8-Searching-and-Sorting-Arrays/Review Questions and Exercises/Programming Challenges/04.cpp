@@ -11,31 +11,31 @@
 using namespace std;
 
 int inputValidation(int);
-void selectionSort(int [], const int);
-bool binarySearch(const int[], const int, const int);
+bool binarySearch(const int[], 
+                  const int, 
+                  const int);
+void selectionSort(int[], int);
+void swap(int &, int &);
 
 int main()
 {
     const int NUMBER_OF_ACCOUNTS = 18;
 
-    int account_numbers[NUMBER_OF_ACCOUNTS] = { 5658845, 4520125, 7895122, 8777541, 8451277, 1302850, 
-                                                8080152, 4562555, 5552012, 5050552, 7825877, 1250255, 
-                                                1005231, 6545231, 3852085, 7576651, 7881200, 4581002 };
+    int account_numbers[NUMBER_OF_ACCOUNTS] = { 5658845, 4520125, 7895122, 
+                                                8777541, 8451277, 1302850, 
+                                                8080152, 4562555, 5552012, 
+                                                5050552, 7825877, 1250255, 
+                                                1005231, 6545231, 3852085, 
+                                                7576651, 7881200, 4581002 };
 
     cout << "Enter an account #: " << endl;
     int user_account_number = inputValidation(user_account_number);
 
-    // for (int i = 0; i < NUMBER_OF_ACCOUNTS; i++)
-    //     cout << account_numbers[i] << ", ";
-    // cout << endl;
-
     selectionSort(account_numbers, NUMBER_OF_ACCOUNTS);
 
-    // for (int i = 0; i < NUMBER_OF_ACCOUNTS; i++)
-    //     cout << account_numbers[i] << ", ";
-    // cout << endl;
-
-    bool user_account_number_is_valid = binarySearch(account_numbers, NUMBER_OF_ACCOUNTS, user_account_number);
+    bool user_account_number_is_valid = binarySearch(account_numbers, 
+                                                     NUMBER_OF_ACCOUNTS, 
+                                                     user_account_number);
 
     if (user_account_number_is_valid)
         cout << "Your account number is valid." << endl;
@@ -56,19 +56,19 @@ int inputValidation(int user_number)
     return user_number;
 }
 
-void selectionSort(int array[], const int ARRAY_SIZE)
+void selectionSort(int array[], int ARRAY_SIZE)
 {
     int min_index,
         min_value;
 
-    for (int start_index = 0; start_index < (ARRAY_SIZE - 1); start_index++)
+    for (int start_index = 0; start_index < (ARRAY_SIZE - 1); start_index++) // 0 - 17
     {
         min_index = start_index;
         min_value = array[start_index];
 
-        for (int index = start_index + 1; index < ARRAY_SIZE; index ++)
+        for (int index = start_index + 1; index < ARRAY_SIZE; index++) // 1 - 18
         {
-            if (array[index] < min_value)
+            if (array[index] < min_value) // Ascending
             {
                 min_value = array[index];
                 min_index = index;
@@ -78,33 +78,33 @@ void selectionSort(int array[], const int ARRAY_SIZE)
     }
 }
 
-void swap(int &a, int &b)
-{
-    int temp = a;
-    a = b;
-    b = temp;
-}
-
 bool binarySearch(const int array[], const int ARRAY_SIZE, const int user_number)
 {
-
     int first_index = 0,
         middle_index,
-        last_index = ARRAY_SIZE - 1;
+        last_index = ARRAY_SIZE - 1;    // 18 - 1 = 17
 
     bool found = false;
 
     while (!found && first_index <= last_index)
     {
-        middle_index = (first_index + last_index) / 2;
+        middle_index = (first_index + last_index) / 2; // 8
 
-        if (array[middle_index] == user_number)
+        if (array[middle_index] == user_number)     // Mid point
             found = true;
-        else if (array[middle_index] > user_number)
-            last_index = middle_index - 1;
-        else
+        else if (array[middle_index] > user_number) // Lower half
+            last_index = middle_index - 1; // 8 - 1 = 7
+        else                                        // Upper Half
             first_index = middle_index + 1;
+
     }
     
     return found;
+}
+
+void swap(int &a, int &b)
+{
+    int temp = a;
+    a = b;
+    b = temp;
 }
