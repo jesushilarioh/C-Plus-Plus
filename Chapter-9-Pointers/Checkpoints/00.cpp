@@ -1,3 +1,4 @@
+// Uncomment
 #include <iostream>
 using namespace std;
 int main()
@@ -168,8 +169,8 @@ int main()
     // value.
 
     // E) 
-    int *iptr = &ivar;
-    int ivar;
+    // int *iptr = &ivar;
+    // int ivar;
 
     // Invalid: the variable address that is to be used by a pointer 
     //  must exist before it before it is pointed to.
