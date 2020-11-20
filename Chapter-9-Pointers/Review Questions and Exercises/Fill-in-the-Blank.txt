@@ -1,0 +1,11 @@
+13. Each byte in memory is assigned a unique ____Address______.
+14. The _____address(&)____ operator can be used to determine a variable’s address.
+15. _____Pointer_____ variables are designed to hold addresses.
+16. The _____indirection(*)____ operator can be used to work with the variable a pointer points to.
+17. Array names can be used as _____constant_pointers_____, and vice versa.
+18. Creating variables while a program is running is called _____dynamic_memory_allocation_____.
+19. The _____new_____ operator is used to dynamically allocate memory.
+20. Under older compilers, if the new operator cannot allocate the amount of memory requested, it returns _____an_exception_____.
+21. A pointer that contains the address 0 is called a(n) _____null_____ pointer.
+22. When a program is finished with a chunk of dynamically allocated memory, it should free it with the _____delete_____ operator.
+23. You should only use pointers with delete that were previously used with _____new_____.

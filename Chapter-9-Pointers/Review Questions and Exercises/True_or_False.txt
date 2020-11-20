@@ -1,0 +1,51 @@
+31. T F Each byte of memory is assigned a unique address.
+(TRUE)
+
+32. T F The * operator is used to get the address of a variable. 
+(TRUE)
+
+33. T F Pointer variables are designed to hold addresses.
+(TRUE)
+
+34. T F The & symbol is called the indirection operator.
+(FALSE) & is the address operator, while the indirection operator is the (*) symbol
+
+35. T F The & operator dereferences a pointer.
+(FALSE) the indirection operator (*) dereferences the pointer.
+
+36. T F When the indirection operator is used with a pointer variable, you are actually working with the value the pointer is pointing to.
+(TRUE)
+
+37. T F Array names cannot be dereferenced with the indirection operator.
+(FALSE) an array name CAN be dereferenced with the (*) indirection operator
+
+38. T F When you add a value to a pointer, you are actually adding that number times the size of the data type referenced by the pointer.
+(TRUE)
+
+39. T F The address operator is not needed to assign an array’s address to a pointer.
+(TRUE) The address operator is not needed to assign an array's address to a pointer, because the name of an array is already an address, use of the & operator would be incorrect.
+
+40. T F You can change the address that an array name points to.
+(FALSE) Array names are pointer constants. You can't make them point to anything but the array they represent.
+
+41. T F Any mathematical operation, including multiplication and division, may be performed on a pointer.
+(FALSE) Not all arithmetic operations may be performed on pointers. You can either add or subtract by the size of one integer.
+
+42. T F Pointers may be compared using the relational operators.
+(TRUE) If one address comes before another address in memory, the first address is considered "less than" the second. C++'s relational operators may be used to compare pointer values.
+
+43. T F When used as function parameters, reference variables are much easier to work with than pointers.
+(TRUE) Reference variables are much easier to work with than pointers. Reference variables hide all the "mechanics" of dereferencing and indirection.
+
+44. T F The new operator dynamically allocates memory.
+(TRUE)
+
+45. T F A pointer variable that has not been initialized is called a null pointer.
+(TRUE)
+
+46. T F The address 0 is generally considered unusable.
+(TRUE)
+
+47. T F In using a pointer with the delete operator, it is not necessary for the pointer to have been previously used with the new operator.
+(FALSE): If you use a pointer with delete that does not reference dynamically allocate memory, unexpected problems could result!
+
