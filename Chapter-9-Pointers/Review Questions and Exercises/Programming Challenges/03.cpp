@@ -103,12 +103,19 @@ void swap(double *a, double *b)
     b = temp;
 }
 double averageArrayElements(double *array, const int SIZE)
-{
-    double sum = 0;
+{   
+    // Changed...
+    double lowest_value = *(array + 0),
+           sum = lowest_value;
 
-    for (int i = 0; i < SIZE; i++)
+    for (int i = 1; i < SIZE; i++)
+    {
+        if(*(array + i) < lowest_value)
+            lowest_value = *(array + i);
+            
         sum += *(array + i);
-    
+    }
+        
     return sum / SIZE;
 }
 void displayArray(double *array, const int SIZE)
