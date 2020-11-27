@@ -73,14 +73,16 @@ void displayArray(double *array, const int SIZE)
 }
 void selectionSort(double *array, const int SIZE)
 {
-    int startScan, minIndex, minValue;
+    int start_index, 
+        minIndex, 
+        minValue;
 
-    for (startScan = 0; startScan < (SIZE - 1); startScan++)
+    for (start_index = 0; start_index < (SIZE - 1); start_index++)
     {
-        minIndex = startScan;
-        minValue = *(array + startScan);
+        minIndex = start_index;
+        minValue = *(array + start_index);
 
-        for (int index = startScan + 1; index < SIZE; index++)
+        for (int index = start_index + 1; index < SIZE; index++)
         {
             if (*(array + index) < minValue)
             {
@@ -88,9 +90,16 @@ void selectionSort(double *array, const int SIZE)
                 minIndex = index;
             }
         }
-        *(array + minIndex) = *(array + startScan);
-        *(array + startScan) = minValue;
+        // *(array + minIndex) = *(array + start_index);
+        swap(*(array + minIndex), *(array + start_index));
+        // *(array + start_index) = minValue;
     }
+}
+void swap(double *a, double *b)
+{
+    double *temp = a;
+    a = b;
+    b = temp;
 }
 double averageArrayElements(double *array, const int SIZE)
 {
