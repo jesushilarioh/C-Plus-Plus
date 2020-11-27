@@ -115,8 +115,10 @@ double averageArrayElements(double *array, const int SIZE)
             
         sum += *(array + i);
     }
-        
-    return sum / SIZE;
+    
+    sum -= lowest_value;
+
+    return sum / (SIZE - 1);
 }
 void displayArray(double *array, const int SIZE)
 {
