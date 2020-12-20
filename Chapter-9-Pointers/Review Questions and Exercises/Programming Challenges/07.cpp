@@ -1,4 +1,4 @@
-/**
+/** ++
  * 7. Case Study Modification #2
  * Modify Program 9-19 (the United Cause case study program) 
  * so the arrptr array is sorted in descending order instead 
@@ -28,6 +28,7 @@ int main()
 
     arrSelectSort(arrPtr, NUM_DONATIONS);
 
+    // Changed to descending...
     cout << "The donations, sorted in descending order, are: \n";
     showArrPtr(arrPtr, NUM_DONATIONS);
 
@@ -48,6 +49,8 @@ void arrSelectSort(int *arr[], int size)
         minElem = arr[startScan];
         for (int index = startScan + 1; index < size; index++)
         {
+            // Changed from less than (<) to
+            // greater than (>)
             if (*(arr[index]) > *minElem)
             {
                 minElem = arr[index];
