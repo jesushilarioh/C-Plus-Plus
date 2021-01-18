@@ -1,0 +1,18 @@
+09. The ___isupper()___ function returns true if the character argument is uppercase.
+10. The ___isalpha()___ function returns true if the character argument is a letter of the alphabet.
+11. The ___isdigit()___ function returns true if the character argument is a digit.
+12. The ___isspace()___ function returns true if the character argument is a whitespace character.
+13. The ___toupper()___ function returns the uppercase equivalent of its character argument.
+14. The ___tolower()___ function returns the lowercase equivalent of its character argument.
+15. The ___<cctype>____ file must be included in a program that uses character-testing functions.
+16. The ___length()____ function returns the length of a string.
+17. To ___concatenate___ two strings means to append one string to the other.
+18. The ___strcat()___ function concatenated two strings.
+19. The ___strcpy()___ function copies one string to another.
+20. The ___strstr()___ function searches for a string inside of another one.
+21. The ___strcmp()___ function compares two strings.
+22. The ___strncpy()___ function copies, at most, n number of characters from one string to another.
+23. The ___stoi()___ function returns the value of a string converted to an integer. 
+24. The ___stol()___ function returns the value of a string converted to a long integer. 
+25. The ___stof()___ function returns the value of a string converted to a float. 
+26. The ___to_string()___ function converts an integer to a string. 

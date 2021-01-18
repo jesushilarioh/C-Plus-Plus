@@ -1,0 +1,29 @@
+33. T F Character testing functions, such as isupper, accept strings as arguments and test each character in the string.
+TRUE
+
+34. T F If toupper’s argument is already uppercase, it is returned as is, with no changes. 
+TRUE
+
+35. T F If tolower's argument is already lowercase, it will be inadvertently converted to uppercase.
+FALSE: if the tolower's argument is already lowercase, to will remain unchanged.
+
+36. T F The strlen function returns the size of the array containing a string.
+FALSE: strlen returns the length of the string, not including the null terminator '\0'.
+
+37. T F If the starting address of a C-string is passed into a pointer parameter, it can be assumed that all the characters, from that address up to the byte that holds the null terminator, are part of the string.
+TRUE
+
+38. T F C-string handling functions accept as arguments pointers to strings (array names or pointer variables), or literal strings.
+TRUE
+
+39. T F The strcat function checks to make sure the first string is large enough to hold both strings before performing the concatenation.
+FALSE: strcat will overflow the boundaries of the array.
+
+40. T F The strcpy function will overwrite the contents of its first string argument. 
+TRUE
+
+41. T F The strcpy function performs no bounds checking on the first argument.
+TRUE
+
+42. T F There is no difference between “847” and 847.
+FALSE: "847" is a string, while 847 is of an integer data type

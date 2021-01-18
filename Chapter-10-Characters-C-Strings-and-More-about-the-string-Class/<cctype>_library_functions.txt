@@ -1,0 +1,29 @@
+<cctype> library functions
+-----------------------------|
+
+01. isalpha() - Returns true (a nonzero number) if the argument is a letter of the alphabet. Returns 0 if the argument is not a letter.
+
+02. isalnum() - Returns true (a nonzero number) if the argument is a letter of the alphabet or a digit. Otherwise, it returns 0.
+
+03. isdigit() - Returns true (a nonzero number) if the argument is a digit from 0 through 9. Otherwise, it returns 0. 
+
+04. islower() - Returns true (a nonzero number) if the argument is a lowercase letter. Otherwise, it return 0.
+
+05. isprint() - Returns true (a nonzero number) if the argument is a printable character (including a space). Returns 0 otherwise. 
+
+06. ispunct() - Returns true (a nonzero number) if the arguemnt is a printable character other than a digit, letter, or space. Returns 0 otherwise. 
+
+07. isupper() - Returns true (a nonzero number) if the argument is an uppercase letter. Otherwise, it returns 0.
+
+08. isspace() - Returns true (a nonzero number) if the argument is a whitespace character. Whitespace characters are any of the following:
+
+    space ''
+    newline '\n'
+    vertical tab '\v'
+    tab '\t'
+
+Otherwise, it returns 0.
+
+09. toupper() - Returns the uppercase equivalent of its argument.
+
+10. tolower() - Returns the lowercase equivalent of its argument.
