@@ -1,0 +1,42 @@
+<string> library functions
+-----------------------------|
+
+01. stoi(string str) - Accepts a string argument and returns that argument's value converted to an int.
+
+02. stol(string str) - Accepts a string argument and returns that argument's value converted to a long.
+
+03. stoul(string str) - Accepts a string argument and returns that argument's value converted to an unsigned long
+
+04. stoll(string str) - Accepts a string argument and returns that argument's value converted to a long long
+
+05. stoull(string str) - Accepts a string argument and returns that argument's value converted to an unsigned long long.
+
+06. stof(string str) - Accepts a string argument and returns that argument's value converted to a float.
+
+07. stod(string str) - Accepts a string argument and returns that argument's value converted to a double.
+
+08. stold(string str) Accepts a string argument and returns that argument's value converted to a long double.
+
+
+
+-- to_string() overloaded versions --
+-- to_string() overloaded versions --
+-- to_string() overloaded versions --
+
+01. to_string(int value) - Accepts an int argument and returns that argument converted to a string object.
+
+02. to_string(long value) - Accepts a long argument and returns that argument converted to a string object.
+
+03. to_string(long long value) - Accepts a long long argument and returns that argument converted to a string object.
+
+04. to_string(unsigned value) - Accepts an unsigned argument and returns that argument converted to a string object.
+
+05. to_string(unsigned long value) - Accepts an unsigned long argument and returns that argument converted to a string object.
+
+06. to_string(unsigned long long value) - Accepts an unsigned long long argument and returns that argument converted to a string object.
+
+07. to_string(float value) - Accepts a float argument and returns that argument converted to a string object.
+
+08. to_string(double value) - Accepts a double argument and returns that argument converted to a string object.
+
+09. to_string(long double value) - Accepts a long double argument and returns that argument converted to a string object.

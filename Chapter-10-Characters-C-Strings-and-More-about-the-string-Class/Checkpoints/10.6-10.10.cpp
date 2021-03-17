@@ -32,7 +32,7 @@ int main()
     cout << string2 << endl; // nice day
 
     // 10.9 Write a statement that will copy the string "Beethoven" to the array composer.
-    char composer[strlen( "Beethoven")];
+    char composer[10];
     strcpy(composer, "Beethoven");
     cout << composer << endl;
 

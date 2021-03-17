@@ -1,0 +1,8 @@
+<cstdlib> library functions
+-----------------------------|
+
+01. atoi(c_string_int) - Accepts a C-string as an argument. The function converts the C-string to an integer and returns that value. Example Usage: int num = atoi("4569");
+
+02. atol(c_string_long) - Accepts a C-string as an argument. The function converts the C-string to a long integer and returns that value. Example Usage: long lnum = atol("500000");
+
+03. atof(c_string_double) - Accepts a C-string as an argument. The function converts the C-string to a double and returns that value. Example Usage: double fnum = atof("3.14159");

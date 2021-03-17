@@ -1,0 +1,16 @@
+<cstring> library functions
+-----------------------------|
+
+01. strlen(arg1) - Accepts a C-string or a pointer to a C-string as an argument. Returns the length of the C-string (not including the null terminator.) Example Usage: len = strlen(name);
+
+02. strcat(arg1, arg2) - Accepts two C-strings or pointers to two C-string as arguments. The function appends the contents of the second string to the first C-string. (The first string is altered, the second string is left unchanged.) Example Usage: strcat(string1, string2);
+
+03. strcpy(string1, string2) - Accepts two C-string or pointers to two C-strings as arguments. The function copies the second C-string to the first C-string. The second C-string is left unchanged. Example Usage: strcpy(string1, string2);
+
+04. strncat(string1, string2, max_numbers_of_characters_to_copy) - Accepts two C-strings or pointers to two C-strings, and an integer argument. The thrid argument, an integer, indicates the maximum number of characters to copy from the second C-string to the first C-string. Example Usage: strcnat(string1, string2, n);
+
+05. strncpy(string1, string2, the_max_number_of_characters_to_copy) - Accepts two C-string or pointers to two C-strings, and an integer argument. The third argument, an integer, indicates the maximum number of characters to copy from the second C-string to the first C-string. If n is less than the length of string2, the null terminator is not automatically appended to string1. If n is greater than the length of string2, string1 is padded with '\0' characters. Example Usage: strncpy(string1, string2, n);
+
+06. strcmp(string1, string2) - Accepts two C-strings or pointers to two C-string arguments. If string1 and string2 are the same, this function returns 0. If string2 is alphabetically greater than string1, it returns a negative number. If string2 is alphabetically less than string1, it returns a positive number. Example Usage: if (strcmp(string1, string2))
+
+07. strstr(string1, string2) - Accepts two C-strings or pointers to two C-strings as arguments. Searches for the first occurence of string2 in string1. If an occurence if string2 is found, the function returns a pointer to it. Otherwise, it returns nullptr (address 0). Example Usage: cout << strstr(string1, string2);
