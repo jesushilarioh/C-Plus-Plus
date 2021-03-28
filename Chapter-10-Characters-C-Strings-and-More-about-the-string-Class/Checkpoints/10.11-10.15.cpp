@@ -12,7 +12,7 @@
  * stod = returns a string argument converted to a double
  **/ 
 #include <iostream>
-#include <string>
+#include <string>   // stoi(), stol(), stod(), to_string()
 using namespace std;
 int main()
 {
