@@ -15,3 +15,39 @@
  * argument.
  * 
  */
+#include <iostream>
+
+using namespace std;
+
+int numberOfWords(const char *);
+
+int main()
+{
+    const int SIZE = 80;
+    char user_input[SIZE];
+
+    cout << "\nEnter a sentence: ";
+    cin.getline(user_input, SIZE);
+
+    cout << "Your sentence has " << numberOfWords(user_input) 
+         << " words.\n" 
+         << endl;
+
+    return 0;
+}
+
+int numberOfWords(const char *c_string)
+{
+    int count = 0;
+
+    while (*c_string != '\0')
+    {
+        if (*c_string == ' ')
+            count++;
+
+        c_string++;
+    }
+    
+
+    return (count + 1);
+}
