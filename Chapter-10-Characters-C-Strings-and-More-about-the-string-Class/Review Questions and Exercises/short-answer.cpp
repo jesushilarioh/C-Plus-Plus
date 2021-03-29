@@ -39,9 +39,14 @@ int main()
      */
     char c;
     c = toupper('a'); // A
+    cout << "c = " << c << endl;
     c = toupper('B'); // B
-    c = toupper('D'); // D
+    cout << "c = " << c << endl;
+    c = tolower('D'); // d
+    cout << "c = " << c << endl;
     c = toupper('e'); // E
+    cout << "c = " << c << endl;
+
 
     /**
      * 4. Look at the following code. What value will 
@@ -51,6 +56,7 @@ int main()
     int s;
     strcpy(name, "Jimmy");
     s = strlen(name); // 5
+    cout << "s = " << s << endl;
 
     /**
      * 8. How do you compare string class objects?
