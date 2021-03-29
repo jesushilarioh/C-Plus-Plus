@@ -24,18 +24,18 @@ int main()
     int count = 0, 
         number_of_digits = 0;
 
-    for (int i = 0; i < SIZE; i++)
-    {
-        if (isdigit(input[i]))
-            number_of_digits++;
-    }
-    
-    // while(input[count] != '\0')
+    // for (int i = 0; i < SIZE; i++)
     // {
-    //     if (isdigit(input[count]))
-    //         number_of_digits++; 
-    //     count++;
+    //     if (isdigit(input[i]))
+    //         number_of_digits++;
     // }
+    
+    while(input[count] != '\0')
+    {
+        if (isdigit(input[count]))
+            number_of_digits++; 
+        count++;
+    }
     cout << "Array {input} contains " 
          << number_of_digits 
          << " digits" 
@@ -52,8 +52,8 @@ int main()
     char str[10];
     char name[10] = "Francesca";
     strcpy(str, name);
-    cout << str << endl;
-    cout << name << endl;
+    cout << "str  = " << str  <<  ", str  size = " << strlen(str) << endl;
+    cout << "name = " << name <<  ", name size = " << strlen(name) << endl;
 
     /**
      * 30. Look at the following statements:
@@ -64,10 +64,10 @@ int main()
      * Write a statement that converts the string in str to a
      * double and stores the result in value. */
     char str1[] = "237.89";
-    // double value = atof(str1); // <cstdlib>
-    double value = stod(str1); // <string>
+    double value = atof(str1); // <cstdlib>
+    // double value = stod(str1); // <string>
     cout << "str   = " << str1 << endl; 
-    cout << "value = " << value << endl;
+    cout << "value * 2 = " << value * 2 << endl;
 
     /**
      * 31. Write a function that accepts a pointer to a C-string
@@ -77,8 +77,8 @@ int main()
      */
     char new_string[] = "wjewjelwoeWoldWekwjW"; // 7
 
-    int num_time_w_occurs = findInstancesOf('j', new_string);
-    cout << "\'j\' occurs " << num_time_w_occurs << " times " << endl;
+    int num_time_w_occurs = findInstancesOf('w', new_string);
+    cout << "\'w\' occurs " << num_time_w_occurs << " times " << endl;
 
     /**
      * 32. Assume str2 and str3 are string class objects. Write 

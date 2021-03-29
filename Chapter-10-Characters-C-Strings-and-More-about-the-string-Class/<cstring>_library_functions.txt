@@ -7,9 +7,9 @@
 
 03. strcpy(string1, string2) - Accepts two C-string or pointers to two C-strings as arguments. The function copies the second C-string to the first C-string. The second C-string is left unchanged. Example Usage: strcpy(string1, string2);
 
-04. strncat(string1, string2, max_numbers_of_characters_to_copy) - Accepts two C-strings or pointers to two C-strings, and an integer argument. The thrid argument, an integer, indicates the maximum number of characters to copy from the second C-string to the first C-string. Example Usage: strcnat(string1, string2, n);
+04. strncat(string1, string2, max_numbers_of_characters_to_copy) - Accepts two C-strings or pointers to two C-strings, and an integer argument. The third argument, an integer, indicates the maximum number of characters to copy from the second C-string to the first C-string. Example Usage: strncat(string1, string2, n);
 
-05. strncpy(string1, string2, the_max_number_of_characters_to_copy) - Accepts two C-string or pointers to two C-strings, and an integer argument. The third argument, an integer, indicates the maximum number of characters to copy from the second C-string to the first C-string. If n is less than the length of string2, the null terminator is not automatically appended to string1. If n is greater than the length of string2, string1 is padded with '\0' characters. Example Usage: strncpy(string1, string2, n);
+05. strncpy(string1, string2, the_max_number_of_characters_to_copy) - Accepts two C-strings or pointers to two C-strings, and an integer argument. The third argument, an integer, indicates the maximum number of characters to copy from the second C-string to the first C-string. If n is less than the length of string2, the null terminator is not automatically appended to string1. If n is greater than the length of string2, string1 is padded with ‘\0’ characters. Example Usage: strncpy(string1, string2, n);
 
 06. strcmp(string1, string2) - Accepts two C-strings or pointers to two C-string arguments. If string1 and string2 are the same, this function returns 0. If string2 is alphabetically greater than string1, it returns a negative number. If string2 is alphabetically less than string1, it returns a positive number. Example Usage: if (strcmp(string1, string2))
 

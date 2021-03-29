@@ -22,34 +22,3 @@
  * C-string as an argument and capitalizes the first 
  * character of each sentence in the string.
  */
-#include <iostream>
-#include <cctype>
-using namespace std;
-
-void cap1stLetterOfEachSentence(char []);
-
-int main()
-{
-    char name[] = "Jesus is a. Grand person. Hello.";
-
-    cap1stLetterOfEachSentence(name);
-
-    return 0;
-}
-
-void cap1stLetterOfEachSentence(char c_string[])
-{
-    int count = 0;
-    // char letter;
-
-    while (c_string[count] != '\0')
-    {
-        if (c_string[count] == '.' && c_string[count + 1] == ' ')
-        {
-            // letter = toupper(*(c_string + count));
-            cout << c_string[count] << endl;
-        }
-        count++;
-    }
-    
-}
