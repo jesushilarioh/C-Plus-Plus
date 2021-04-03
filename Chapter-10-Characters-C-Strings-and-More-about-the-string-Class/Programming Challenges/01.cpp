@@ -9,6 +9,8 @@
  * then displays the function’s return value.
  */
 #include <iostream>
+#include <cstring>
+
 using namespace std;
 
 int countNumberOfChars(char *);
@@ -19,7 +21,7 @@ int main()
     char user_string[SIZE];
 
     cout << "\nEnter a string with " << SIZE - 1 << " characters: ";
-    cin >> user_string;
+    cin.getline(user_string, SIZE);
 
     // passes it to the function, 
     int number_of_characters = countNumberOfChars(user_string);
@@ -38,8 +40,16 @@ int countNumberOfChars(char *c_string)
 
     // while (*(c_string + count) != '\0')
     //     count++;
-    while(c_string[count] != '\0')
-        count++;
+    // while(c_string[count] != '\0')
+    //     count++;
+    // while (*c_string != '\0')
+    // {
+    //     if (isalpha(*c_string))
+    //         count++;
+    //     c_string++; 
+    // }
 
-    return count;
+    // return count;
+    
+    return strlen(c_string);
 }
