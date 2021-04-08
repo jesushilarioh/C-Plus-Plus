@@ -38,17 +38,24 @@ int main()
 
 int numberOfWords(const char *c_string)
 {
-    int count = 0;
+    int number_of_words = 0;
+    int length = 0;
 
     while (*c_string != '\0')
     {
-        if (*c_string == ' ')
-            count++;
 
+        if (*c_string == ' ')
+            length = 0;
+        else if(++length == 1)
+            number_of_words++;
+        
         c_string++;
     }
     
 
-    return (count + 1);
+    return number_of_words;
 }
-kosdlkflkdjflalsldkfjldkffjejfiejfreturn kdfkljint maind(0 dslfkfjeoiwef;lef)
+
+// RESOURCE USED: https://www.youtube.com/watch?v=e_k5ReiYcuw
+// RESOURCE USED: https://www.youtube.com/watch?v=e_k5ReiYcuw
+// RESOURCE USED: https://www.youtube.com/watch?v=e_k5ReiYcuw
