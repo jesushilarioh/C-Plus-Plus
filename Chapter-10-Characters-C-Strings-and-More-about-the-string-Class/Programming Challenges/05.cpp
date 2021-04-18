@@ -57,7 +57,7 @@ void displayCString(char *c_string)
 {
     while(*c_string != '\0')
     {
-        cout << *c_string;
+        cout << *c_string;  
         c_string++;
     }
 }
