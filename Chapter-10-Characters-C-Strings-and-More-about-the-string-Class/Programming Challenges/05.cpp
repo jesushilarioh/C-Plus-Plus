@@ -17,18 +17,26 @@
  * object as its argument.
  */
 #include <iostream>
+#include <cctype>   // toupper()
+#include <string>   // length()
+
 using namespace std;
 
 void displayCString(char *);
 void capitalizeFirstWordInSentences(char *);
+void capitalizeFirstWordInSentences(string &);
 
 int main()
 {
     const int SIZE = 80;
     char user_c_string[SIZE];
+    string user_string;
 
     cout << "Enter a string: ";
     cin.getline(user_c_string, SIZE);
+
+    cout << "Enter a 2nd string: ";
+    getline(cin, user_string);
 
     cout << endl;
     displayCString(user_c_string);
@@ -36,8 +44,12 @@ int main()
     capitalizeFirstWordInSentences(user_c_string);
     cout << endl;
     displayCString(user_c_string);
+    cout << endl;
+    capitalizeFirstWordInSentences(user_string);
+    cout << endl;
+    cout << user_string;
     cout << endl 
-         << endl;
+         << endl; 
 
     return 0;
 }
@@ -55,15 +67,23 @@ void displayCString(char *c_string)
  * character of each sentence in the string.
  */
 void capitalizeFirstWordInSentences(char *c_string)
-{
-    // while(*c_string != '\0')
+{   
     for (int i = 0; i < strlen(c_string); i++)
     {
-        // if(i == 0)
-            *(c_string + i) = toupper(*c_string + i);
-            cout << *c_string;
-            c_string++;
+        if (i == 0)
+            *(c_string + i) = toupper(*(c_string + i));
+        else if (ispunct(*(c_string + i)) && *(c_string + (i + 1)) == ' ')
+            *(c_string + (i + 2)) = toupper(*(c_string + (i + 2)));
     }
-    
+}
 
+void capitalizeFirstWordInSentences(string &user_string)
+{
+    for (int i = 0; i < user_string.length(); i++)
+    {
+        if (i == 0)
+            user_string[i] = toupper(user_string[i]);
+        else if (ispunct(user_string[i]) && user_string[i + 1] == ' ')
+            user_string[i + 2] = toupper(user_string[i + 2]);
+    }
 }
