@@ -39,8 +39,6 @@ int main()
     getline(cin, user_string);
 
     cout << endl;
-    displayCString(user_c_string);
-    cout << endl;
     capitalizeFirstWordInSentences(user_c_string);
     cout << endl;
     displayCString(user_c_string);
