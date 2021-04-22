@@ -25,13 +25,16 @@ int main()
          first_name[ARRAY_SIZE],
          middle_name[ARRAY_SIZE],
          last_name[ARRAY_SIZE],
-         comma_and_space[] = ", ";
+         comma_and_space[] = ", ",
+         space[] = " ";
 
     // asks for the user’s first, middle, and last names.
     // The names should be stored in three different character arrays.
     cout << "Enter first name: ";
     cin.getline(first_name, ARRAY_SIZE);
-    first_name[strlen(first_name)] = ' ';
+    max_chars = sizeof(first_name) - (strlen(first_name) + 1);
+    strncat(first_name, space, max_chars);
+    // first_name[strlen(first_name)] = ' ';
 
     cout << "Enter middle name: ";
     cin.getline(middle_name, ARRAY_SIZE);
@@ -48,15 +51,19 @@ int main()
     
     max_chars = sizeof(full_name) - (strlen(full_name) + 1);
     strncat(full_name, last_name, max_chars);
+    cout << "maxChars = " << max_chars << endl;
 
     max_chars = sizeof(full_name) - (strlen(full_name) + 1);
     strncat(full_name, comma_and_space, max_chars);
+    cout << "maxChars = " << max_chars << endl;
 
     max_chars = sizeof(full_name) - (strlen(full_name) + 1);
     strncat(full_name, first_name, max_chars);
+    cout << "maxChars = " << max_chars << endl;
 
     max_chars = sizeof(full_name) - (strlen(full_name) + 1);
     strncat(full_name, middle_name, max_chars);
+    cout << "maxChars = " << max_chars << endl;
 
 
     cout << "full_name = " << full_name << endl;
