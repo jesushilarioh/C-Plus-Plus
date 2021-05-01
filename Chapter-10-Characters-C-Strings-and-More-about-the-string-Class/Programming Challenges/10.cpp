@@ -20,13 +20,15 @@
  * 
  */
 #include <iostream>
+#include <string>
+
+using namespace std;
 
 string replaceSubstring(string, string, string);
 
-using namespace std;
 int main()
 {
-    string string1 = "the dog jumped over the fence",
+    string string1 = "the dog jumped over the fence and the dog house.",
            string2 = "the",
            string3 = "that";
     
@@ -41,5 +43,16 @@ int main()
 
 string replaceSubstring(string string1, string string2, string string3)
 {
-    
+    int found;
+
+    for (int i = 0; i < string1.size(); i++)
+    {
+        if (string1.find(string2) != -1)
+        {
+            found = string1.find(string2);
+            string1.replace(found, string2.length(), string3);      
+        }
+    }
+
+    return string1;
 }
