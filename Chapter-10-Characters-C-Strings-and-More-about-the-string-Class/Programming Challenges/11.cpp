@@ -22,7 +22,7 @@
  * 
  */
 #include <iostream>
-#include <cctype>   // toupper()
+#include <cctype>   // toupper(), tolower(), isupper(), islower()
 #include <cstring>  // strlen()
 
 using namespace std;
