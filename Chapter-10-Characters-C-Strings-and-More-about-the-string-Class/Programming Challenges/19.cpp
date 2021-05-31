@@ -260,8 +260,9 @@ void displayCheck(string name, string amount, string date)
     string amount_in_words = changeAmountToWords(amount);
 
     dollarFormat(amount);
+
     cout << "Pay to the Order of: " << name << "\t\t" << amount << endl;
-    cout << amount_in_words << endl;
+    cout << endl << amount_in_words << endl;
 }
 
 string changeAmountToWords(string digit_amount)
@@ -269,25 +270,30 @@ string changeAmountToWords(string digit_amount)
     int string_size = digit_amount.length();
     string amount_in_words = "";
 
-    // 0000.0Hundredths
-    cout << "0000.0Hundredths = " << digit_amount[string_size - 1] << endl;
+    // // 0000.0Hundredths
+    // cout << "0000.0Hundredths = " << digit_amount[string_size - 1] << endl;
+    // // 0000.Tenths0
+    // cout << "0000.Tenths0 = " << digit_amount[string_size - 2] << endl;
+    // // 000ones.00
+    // cout << "000ones.00 = " << digit_amount[string_size - 4] << endl;
+    // // 00tens0.00
+    // cout << "00tens0.00 = " << digit_amount[string_size - 5] << endl;
+    // // 0hundres00.00
+    // cout << "0hundres00.00 = " << digit_amount[string_size - 6] << endl;
+    // // thousands000.00
+    // cout << "thousands000.00 = " << digit_amount[string_size - 7] << endl;
 
-    // 0000.Tenths0
-    cout << "0000.Tenths0 = " << digit_amount[string_size - 2] << endl;
+    // cout << "string_size = " << string_size << endl;
+    string char_number = "";
+    char_number += digit_amount[string_size - 1];
+    int single_digit = stoi(char_number);
 
-    // 000ones.00
-    cout << "000ones.00 = " << digit_amount[string_size - 4] << endl;
-
-    // 00tens0.00
-    cout << "00tens0.00 = " << digit_amount[string_size - 5] << endl;
-
-    // 0hundres00.00
-    cout << "0hundres00.00 = " << digit_amount[string_size - 6] << endl;
-
-    // thousands000.00
-    cout << "thousands000.00 = " << digit_amount[string_size - 7] << endl;
-
-    cout << "string_size = " << string_size << endl;
+    for (int i = 0; i < string_size; i++)
+    {
+        
+    }
+    
+    cout << "single_digit = " << single_digit << endl;
 
     if (string_size == 8)
         amount_in_words += "Ten thousand dollars and zero cents";
@@ -301,71 +307,69 @@ string changeAmountToWords(string digit_amount)
         // }
         switch (string_size)
         {
-        case 3:
-            // cout << "0000.0Hundredths = " << digit_amount[string_size - 1] << endl;
-            // cout << "0000.Tenths0 = " << digit_amount[string_size - 2] << endl;
-            // cout << ". = " << digit_amount[string_size - 3] << endl;
+            case 3:
+                // cout << "0000.0Hundredths = " << digit_amount[string_size - 1] << endl;
+                // cout << "0000.Tenths0 = " << digit_amount[string_size - 2] << endl;
+                // cout << ". = " << digit_amount[string_size - 3] << endl;
 
-            // Tenths == 0
-            if (string_size - 2 == 0)
-            {
-                // Hundredths
-                if (string_size - 1 == 0)
-                    hundredths = "zero";
-                else if (string_size - 1 == 1)
-                    hundredths = "one";
-                else if (string_size - 1 == 2)
-                    hundredths = "two";
-                else if (string_size - 1 == 3)
-                    hundredths = "three";
-                else if (string_size - 1 == 4)
-                    hundredths = "four";
-                else if (string_size - 1 == 5)
-                    hundredths = "five";
-                else if (string_size - 1 == 6)
-                    hundredths = "six";
-                else if (string_size - 1 == 7)
-                    hundredths = "seven";
-                else if (string_size - 1 == 8)
-                    hundredths = "eight";
-                else if (string_size - 1 == 9)
-                    hundredths = "nine";
-            }
-            // Tenths == 1
-            else if (string_size - 2 == 1)
-            {
-                // Hundredths
-                if (string_size - 1 == 0)
-                    hundredths = "ten";
-                else if (string_size - 1 == 1)
-                    hundredths = "eleven";
-                else if (string_size - 1 == 2)
-                    hundredths = "twelve";
-                else if (string_size - 1 == 3)
-                    hundredths = "thirtheen";
-                else if (string_size - 1 == 4)
-                    hundredths = "fourteen";
-                else if (string_size - 1 == 5)
-                    hundredths = "fifteen";
-                else if (string_size - 1 == 6)
-                    hundredths = "sixteen";
-                else if (string_size - 1 == 7)
-                    hundredths = "seventeen";
-                else if (string_size - 1 == 8)
-                    hundredths = "eightteen";
-                else if (string_size - 1 == 9)
-                    hundredths = "nineteen";
-            }
+                // Tenths == 0
+                if (digit_amount[string_size - 2] == '0')
+                {
+                    // Hundredths
+                    if (digit_amount[string_size - 1] == '0')
+                        amount_in_words += "zero";
+                    else if (digit_amount[string_size - 1] == '1')
+                        amount_in_words += "one";
+                    else if (digit_amount[string_size - 1] == '2')
+                        amount_in_words += "two";
+                    else if (digit_amount[string_size - 1] == '3')
+                        amount_in_words += "three";
+                    else if (digit_amount[string_size - 1] == '4')
+                        amount_in_words += "four";
+                    else if (digit_amount[string_size - 1] == '5')
+                        amount_in_words += "five";
+                    else if (digit_amount[string_size - 1] == '6')
+                        amount_in_words += "six";
+                    else if (digit_amount[string_size - 1] == '7')
+                        amount_in_words += "seven";
+                    else if (digit_amount[string_size - 1] == '8')
+                        amount_in_words += "eight";
+                    else if (digit_amount[string_size - 1] == '9')
+                        amount_in_words += "nine";
+                }
+                // Tenths == 1
+                else if (digit_amount[string_size - 2] == '1')
+                {
+                    // Hundredths
+                    if (digit_amount[string_size - 1] == '0')
+                        amount_in_words += "ten";
+                    else if (digit_amount[string_size - 1] == '1')
+                        amount_in_words += "eleven";
+                    else if (digit_amount[string_size - 1] == '2')
+                        amount_in_words += "twelve";
+                    else if (digit_amount[string_size - 1] == '3')
+                        amount_in_words += "thirtheen";
+                    else if (digit_amount[string_size - 1] == '4')
+                        amount_in_words += "fourteen";
+                    else if (digit_amount[string_size - 1] == '5')
+                        amount_in_words += "fifteen";
+                    else if (digit_amount[string_size - 1] == '6')
+                        amount_in_words += "sixteen";
+                    else if (digit_amount[string_size - 1] == '7')
+                        amount_in_words += "seventeen";
+                    else if (digit_amount[string_size - 1] == '8')
+                        amount_in_words += "eightteen";
+                    else if (digit_amount[string_size - 1] == '9')
+                        amount_in_words += "nineteen";
+                }
 
-
-
-            break;
-        
-        default:
-            break;
+                break;
+            
+            default:
+                break;
         }
         
     }
 
-    return amount_in_words;
+    return amount_in_words += " cents";
 }
