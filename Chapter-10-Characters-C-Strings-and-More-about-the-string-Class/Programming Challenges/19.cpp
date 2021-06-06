@@ -41,6 +41,8 @@ string validateDate(string);
 string changeAmountToWords(string);
 void dollarFormat(string &);
 void displayCheck(string, string, string);
+string numToWords(int, string);
+string changeAmountToWords(string);
 
 int main()
 {
@@ -52,13 +54,7 @@ int main()
            user_name = getUserName(),
            check_amount = getCheckAmount();
 
-    cout << "user_name    = " << user_name    << endl;
-    cout << "check_amount = " << check_amount << endl;
-    cout << "user_date    = " << user_date    << endl;
-
-    cout << endl;
     displayCheck(user_name, check_amount, user_date);
-    cout << endl;
 
     return 0;
 } 
@@ -78,7 +74,7 @@ string getUserName()
     return user_name;
 }
 
-string getCheckAmount() {return inputValidateCurrency("Enter a dollar amount up to $10,000 in the form nnnnn.nn : "); }
+string getCheckAmount() { return inputValidateCurrency("Enter a dollar amount up to $10,000 in the form nnnnn.nn : "); }
 
 void dollarFormat(string &user_amount)
 {
@@ -94,7 +90,7 @@ void dollarFormat(string &user_amount)
 
 }
 
-string getDate() { return validateDate("Enter a date int the form mm/dd/yyyy : "); }
+string getDate() { return validateDate("Enter a date in the form mm/dd/yyyy : "); }
 
 string inputValidateCurrency(string message)
 {
@@ -255,121 +251,66 @@ string validateDate(string message)
 
 void displayCheck(string name, string amount, string date)
 {
-    cout << "\t\t\t\tDate: " << date << endl << endl;
+    cout << "\n\t\t\t\tDate: " << date << endl << endl;
     
     string amount_in_words = changeAmountToWords(amount);
 
     dollarFormat(amount);
 
     cout << "Pay to the Order of: " << name << "\t\t" << amount << endl;
-    cout << endl << amount_in_words << endl;
+    cout << endl << amount_in_words << endl << endl;
 }
+string numToWords(int number, string s)
+{
+    string one_and_hundredths[] = {"", "one ", "two ", "three ", "four ",
+                               "five ", "six ", "seven ", "eight ",
+                               "nine ", "ten ", "eleven ", "twelve ",
+                               "thirteen ", "fourteen ", "fifteen ",
+                               "sixteen ", "seventeen ", "eighteen ",
+                               "nineteen " },
+       ten_and_tenths[]     = {"", "", "twenty ", "thirty ", "forty ",
+                               "fifty ", "sixty ", "seventy ", "eighty ",
+                               "ninety " };
+                               
+    string str = "";
 
+    if (number > 19)
+        str += ten_and_tenths[number / 10] + one_and_hundredths[number % 10];
+    else
+        str += one_and_hundredths[number];
+
+    if (number)
+        str += s;
+    
+    return str;
+}
 string changeAmountToWords(string digit_amount)
 {
-    int string_size = digit_amount.length();
-    string amount_in_words = "";
+    double user_number = stod(digit_amount);
+    int decimal_number = stoi(to_string((user_number - static_cast<int>(user_number)) * 100.0)),
+        whole_number = user_number;
 
-    // // 0000.0Hundredths
-    // cout << "0000.0Hundredths = " << digit_amount[string_size - 1] << endl;
-    // // 0000.Tenths0
-    // cout << "0000.Tenths0 = " << digit_amount[string_size - 2] << endl;
-    // // 000ones.00
-    // cout << "000ones.00 = " << digit_amount[string_size - 4] << endl;
-    // // 00tens0.00
-    // cout << "00tens0.00 = " << digit_amount[string_size - 5] << endl;
-    // // 0hundres00.00
-    // cout << "0hundres00.00 = " << digit_amount[string_size - 6] << endl;
-    // // thousands000.00
-    // cout << "thousands000.00 = " << digit_amount[string_size - 7] << endl;
+    string out;
 
-    // cout << "string_size = " << string_size << endl;
-    string char_number = "";
-    char_number += digit_amount[string_size - 1];
-    int single_digit = stoi(char_number);
-
-    for (int i = 0; i < string_size; i++)
-    {
-        
-    }
+    out += numToWords(((whole_number / 1000) % 100), "thousand ");
+    out += numToWords(((whole_number / 100) % 10), "hundred ");
     
-    cout << "single_digit = " << single_digit << endl;
+    if (whole_number > 100 && whole_number % 100)
+        out += "and ";
+    
+    out += numToWords((whole_number % 100), "");
+    out += "dollars ";
 
-    if (string_size == 8)
-        amount_in_words += "Ten thousand dollars and zero cents";
-    else
+    if (decimal_number != 0)
     {
-        string hundredths = "",
-               tenths     = "";
-        // for (int i = string_size; i > 0; i--)
-        // {
-        //     cout << "(i - 1)" << (i - 1) << " = " << digit_amount[i - 1] << endl;
-        // }
-        switch (string_size)
-        {
-            case 3:
-                // cout << "0000.0Hundredths = " << digit_amount[string_size - 1] << endl;
-                // cout << "0000.Tenths0 = " << digit_amount[string_size - 2] << endl;
-                // cout << ". = " << digit_amount[string_size - 3] << endl;
-
-                // Tenths == 0
-                if (digit_amount[string_size - 2] == '0')
-                {
-                    // Hundredths
-                    if (digit_amount[string_size - 1] == '0')
-                        amount_in_words += "zero";
-                    else if (digit_amount[string_size - 1] == '1')
-                        amount_in_words += "one";
-                    else if (digit_amount[string_size - 1] == '2')
-                        amount_in_words += "two";
-                    else if (digit_amount[string_size - 1] == '3')
-                        amount_in_words += "three";
-                    else if (digit_amount[string_size - 1] == '4')
-                        amount_in_words += "four";
-                    else if (digit_amount[string_size - 1] == '5')
-                        amount_in_words += "five";
-                    else if (digit_amount[string_size - 1] == '6')
-                        amount_in_words += "six";
-                    else if (digit_amount[string_size - 1] == '7')
-                        amount_in_words += "seven";
-                    else if (digit_amount[string_size - 1] == '8')
-                        amount_in_words += "eight";
-                    else if (digit_amount[string_size - 1] == '9')
-                        amount_in_words += "nine";
-                }
-                // Tenths == 1
-                else if (digit_amount[string_size - 2] == '1')
-                {
-                    // Hundredths
-                    if (digit_amount[string_size - 1] == '0')
-                        amount_in_words += "ten";
-                    else if (digit_amount[string_size - 1] == '1')
-                        amount_in_words += "eleven";
-                    else if (digit_amount[string_size - 1] == '2')
-                        amount_in_words += "twelve";
-                    else if (digit_amount[string_size - 1] == '3')
-                        amount_in_words += "thirtheen";
-                    else if (digit_amount[string_size - 1] == '4')
-                        amount_in_words += "fourteen";
-                    else if (digit_amount[string_size - 1] == '5')
-                        amount_in_words += "fifteen";
-                    else if (digit_amount[string_size - 1] == '6')
-                        amount_in_words += "sixteen";
-                    else if (digit_amount[string_size - 1] == '7')
-                        amount_in_words += "seventeen";
-                    else if (digit_amount[string_size - 1] == '8')
-                        amount_in_words += "eightteen";
-                    else if (digit_amount[string_size - 1] == '9')
-                        amount_in_words += "nineteen";
-                }
-
-                break;
-            
-            default:
-                break;
-        }
-        
+        out += "and ";
+        out += numToWords((decimal_number % 100), "");
+        out += "cents";
     }
+    else
+        out += "and no cents";
+    
 
-    return amount_in_words += " cents";
+    return out;
+
 }

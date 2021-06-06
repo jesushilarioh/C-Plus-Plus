@@ -2,16 +2,6 @@
 #include <string>
 using namespace std;
 
-string one_and_hundredths[] = {"", "one ", "two ", "three ", "four ",
-                               "five ", "six ", "seven ", "eight ",
-                               "nine ", "ten ", "eleven ", "twelve ",
-                               "thirteen ", "fourteen ", "fifteen ",
-                               "sixteen ", "seventeen ", "eighteen ",
-                               "nineteen " },
-       ten_and_tenths[]     = {"", "", "twenty ", "thirty ", "forty ",
-                               "fifty ", "sixty ", "seventy ", "eighty ",
-                               "ninety " };
-
 string numToWords(int, string);
 string convertToWords(int, int);
 
@@ -26,6 +16,16 @@ int main()
 }
 string numToWords(int number, string s)
 {
+    string one_and_hundredths[] = {"", "one ", "two ", "three ", "four ",
+                               "five ", "six ", "seven ", "eight ",
+                               "nine ", "ten ", "eleven ", "twelve ",
+                               "thirteen ", "fourteen ", "fifteen ",
+                               "sixteen ", "seventeen ", "eighteen ",
+                               "nineteen " },
+       ten_and_tenths[]     = {"", "", "twenty ", "thirty ", "forty ",
+                               "fifty ", "sixty ", "seventy ", "eighty ",
+                               "ninety " };
+                               
     string str = "";
 
     if (number > 19)
