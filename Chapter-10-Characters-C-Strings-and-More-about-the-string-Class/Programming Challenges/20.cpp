@@ -56,6 +56,7 @@ const int ROWS = 654,
 void createWinningNumbers(string);
 void getNumbersFromFile(string, string[][COLS]);
 void getMostCommonNumbers(string[]);
+void displayTwoDimensionalArray(string[][COLS], int);
 
 int main()
 {
@@ -67,12 +68,7 @@ int main()
 
     getNumbersFromFile("pbnumbers.txt", array);
 
-    for (int i = 0; i < ROWS; i++)
-    {
-        for (int j = 0; j < COLS; j++)
-            cout << array[i][j] << " ";
-        cout << endl;
-    }
+    displayTwoDimensionalArray(array, ROWS);
 
     return 0;
 }
@@ -153,4 +149,14 @@ void getNumbersFromFile(string file_name, string array[][COLS])
         exit(EXIT_FAILURE);
     }
     
+}
+
+void displayTwoDimensionalArray(string array[][COLS], int ROWS)
+{
+    for (int i = 0; i < ROWS; i++)
+    {
+        for (int j = 0; j < COLS; j++)
+            cout << array[i][j] << " ";
+        cout << endl;
+    }
 }
