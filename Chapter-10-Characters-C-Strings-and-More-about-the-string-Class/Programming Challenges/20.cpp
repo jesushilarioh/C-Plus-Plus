@@ -46,22 +46,40 @@
 #include <fstream>
 #include <cstdlib>  // rand(), srand()
 #include <ctime>    // time()
+#include <string>
 
 using namespace std;
 
+const int ROWS = 654,
+          COLS = 6;
+
 void createWinningNumbers(string);
+void getNumbersFromFile(string, string[][COLS]);
+void getMostCommonNumbers(string[]);
 
 int main()
 {
+
+    string array[ROWS][COLS],
+           mostCommonNumbers[10];
+
     createWinningNumbers("pbnumbers.txt");
+
+    getNumbersFromFile("pbnumbers.txt", array);
+
+    for (int i = 0; i < ROWS; i++)
+    {
+        for (int j = 0; j < COLS; j++)
+            cout << array[i][j] << " ";
+        cout << endl;
+    }
 
     return 0;
 }
 
-void  createWinningNumbers(string file_name)
+void createWinningNumbers(string file_name)
 {
     ofstream output_file;
-    output_file.open(file_name);
 
     unsigned seed = time(0);
     srand(seed); 
@@ -71,6 +89,8 @@ void  createWinningNumbers(string file_name)
               NUMBER_OF_ROWS = 654;
 
     int random_number;
+
+    output_file.open(file_name);
 
     output_file.fill('0');
     for (int i = 0; i < NUMBER_OF_ROWS; i++)
@@ -90,4 +110,47 @@ void  createWinningNumbers(string file_name)
     }
 
     output_file.close();
+}
+
+void getNumbersFromFile(string file_name, string array[][COLS])
+{
+    ifstream input_file;
+
+    input_file.open(file_name);
+    
+
+    if (input_file)
+    {
+        string number;
+        int count = 0,
+            index = 0;
+
+        while (input_file >> number)
+        {
+            // cout << number << " ";
+            
+            array[count][index] = number;
+            // cout << "[count][index]" 
+            //      << "[" << count << "]"
+            //      << "[" << index << "]"
+            //      << " = " << array[count][index] 
+            //      << endl;
+
+            index++;
+            if (index % COLS == 0)
+            {
+                index = 0;
+                count++;
+            }
+        }
+        // cout << "count = " << count << endl;
+
+        input_file.close();
+    }
+    else
+    {
+        cout << "Invalid file. See line #" << __LINE__ << endl << endl;
+        exit(EXIT_FAILURE);
+    }
+    
 }
