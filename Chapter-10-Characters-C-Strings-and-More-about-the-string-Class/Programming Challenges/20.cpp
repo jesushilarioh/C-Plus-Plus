@@ -123,31 +123,31 @@ void getNumbersFromFile(string file_name, string array[][COLS])
 
         while (input_file >> number)
         {
-            // cout << number << " ";
             
             array[count][index] = number;
-            // cout << "[count][index]" 
-            //      << "[" << count << "]"
-            //      << "[" << index << "]"
-            //      << " = " << array[count][index] 
-            //      << endl;
 
             index++;
+
             if (index % COLS == 0)
             {
                 index = 0;
                 count++;
             }
         }
-        // cout << "count = " << count << endl;
 
         input_file.close();
+
     }
     else
     {
         cout << "Invalid file. See line #" << __LINE__ << endl << endl;
         exit(EXIT_FAILURE);
     }
+    
+}
+
+void getMostCommonNumbers(string array[][COLS], int ROWS)
+{
     
 }
 
@@ -160,3 +160,4 @@ void displayTwoDimensionalArray(string array[][COLS], int ROWS)
         cout << endl;
     }
 }
+
