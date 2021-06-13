@@ -50,12 +50,12 @@
 
 using namespace std;
 
-const int ROWS = 654,
+const int ROWS = 3,
           COLS = 6;
 
 void createWinningNumbers(string);
 void getNumbersFromFile(string, string[][COLS]);
-void getMostCommonNumbers(string[]);
+void getMostCommonNumbers(string[][COLS], const int);
 void displayTwoDimensionalArray(string[][COLS], int);
 
 int main()
@@ -64,11 +64,13 @@ int main()
     string array[ROWS][COLS],
            mostCommonNumbers[10];
 
-    createWinningNumbers("pbnumbers.txt");
+    // createWinningNumbers("pbnumbers.txt");
 
     getNumbersFromFile("pbnumbers.txt", array);
 
-    displayTwoDimensionalArray(array, ROWS);
+    // displayTwoDimensionalArray(array, ROWS);
+
+    getMostCommonNumbers(array, ROWS);
 
     return 0;
 }
@@ -81,15 +83,14 @@ void createWinningNumbers(string file_name)
     srand(seed); 
 
     const int MIN_VALUE = 1,
-              MAX_VALUE = 69,
-              NUMBER_OF_ROWS = 654;
+              MAX_VALUE = 69;
 
     int random_number;
 
     output_file.open(file_name);
 
     output_file.fill('0');
-    for (int i = 0; i < NUMBER_OF_ROWS; i++)
+    for (int i = 0; i < ROWS; i++)
     {
         for (int j = 0; j < 6; j++)
         {
@@ -101,7 +102,7 @@ void createWinningNumbers(string file_name)
                 output_file << random_number << " ";
                 
         }
-        if (i != (NUMBER_OF_ROWS - 1))
+        if (i != (ROWS - 1))
             output_file << endl;
     }
 
@@ -146,9 +147,39 @@ void getNumbersFromFile(string file_name, string array[][COLS])
     
 }
 
-void getMostCommonNumbers(string array[][COLS], int ROWS)
+void getMostCommonNumbers(string array[][COLS], const int ROWS)
 {
-    
+    // A[0][0] == A[0][1]
+    // A[0][0] == A[0][2]
+    // A[0][0] == A[0][3]
+    // A[0][0] == A[0][4]
+    // A[0][0] == A[0][5]
+    // A[0][0] == A[0][6]
+    // A[0][0] == A[1][0]
+    // A[0][0] == A[1][1]
+    // A[0][0] == A[1][2]
+    // A[0][0] == A[1][3]
+    // A[0][0] == A[1][4]
+    // A[0][0] == A[1][5]
+    // A[0][0] == A[2][0]
+    // A[a][b] == A[c][d]
+
+    for (int a = 0; a < ROWS; a++) // A[a][b]
+    {
+        for (int b = 0; b < COLS; b++) // A[a][b]
+        {
+            for (int c = 0; c < ROWS; c++) // A[c][d]
+            {
+                for (int d = 0; d < COLS; d++) // A[c][d]
+                {
+                    cout << "array[a][b] = " << array[a][b] << endl;
+                    cout << "array[c][d] = " << array[c][d] << endl;
+                    
+                }
+            }
+        }
+    }
+
 }
 
 void displayTwoDimensionalArray(string array[][COLS], int ROWS)

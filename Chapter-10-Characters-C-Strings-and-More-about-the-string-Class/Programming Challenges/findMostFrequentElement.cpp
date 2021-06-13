@@ -1,36 +1,46 @@
 #include <iostream>
 
+using namespace std;
+
 int findMostFrequentElement(int[], int);
 
 int main()
 {
-    int array[11] = {1, 9, 2, 3, 1, 9, 29, 209, 2, 1, 6};
+    int array[11] = {9, 9, 20, 3, 10, 9, 20, 209, 20, 10, 10};
+
+    cout << findMostFrequentElement(array, 11) << endl;
 
     return 0;
 }
 int findMostFrequentElement(int A[], int n)
 {
-    int max_freq = 0,
-        ans = -1;
+    int maxValue = 0, maxCount = 0, i, j;
 
-    for (int i = 0; i < (n - 1); i++)
+    for (i = 0; i < n; ++i)
     {
-        int curr_freq = 1;
+        int count = 0;
 
-        for (int j = (i + 1); j < (n - 1); j++)
+        for (j = 0; j < n; ++j)
         {
-            if (A[j] == A[i])
-                curr_freq = (curr_freq + 1);
+            if (*(A + j) == *(A + i))
+                ++count;
         }
-        if (max_freq < curr_freq)
+
+        if (count > maxCount)
         {
-            max_freq = curr_freq;
-            ans = A[i];
+            maxCount = count;
+            maxValue = *(A + i);
         }
-        else if (max_freq == curr_freq)
-            ans = min(ans, A[i]);
+        else if (maxCount == 1)
+            maxValue = -1;
+        else if (count == maxCount)
+            maxValue = min(maxValue, A[i]);
 
     }
-
-    return ans;
+    // cout << "Max Count = " << maxCount << endl;
+    return maxValue;
+}
+int min (int ans, int A_int)
+{
+    return ans < A_int ? ans : A_int;
 }
