@@ -55,14 +55,16 @@ const int ROWS = 3,
 
 void createWinningNumbers(string);
 void getNumbersFromFile(string, string[][COLS]);
-void getMostCommonNumbers(string[][COLS], const int);
+void getMostCommonNumbers(string[][COLS], const int, string[]);
 void displayTwoDimensionalArray(string[][COLS], int);
+void displayArray(string[], const int);
 
 int main()
 {
+    const int ARRAY_SIZE = 10;
 
     string array[ROWS][COLS],
-           mostCommonNumbers[10];
+           mostCommonNumbers[ARRAY_SIZE];
 
     // createWinningNumbers("pbnumbers.txt");
 
@@ -70,7 +72,9 @@ int main()
 
     // displayTwoDimensionalArray(array, ROWS);
 
-    getMostCommonNumbers(array, ROWS);
+    getMostCommonNumbers(array, ROWS, mostCommonNumbers);
+
+    displayArray(mostCommonNumbers, ARRAY_SIZE);
 
     return 0;
 }
@@ -147,7 +151,7 @@ void getNumbersFromFile(string file_name, string array[][COLS])
     
 }
 
-void getMostCommonNumbers(string array[][COLS], const int ROWS)
+void getMostCommonNumbers(string array[][COLS], const int ROWS, string mostCommonNumbers[])
 {
     // A[0][0] == A[0][1]
     // A[0][0] == A[0][2]
@@ -163,22 +167,44 @@ void getMostCommonNumbers(string array[][COLS], const int ROWS)
     // A[0][0] == A[1][5]
     // A[0][0] == A[2][0]
     // A[a][b] == A[c][d]
-
-    for (int a = 0; a < ROWS; a++) // A[a][b]
+    int maxValue = 0,
+        maxCount = 0,
+        max_value_array_count = 0;
+    
+    while()
     {
-        for (int b = 0; b < COLS; b++) // A[a][b]
+        for (int a = 0; a < ROWS; a++) // A[a][b]
         {
-            for (int c = 0; c < ROWS; c++) // A[c][d]
+            for (int b = 0; b < COLS; b++) // A[a][b]
             {
-                for (int d = 0; d < COLS; d++) // A[c][d]
+                int count = 0;
+                
+                for (int c = 0; c < ROWS; c++) // A[c][d]
                 {
-                    cout << "array[a][b] = " << array[a][b] << endl;
-                    cout << "array[c][d] = " << array[c][d] << endl;
-                    
+                    for (int d = 0; d < COLS; d++) // A[c][d]
+                    {
+                        // cout << "array[a][b] = " << array[a][b] << endl;
+                        // cout << "array[c][d] = " << array[c][d] << endl;
+                        if (stoi(array[a][b]) == stoi(array[c][d]))
+                            count++;
+                    }
                 }
+
+                if (count > maxCount)
+                {
+                    maxCount = count;
+                    maxValue = stoi(array[a][b]);
+                    mostCommonNumbers[max_value_array_count] = array[a][b];
+                    max_value_array_count++;
+                }
+                else if (maxCount == 1)
+                    maxValue = -1;
+
             }
         }
     }
+    
+    cout << "maxValue = " << maxValue << endl;
 
 }
 
@@ -192,3 +218,8 @@ void displayTwoDimensionalArray(string array[][COLS], int ROWS)
     }
 }
 
+void displayArray(string array[], const int ARRAY_SIZE)
+{
+    for (int i = 0; i < ARRAY_SIZE; i++)
+        cout << array[i] << " " << endl;
+}
